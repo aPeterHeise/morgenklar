@@ -2,7 +2,18 @@
 
 Stand: 13. November 2026.
 
-## Build und Regeln
+## Version 0.1.1: Leistungen und Empfehlungen
+
+- 37 JVM-Tests bestanden, darunter Vollständigkeit der Quellen für jede bezifferte oder bestätigte Kostenübernahme über alle Kassen und repräsentative Altersgrenzen, explizite Prüfdaten und Empfehlungsherausgeber.
+- Regressionen zu TK-PZR als begrenztem Zuschuss, DAK-Fristen und Hautscreening-Risiken, geteiltem Schwangerschaftsbudget und zusätzlichen Testvoraussetzungen sowie COVID-19 ab 75 und geändertem Impfabstand geprüft.
+- 8 Android-UI-Tests auf Android 16 / API 36 bestanden. Der neue PZR-Test prüft Zuschuss, Empfehlungsherausgeber, erreichbare Quellen-Schaltflächen und sichtbares Prüfdatum in den Details.
+- PZR-Ansichten nach einem separaten erfolgreichen Screenshotlauf visuell geprüft: `dist/previews/08-pzr-empfehlung.png` und `dist/previews/09-pzr-kosten.png`. Getestet auf einem temporären Read-only-Emulator; gespeicherte Daten anderer Test-Apps bleiben unverändert.
+- `testDebugUnitTest connectedDebugAndroidTest assembleRelease --offline`: erfolgreich. Die obligatorische Release-Prüfung (`lintVitalRelease`) lief mit; ein neuer vollständiger Lint-Lauf war nicht Teil dieser Änderung.
+- Release 0.1.1, Versionscode 2, unter `dist/morgenklar-0.1.1.apk`; Prüfsumme in `dist/SHA256-0.1.1.txt`. Der Signaturfingerabdruck stimmt mit der bisher verteilten Vorschau 0.1.0 überein. Das Update benötigt daher keine Deinstallation.
+- Ein erster Gerätetest startete wegen eines abweichenden temporären Debugschlüssels nicht; nach Nutzung des Originalschlüssels konnte das Update installiert werden. Ein weiterer Durchlauf scheiterte nur am mehrdeutigen Quellenschalter im neuen Test. Der abschließende Lauf selektiert die TK-Kostenkarte ausdrücklich und bestand vollständig.
+- 63 Angebote mit getrennten Leistungs- und Empfehlungsquellen; 70 Quellen insgesamt, davon 43 am 13.11.2026 konkret nachgeprüft. Andere Hintergrundquellen zeigen ausdrücklich nur den bisherigen Katalogstand. Datum und Versionsstand sind keine automatische Aktualisierung.
+
+## Ursprüngliche Version 0.1.0: Build und Regeln
 
 - Optimierte `release`-APK gebaut, ungefähr 2,2 MB; Android 9 / API 28 als Mindestversion, Ziel-API 36.
 - 32 JVM-Tests bestanden: 22 für Alters-/Historien-/Kassenlogik, 10 für Schwangerschaft.

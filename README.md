@@ -2,17 +2,28 @@
 
 Native Android-App in Kotlin / Jetpack Compose. Lokale Profile für dich und Angehörige, Gesundheitsfragen, altersbezogene Vorsorge, Untersuchungshistorie und eine Vorschau um ein bis drei Jahre. Schwerpunkt Deutschland und Erwachsene ab 30; Altersatlas von 0 bis 110.
 
-**Version 0.1.0 · Android 9 oder neuer · Recherchestand 13. November 2026**
+**Version 0.1.1 · Android 9 oder neuer · Recherchestand 13. November 2026**
 
-[APK herunterladen](https://github.com/aPeterHeise/morgenklar/releases/download/v0.1.0/morgenklar-preview.apk) · [Release und Prüfsumme](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.0) · [Ausführliche Recherche](research/RECHERCHE.md) · [Altersatlas](research/ALTERSATLAS.md)
+[APK 0.1.1 herunterladen](https://github.com/aPeterHeise/morgenklar/releases/download/v0.1.1/morgenklar-0.1.1.apk) · [Release und Prüfsumme](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.1) · [Ausführliche Recherche](research/RECHERCHE.md) · [Altersatlas](research/ALTERSATLAS.md)
 
 ## Installieren
 
-1. `morgenklar-preview.apk` aus dem [GitHub-Release v0.1.0](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.0) auf dem Android-Gerät herunterladen und öffnen.
+Version 0.1.1 ist mit demselben Schlüssel wie 0.1.0 signiert und kann als Update installiert werden. Die vorhandenen Profile bleiben dabei erhalten; eine Deinstallation ist nicht erforderlich.
+
+1. `morgenklar-0.1.1.apk` aus dem [GitHub-Release v0.1.1](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.1) auf dem Android-Gerät herunterladen und öffnen.
 2. Falls Android nachfragt, die Installation für den verwendeten Browser oder Dateimanager erlauben.
 3. Die App öffnen und ein Profil anlegen. Krankenkasse und Gesundheitsfragen sind freiwillig. Weitere Personen lassen sich anschließend hinzufügen.
 
-Die APK ist eine mit dem lokalen Android-Debugschlüssel signierte Vorschau, keine Play-Store-Veröffentlichung. Die erste Nutzung startet mit einem leeren Profilformular; Demo-Personen werden nicht mitgeliefert. Im Release liegt außerdem `SHA256.txt` zur Integritätsprüfung. Selbst gebaute APKs nutzen den jeweiligen lokalen Signierschlüssel und können deshalb möglicherweise nicht als Update über die veröffentlichte Vorschau installiert werden. Eine Deinstallation löscht die lokalen Profile.
+Die APK ist eine mit dem lokalen Android-Debugschlüssel signierte Vorschau, keine Play-Store-Veröffentlichung. Die erste Nutzung startet mit einem leeren Profilformular; Demo-Personen werden nicht mitgeliefert. Im Release liegt außerdem `SHA256-0.1.1.txt` zur Integritätsprüfung. Selbst gebaute APKs nutzen den jeweiligen lokalen Signierschlüssel und können deshalb möglicherweise nicht als Update über die veröffentlichte Vorschau installiert werden. Eine Deinstallation löscht die lokalen Profile.
+
+## Änderungen in 0.1.1
+
+- Leistungsbedingungen und ein explizites Prüfdatum je nachgeprüfter Quelle direkt in Plan, Altersübersicht und Kassenvergleich; Richtlinien, Satzungen und Bonusbedingungen sind getrennt von medizinischen Empfehlungen zugeordnet.
+- „Wer empfiehlt das?“ bei allen 63 Angeboten: benannte Herausgeber, Art der Grundlage und verlinkte Belege. Ein G-BA-Versorgungsangebot wird nicht als individuelle ärztliche Empfehlung ausgegeben.
+- PZR: TK maximal 40 € einmal je Kalenderjahr ab 18, DAK maximal 60 € je Kalenderjahr; mögliche Eigenanteile deutlich sichtbar. DAK-Antragsfrist 31.03. des Folgejahres ergänzt. BARMER-Bonus bleibt ein geteiltes, von Punkten abhängiges Budget.
+- DAK-Hautscreening vor 35 nur bei Risikofaktoren; Schwangerschaftsextras nach den konkreten Satzungsbedingungen mit Untersuchungsanlass, Belegen und ggf. gemeinsamer Budgetgrenze.
+- COVID-19 korrigiert: Standardimpfung ab 75 laut STIKO-Änderung Juli 2026 und Schutzimpfungs-Richtlinie seit 29.10.2026; darunter nur bei entsprechender Indikation. Die Terminplanung berücksichtigt den Sechsmonatsabstand zur letzten dokumentierten Impfung; Infektionen erfordern individuelle Abstimmung.
+- Die Empfehlung zur PZR stammt von BZÄK/KZBV; die eingeschränkte Übertragbarkeit der Cochrane-Studien zu Scaling/Polishing wird daneben erläutert.
 
 ## Enthalten
 
@@ -25,7 +36,7 @@ Die APK ist eine mit dem lokalen Android-Debugschlüssel signierte Vorschau, kei
 - Darmtest und Darmspiegelung als Alternativen, mit Pausenzeiten nach regulärer Vorsorgekoloskopie.
 - Kassenvergleich mit Prozenten, Höchstbeträgen, Bedingungen, gemeinsamem Bonusbudget und Beispielrechnung zur PZR.
 - Evidenzeinordnung zu Longevity, Vitaminen und Hormonen sowie Ausblick auf Österreich und England.
-- 63 redaktionelle Angebote und 55 Quellen, Stand 13.11.2026. Angekündigte Änderungen bleiben als solche markiert.
+- 63 redaktionelle Angebote und 70 Quellen, Stand 13.11.2026. Angekündigte Änderungen bleiben als solche markiert.
 
 ## Einblicke
 
@@ -35,11 +46,13 @@ Tatsächliche Android-Ansichten mit fiktiven Testprofilen:
   <img src="dist/previews/02-plan.png" alt="Persönlicher Vorsorgeplan" width="240" />
   <img src="dist/previews/03-familie.png" alt="Mehrere Personen verwalten" width="240" />
   <img src="dist/previews/07-schwangerschaft.png" alt="Vorsorge nach Schwangerschaftswochen" width="240" />
+  <img src="dist/previews/08-pzr-empfehlung.png" alt="PZR: benannte Empfehlung und Einordnung der Studienlage" width="240" />
+  <img src="dist/previews/09-pzr-kosten.png" alt="PZR: TK-Zuschuss, Eigenanteil und geprüfte Leistungsbedingungen" width="240" />
 </p>
 
 ## Medizinische Quellen und Leistungsgrundlagen
 
-Die Inhalte wurden aus öffentlich zugänglichen Richtlinien, Empfehlungen und Leistungsbeschreibungen zusammengestellt. **Eine Kassenleistung ist nicht automatisch eine medizinische Empfehlung oder Pflicht.** Die App unterscheidet gesetzliche Ansprüche, bedingte Kassenextras und ergänzende Informationen zur Forschung. Die Quellenangaben machen die Grundlage überprüfbar; sie bedeuten keine Zertifizierung, Kooperation oder Freigabe durch die genannten Institutionen. Eine unabhängige ärztliche Prüfung der App steht aus.
+Die Inhalte wurden aus öffentlich zugänglichen Richtlinien, Empfehlungen und Leistungsbeschreibungen zusammengestellt. **Eine Kassenleistung ist nicht automatisch eine medizinische Empfehlung oder Pflicht.** Die App unterscheidet gesetzliche Ansprüche, bedingte Kassenextras und ergänzende Informationen zur Forschung. „Zuletzt geprüft“ ist ein redaktionelles Abrufdatum, kein Gültigkeitsversprechen. Der ältere Veröffentlichungs- oder Versionsstand steht separat; nicht erneut geprüfte Hintergrundquellen sind entsprechend bezeichnet. Die Quellenangaben machen die Grundlage überprüfbar; sie bedeuten keine Zertifizierung, Kooperation oder Freigabe durch die genannten Institutionen. Eine unabhängige ärztliche Prüfung der App steht aus.
 
 ### Vorsorge, Früherkennung und Schwangerschaft
 
@@ -48,7 +61,7 @@ Die Inhalte wurden aus öffentlich zugänglichen Richtlinien, Empfehlungen und L
 | Altersgrenzen, Hautscreening, allgemeine Früherkennung | [G-BA: Früherkennungsuntersuchungen im Überblick](https://www.g-ba.de/themen/methodenbewertung/frueherkennungsuntersuchungen/) und [Krebsfrüherkennungs-Richtlinie](https://www.g-ba.de/richtlinien/17/) |
 | Gesundheits-Check-up, Hepatitis B/C | [G-BA: Gesundheitsuntersuchungen](https://www.g-ba.de/themen/methodenbewertung/erwachsene/gesundheitsuntersuchungen/) |
 | Pap-Abstrich und HPV-Kotest | [G-BA: Gebärmutterhalskrebs-Screening](https://www.g-ba.de/themen/methodenbewertung/erwachsene/krebsfrueherkennung/gebaermutterhalskrebs-screening/) |
-| Darmtest und Darmspiegelung | [G-BA: Darmkrebs-Screening](https://www.g-ba.de/themen/methodenbewertung/erwachsene/krebsfrueherkennung/darmkrebs-screening/) und [organisierte Krebsfrüherkennungs-Richtlinie, verwendete Fassung ab April 2025 (PDF)](https://www.g-ba.de/downloads/62-492-3766/oKFE-RL-2025-01-16-iK-2025-04-01.pdf) |
+| Darmtest und Darmspiegelung | [G-BA: Darmkrebs-Screening](https://www.g-ba.de/themen/methodenbewertung/erwachsene/krebsfrueherkennung/darmkrebs-screening/) und [organisierte Krebsfrüherkennungs-Richtlinie, verwendete Fassung ab Oktober 2026 (PDF)](https://www.g-ba.de/downloads/62-492-4233/oKFE-RL-2026-08-20-iK-2026-10-02.pdf) |
 | Mammographie und angekündigte Änderungen | [G-BA: Erweiterung bis 75 Jahre](https://www.g-ba.de/presse/pressemitteilungen-meldungen/1193/) und [Beschluss zur künftigen Erweiterung ab 45](https://www.g-ba.de/presse/pressemitteilungen-meldungen/1356/) |
 | Lungenkrebs-Screening und Rauchvorgeschichte | [KBV: Lungenkrebs-Screening](https://www.kbv.de/praxis/patientenversorgung/praevention/lungenkrebs-screening) und [G-BA: Voraussetzungen und Begründung (PDF)](https://www.g-ba.de/downloads/40-268-11634/2025-06-18_KFE-RL_Einf-Lungenkrebsfrueherkennung-Niedrigdosis-CT-Raucher_TrG.pdf) |
 | Prostata, Nutzenabwägung und PSA | [S3-Leitlinie Prostatakarzinom, Version 8.0 (PDF)](https://www.leitlinienprogramm-onkologie.de/fileadmin/user_upload/Downloads/Leitlinien/Prostatatkarzinom/Version_8/22_05_2026_Prostatakarzinom_Kurzversion_8.0_final_KL.pdf) und [G-BA: Bewertung des PSA-Screenings](https://www.g-ba.de/presse/pressemitteilungen-meldungen/1290/) |
@@ -74,7 +87,7 @@ Die Auswahl der drei größten **einzelnen** Kassen beruht auf der [Versicherten
 
 Die Forschungsinformationen verwenden [DGE: Nahrungsergänzungsmittel](https://www.dge.de/gesunde-ernaehrung/faq/nahrungsergaenzungsmittel/), [DGE: Vitamin D](https://www.dge.de/gesunde-ernaehrung/faq/vitamin-d/), [NIH: Vitamin B12](https://ods.od.nih.gov/factsheets/VitaminB12-Consumer/), [IQWiG: Wechseljahrsbeschwerden](https://www.gesundheitsinformation.de/wechseljahrsbeschwerden.html) sowie NIA-Beiträge zu [Wirkstoffen in der Alternsforschung](https://www.nia.nih.gov/news/live-long-good-health-could-calorie-restriction-mimetics-hold-key) und [Kalorienrestriktion](https://www.nia.nih.gov/news/cutting-calories-may-slow-pace-aging-healthy-adults). Daraus wird kein pauschaler Einnahmeplan für Vitamine, Hormone oder Medikamente ab einem bestimmten Alter abgeleitet.
 
-Die [vollständige Recherche](research/RECHERCHE.md) ordnet Quellen den einzelnen Angeboten zu, erläutert Unterschiede zwischen Leistung und Empfehlung und dokumentiert offene Punkte. Der [Offline-Katalog](app/src/main/assets/catalog.json) enthält die 55 Quellen mit IDs und die Zuordnung zu den Regeln. Quellen und Leistungen können sich nach dem **13.11.2026** ändern; diese Version aktualisiert sie nicht automatisch.
+Die [vollständige Recherche](research/RECHERCHE.md) ordnet Quellen den einzelnen Angeboten zu, erläutert Unterschiede zwischen Leistung und Empfehlung und dokumentiert offene Punkte. Der [Offline-Katalog](app/src/main/assets/catalog.json) enthält die 70 Quellen mit IDs und die Zuordnung zu den Regeln. Quellen und Leistungen können sich nach dem **13.11.2026** ändern; diese Version aktualisiert sie nicht automatisch.
 
 ## Datenschutz und Grenzen
 
@@ -86,9 +99,9 @@ Kein Diagnose-, Dosierungs-, Impf-Dosis- oder individueller Hochrisiko-/Nachsorg
 
 - [Recherche](research/RECHERCHE.md): Quellen, Kassenvergleich, Beispiele, Einschränkungen.
 - [Altersatlas](research/ALTERSATLAS.md): Angebote für jedes einzelne Jahr 0–110, getrennt nach Standardprofilen.
-- [Offline-Katalog](app/src/main/assets/catalog.json) und [redaktionelle Katalogquelle](research/build_catalog.py).
+- [Offline-Katalog](app/src/main/assets/catalog.json), [redaktionelle Katalogquelle](research/build_catalog.py) und [Zuordnung der Leistungs-/Empfehlungsquellen](research/evidence.py).
 - [Engine.kt](app/src/main/java/de/morgenklar/app/Engine.kt): Alters-, Historien- und Kostenlogik; [Pregnancy.kt](app/src/main/java/de/morgenklar/app/Pregnancy.kt): Schwangerschaftsplanung.
-- [Validierung](VALIDATION.md): tatsächlich ausgeführte Prüfungen und verbleibende Grenzen. 32 JVM-Tests und 7 Android-UI-Tests bestanden; Android Lint ohne Fehler. Noch keine Prüfung auf einem physischen Telefon oder klinische Validierung.
+- [Validierung](VALIDATION.md): 37 JVM-Tests und 8 Android-UI-Tests für Version 0.1.1 bestanden. Noch keine Prüfung auf einem physischen Telefon oder klinische Validierung.
 
 ## Build
 

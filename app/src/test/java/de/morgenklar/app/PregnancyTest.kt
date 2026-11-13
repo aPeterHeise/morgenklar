@@ -17,5 +17,13 @@ class PregnancyTest {
     @Test fun endingPregnancyHidesPlanAndDoesNotAssumeBirth(){val p=person().copy(pregnant=false);assertFalse(Engine.matches(rule("pregglucose"),p));assertEquals(Status.CONDITION,Pregnancy.evaluate(rule("pregglucose"),p,now).status);assertEquals(Status.CONDITION,Pregnancy.evaluate(rule("pregglucose"),person(295),now).status)}
     @Test fun pregnancyPersistsWithEpisodeAndDueDate(){val p=person().copy(entries=listOf(Entry(rule="pregglucose",date=now,episode="preg1")));val data=AppData(listOf(p),p.id);assertEquals(data,Codec.decode(Codec.encode(data)))}
     @Test fun pregnancyDoesNotLeakIntoAgeAtlasOrYearForecast(){val p=person();assertFalse(Engine.atlas(c,p,34).any{it.pregnancy});assertFalse(Engine.plan(c,p,now.plusYears(1)).any{it.rule.pregnancy})}
-    @Test fun extraBudgetsAreNotPerTest(){val r=rule("pregtoxo");assertEquals("PRIVATE",Coverage.forRule(r,person().copy(insurer="TK"),now).type);assertTrue(Coverage.forRule(r,person().copy(insurer="BARMER"),now).detail.contains("Gemeinsames"));assertEquals("CONDITIONAL",Coverage.forRule(r,person().copy(insurer="DAK"),now).type)}
+    @Test fun extraBudgetsAreNotPerTest(){val r=rule("pregtoxo");assertEquals("PRIVATE",Coverage.forRule(r,person().copy(insurer="TK"),now).type);assertTrue(Coverage.forRule(r,person().copy(insurer="BARMER"),now).detail.contains("gemeinsames Budget"));assertEquals("CONDITIONAL",Coverage.forRule(r,person().copy(insurer="DAK"),now).type)}
+    @Test fun additionalPregnancyTestsKeepStatutoryRestrictions(){
+        val dak=Coverage.forRule(rule("pregtoxo"),person().copy(insurer="DAK"),now)
+        assertTrue(dak.detail.contains("besonderer Infektionsgefahr"));assertTrue(dak.sources.contains("dstatute"))
+        val barmer=Coverage.forRule(rule("preggbs"),person().copy(insurer="BARMER"),now)
+        assertTrue(barmer.detail.contains("31.03."));assertTrue(barmer.detail.contains("Neugeborenen-Osteopathie"))
+        assertEquals("UNKNOWN",Coverage.forRule(rule("preggbs"),person().copy(insurer="TK"),now).type)
+        assertEquals(listOf("maternityrl"),Coverage.forRule(rule("pregus1"),person(),now).sources)
+    }
 }

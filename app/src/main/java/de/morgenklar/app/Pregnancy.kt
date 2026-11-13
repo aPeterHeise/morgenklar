@@ -28,13 +28,13 @@ object Pregnancy {
     }
     fun coverage(r:Rule,p:Person):Benefit {
         if(!p.pregnant) return Benefit("UNKNOWN","Nur in der Schwangerschaft","Kein allgemeiner altersbezogener Anspruch.")
-        if(r.coverage=="PREG_CONDITION") return Benefit("CONDITIONAL","Bei Indikation: 100 %","Bei erfüllten Voraussetzungen reguläre GKV-Leistung. Individuelle Eignung und richtigen Zeitpunkt ärztlich bestätigen lassen.",r.sources)
+        if(r.coverage=="PREG_CONDITION") return Benefit("CONDITIONAL","GKV: bei Indikation","Bei erfüllten Voraussetzungen reguläre GKV-Leistung. Individuelle Eignung und richtigen Zeitpunkt ärztlich bestätigen lassen.",r.coverageSources)
         if(r.coverage=="PREG_EXTRA") return when(p.insurer) {
-            "TK" -> Benefit("PRIVATE","Ohne Verdacht: privat","Kein allgemeiner Vorsorgezuschuss in der geprüften TK-Leistung. Bei Infektionsverdacht kann eine medizinische Indikation zur Abrechnung bestehen.",listOf("pregtk"))
-            "BARMER" -> Benefit("PARTIAL","Familie Plus: 200 € gesamt","Gemeinsames Extra-Budget pro Schwangerschaft für verschiedene Leistungen, nicht 200 € pro Test. Restbudget, Teilnahme und Rechnung mit der BARMER klären.",listOf("pregbarmer"))
-            "DAK" -> Benefit("CONDITIONAL","MamaPLUS: Kostenübernahme","Die DAK nennt den Test als übernommenen MamaPLUS-Bestandteil. Rechnung der Frauenarztpraxis einreichen; aktuelle Teilnahme- und Erstattungsbedingungen bestätigen.",listOf(if(r.id=="preggbs")"pregdakgbs" else "pregdaktoxo"))
-            else -> Benefit("UNKNOWN","Kasse ergänzen","Kein allgemeiner GKV-Routinescreeninganspruch. Extras hängen von der Kasse ab.",r.sources)
+            "TK" -> if(r.id=="pregtoxo") Benefit("PRIVATE","Ohne Verdacht: privat","Die TK nennt für Toxoplasmose ohne Infektionsverdacht keine Übernahme. Bei begründetem Verdacht ist eine Abrechnung über die Gesundheitskarte möglich.",listOf("pregtk","maternityrl")) else Benefit("UNKNOWN","Zusatztest: vorab klären","Kein allgemeiner GKV-Routineanspruch; aus der geprüften TK-Seite ist keine konkrete Zusage für den B-Streptokokken-Test ableitbar.",listOf("maternityrl","pregtk"))
+            "BARMER" -> Benefit("PARTIAL","Familie Plus: bis 200 € gesamt","§ 28d: gemeinsames Budget je Schwangerschaft; wird auch mit Neugeborenen-Osteopathie nach § 28a geteilt. Individueller Untersuchungsanlass erforderlich. Toxoplasmose bei besonderer Infektionsgefahr; B-Streptokokken in SSW 35–37. Rechnungen und ärztliche Verordnungen bis 31.03. des Folgejahres einreichen. Restbudget vorher klären.",listOf("pregbarmer","bstatute"))
+            "DAK" -> Benefit("CONDITIONAL","MamaPLUS: bei Voraussetzungen","§ 19a Abs. 1 und 4: individueller Untersuchungsanlass, qualifizierte Vertragsarztpraxis, spezifische Rechnung und Schwangerschaftsnachweis erforderlich. " + if(r.id=="preggbs") "B-Streptokokken-Test in SSW 35–37; höchstens nachgewiesene Kosten." else "Toxoplasmose-Test nur bei besonderer Infektionsgefahr, etwa Tierkontakt; höchstens nachgewiesene Kosten.",listOf(if(r.id=="preggbs")"pregdakgbs" else "pregdaktoxo","dstatute"))
+            else -> Benefit("UNKNOWN","Kasse ergänzen","Kein allgemeiner GKV-Routinescreeninganspruch. Extras hängen von der Kasse ab.",r.coverageSources)
         }
-        return Benefit("FULL","Kasse zahlt","100 % der vorgesehenen Mutterschaftsvorsorge bei erfüllten Voraussetzungen; privat vereinbarte Extras getrennt betrachten.",r.sources)
+        return Benefit("FULL","GKV-Regelleistung","Die in der Mutterschafts-Richtlinie vorgesehene Leistung wird bei erfüllten Voraussetzungen übernommen. Privat vereinbarte Extras sind nicht eingeschlossen.",r.coverageSources)
     }
 }

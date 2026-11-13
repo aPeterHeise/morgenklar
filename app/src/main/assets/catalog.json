@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "reviewed": "2026-11-13",
   "sources": [
     {
@@ -24,8 +24,10 @@
     },
     {
       "id": "colonrl",
-      "title": "G-BA · Regeln zu Darmspiegelungen",
-      "url": "https://www.g-ba.de/downloads/62-492-3766/oKFE-RL-2025-01-16-iK-2025-04-01.pdf"
+      "title": "G-BA · Darm-/Gebärmutterhals-Screening, Fassung Oktober 2026",
+      "url": "https://www.g-ba.de/downloads/62-492-4233/oKFE-RL-2026-08-20-iK-2026-10-02.pdf",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 02.10.2026"
     },
     {
       "id": "mammo",
@@ -35,7 +37,9 @@
     {
       "id": "mammo45",
       "title": "G-BA · Geplante Erweiterung ab 45",
-      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1356/"
+      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1356/",
+      "checked": "2026-11-13",
+      "edition": "Beschlussmitteilung 15.10.2026"
     },
     {
       "id": "lung",
@@ -50,22 +54,30 @@
     {
       "id": "prostate",
       "title": "S3-Leitlinie · Prostatakarzinom 8.0",
-      "url": "https://www.leitlinienprogramm-onkologie.de/fileadmin/user_upload/Downloads/Leitlinien/Prostatatkarzinom/Version_8/22_05_2026_Prostatakarzinom_Kurzversion_8.0_final_KL.pdf"
+      "url": "https://www.leitlinienprogramm-onkologie.de/fileadmin/user_upload/Downloads/Leitlinien/Prostatatkarzinom/Version_8/22_05_2026_Prostatakarzinom_Kurzversion_8.0_final_KL.pdf",
+      "checked": "2026-11-13",
+      "edition": "Version 8.0 · Juli 2025"
     },
     {
       "id": "psa",
       "title": "G-BA · Prüfung des PSA-Angebots",
-      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1290/"
+      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1290/",
+      "checked": "2026-11-13",
+      "edition": "Mitteilung 16.10.2025"
     },
     {
       "id": "dental",
       "title": "KZBV · Zahnvorsorge",
-      "url": "https://www.kzbv.de/patienten/medizinische-infos/parodontitis/vorsorge-und-frueherkennung/"
+      "url": "https://www.kzbv.de/patienten/medizinische-infos/parodontitis/vorsorge-und-frueherkennung/",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand Juni 2025"
     },
     {
       "id": "psi",
       "title": "KZBV · Parodontaler Screening-Index",
-      "url": "https://www.kzbv.de/patienten/medizinische-infos/parodontitis/der-parodontale-screening-index-psi/"
+      "url": "https://www.kzbv.de/patienten/medizinische-infos/parodontitis/der-parodontale-screening-index-psi/",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "children",
@@ -75,12 +87,16 @@
     {
       "id": "j1",
       "title": "G-BA · Jugendliche und Chlamydien",
-      "url": "https://www.g-ba.de/themen/methodenbewertung/jugendliche/"
+      "url": "https://www.g-ba.de/themen/methodenbewertung/jugendliche/",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "vaccines",
       "title": "STIKO · Impfkalender 2026",
-      "url": "https://www.infektionsschutz.de/download/7741-BIOEG-26-06476_Impfkalender_2026_A3_BFREI_grau.pdf"
+      "url": "https://www.infektionsschutz.de/download/7741-BIOEG-26-06476_Impfkalender_2026_A3_BFREI_grau.pdf",
+      "checked": "2026-11-13",
+      "edition": "Impfkalender 2026; COVID-19-Änderung Juli 2026 separat beachten"
     },
     {
       "id": "rsv",
@@ -95,22 +111,30 @@
     {
       "id": "tkskin",
       "title": "TK · Hautkrebs-Screening",
-      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-erwachsene/kostenuebernahme-hautkrebssreening-2007966"
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-erwachsene/kostenuebernahme-hautkrebssreening-2007966",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 20.07.2026"
     },
     {
       "id": "bskin",
       "title": "BARMER · Haut-Check",
-      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/vorsorge/krebsvorsorge/hautkrebsvorsorge-1055270"
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/vorsorge/krebsvorsorge/hautkrebsvorsorge-1055270",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "dskin",
       "title": "DAK · Hautkrebs-Screening",
-      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/krebsvorsorge/kostenuebernahme-fuer-ihr-hautkrebs-screening_10752"
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/krebsvorsorge/kostenuebernahme-fuer-ihr-hautkrebs-screening_10752",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 01.10.2026"
     },
     {
       "id": "tkpzr",
       "title": "TK · Zahnreinigung",
-      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/zaehne/zahnvorsorge-und-bonusheft/zahlt-tk-professionelle-zahnreinigung-2002368"
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/zaehne/zahnvorsorge-und-bonusheft/zahlt-tk-professionelle-zahnreinigung-2002368",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 01.07.2026"
     },
     {
       "id": "bpzr",
@@ -120,7 +144,9 @@
     {
       "id": "bbonus",
       "title": "BARMER · Bonusbedingungen",
-      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/barmer-bonus"
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/barmer-bonus",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "dextras",
@@ -130,27 +156,37 @@
     {
       "id": "dcheck",
       "title": "DAK · Check-up 17",
-      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/vorsorge/check-up-17-unsere-extra-leistung-fuer-sie_10730"
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/vorsorge/check-up-17-unsere-extra-leistung-fuer-sie_10730",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "dcolon",
       "title": "DAK · Darmkrebs vor 50",
-      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/krebsvorsorge/darmkrebsvorsorge_10748"
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/krebsvorsorge/darmkrebsvorsorge_10748",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "dsport",
       "title": "DAK · Sportmedizin",
-      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/vorsorge/sportmedizinische-untersuchung_10740"
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/vorsorge/sportmedizinische-untersuchung_10740",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "tkstatute",
       "title": "TK · Satzung §§ 27e, 27n, 27o",
-      "url": "https://www.tk.de/resource/blob/2077108/f12d255c99f0c1b3194ebb217d31aa4f/tk-satzung-data.pdf"
+      "url": "https://www.tk.de/resource/blob/2077108/f12d255c99f0c1b3194ebb217d31aa4f/tk-satzung-data.pdf",
+      "checked": "2026-11-13",
+      "edition": "§ 27e Sportmedizin · § 27n Risikovorsorge · § 27o PZR"
     },
     {
       "id": "bcheck",
       "title": "BARMER · Check-up",
-      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/vorsorge/check-up-1055268"
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/vorsorge/check-up-1055268",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "tksport",
@@ -160,17 +196,23 @@
     {
       "id": "tkchild",
       "title": "TK · U10, U11, J2",
-      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-kind-jugend/kostenuebernahme-u10-u11-j2-erstattung-2008052"
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-kind-jugend/kostenuebernahme-u10-u11-j2-erstattung-2008052",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 14.07.2025"
     },
     {
       "id": "bchild",
       "title": "BARMER · Kinderprogramm",
-      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/familie/kinder-und-jugend-programm-1003056"
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/familie/kinder-und-jugend-programm-1003056",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "dchild",
       "title": "DAK · Kindervorsorge",
-      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/kindervorsorge_20596"
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/kindervorsorge_20596",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "dge",
@@ -220,12 +262,16 @@
     {
       "id": "kfe",
       "title": "G-BA · Krebsfrüherkennungs-Richtlinie",
-      "url": "https://www.g-ba.de/richtlinien/17/"
+      "url": "https://www.g-ba.de/richtlinien/17/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 12.03.2026"
     },
     {
       "id": "maternity",
       "title": "G-BA · Mutterschafts-Richtlinie 2026",
-      "url": "https://www.g-ba.de/downloads/62-492-4201/Mu-RL_2026-07-16_iK-2026-08-25.pdf"
+      "url": "https://www.g-ba.de/downloads/62-492-4201/Mu-RL_2026-07-16_iK-2026-08-25.pdf",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 25.08.2026"
     },
     {
       "id": "pregnancy",
@@ -245,7 +291,9 @@
     {
       "id": "nipt",
       "title": "G-BA · NIPT ist keine Routine",
-      "url": "https://www.g-ba.de/themen/methodenbewertung/schwangerschaft-mutterschaft/faqs-nipt/"
+      "url": "https://www.g-ba.de/themen/methodenbewertung/schwangerschaft-mutterschaft/faqs-nipt/",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "pregvax",
@@ -260,22 +308,135 @@
     {
       "id": "pregtk",
       "title": "TK · Zusätzliche Schwangerschaftstests",
-      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-erwachsene/zusaetzliche-untersuchungen-schwangerschaft-2007986"
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-erwachsene/zusaetzliche-untersuchungen-schwangerschaft-2007986",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 29.04.2026"
     },
     {
       "id": "pregbarmer",
       "title": "BARMER · Familie Plus und Vorsorge",
-      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/familie/schwangerschaftsvorsorge-1003036"
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/familie/schwangerschaftsvorsorge-1003036",
+      "checked": "2026-11-13",
+      "edition": ""
     },
     {
       "id": "pregdaktoxo",
       "title": "DAK · Toxoplasmose-Test",
-      "url": "https://www.dak.de/dak/leistungen/schwangerschaft-und-geburt/schwangerschaftsuntersuchungen/toxoplasmose-test_11424"
+      "url": "https://www.dak.de/dak/leistungen/schwangerschaft-und-geburt/schwangerschaftsuntersuchungen/toxoplasmose-test_11424",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 01.10.2026"
     },
     {
       "id": "pregdakgbs",
       "title": "DAK · B-Streptokokken-Test",
-      "url": "https://www.dak.de/dak/leistungen/schwangerschaft-und-geburt/schwangerschaftsuntersuchungen/b-streptokokken-test-so-schuetzen-sie-ihr-ungeborenes-kind_11414"
+      "url": "https://www.dak.de/dak/leistungen/schwangerschaft-und-geburt/schwangerschaftsuntersuchungen/b-streptokokken-test-so-schuetzen-sie-ihr-ungeborenes-kind_11414",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 01.10.2026"
+    },
+    {
+      "id": "gurl",
+      "title": "G-BA · Gesundheitsuntersuchungs-Richtlinie",
+      "url": "https://www.g-ba.de/richtlinien/10/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 12.02.2021"
+    },
+    {
+      "id": "okferl",
+      "title": "G-BA · Organisierte Krebsfrüherkennung: Richtlinie",
+      "url": "https://www.g-ba.de/richtlinien/104/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 02.10.2026"
+    },
+    {
+      "id": "sir",
+      "title": "G-BA · Schutzimpfungs-Richtlinie, Anlage 1",
+      "url": "https://www.g-ba.de/richtlinien/60/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 29.10.2026"
+    },
+    {
+      "id": "maternityrl",
+      "title": "G-BA · Mutterschafts-Richtlinie",
+      "url": "https://www.g-ba.de/richtlinien/19/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 25.08.2026"
+    },
+    {
+      "id": "childrl",
+      "title": "G-BA · Kinder-Richtlinie (U1–U9)",
+      "url": "https://www.g-ba.de/richtlinien/15/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 20.08.2026"
+    },
+    {
+      "id": "youthrl",
+      "title": "G-BA · Jugendgesundheitsuntersuchungs-Richtlinie",
+      "url": "https://www.g-ba.de/richtlinien/14/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 01.01.2017"
+    },
+    {
+      "id": "childdentalrl",
+      "title": "G-BA · Zahnärztliche Früherkennungs-Richtlinie",
+      "url": "https://www.g-ba.de/richtlinien/29/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 01.01.2026"
+    },
+    {
+      "id": "chlamydiarl",
+      "title": "G-BA · Chlamydien-Screening: Richtlinie, Abschnitt B",
+      "url": "https://www.g-ba.de/richtlinien/9/",
+      "checked": "2026-11-13",
+      "edition": "In Kraft seit 24.09.2025"
+    },
+    {
+      "id": "dentalgba",
+      "title": "G-BA · Zahnvorsorge: Leistungen und Richtlinien",
+      "url": "https://www.g-ba.de/themen/zahnaerztliche-versorgung/prophylaxe-frueherkennung/",
+      "checked": "2026-11-13",
+      "edition": ""
+    },
+    {
+      "id": "bstatute",
+      "title": "BARMER · Satzung: §§ 28d, 28f, 37 und Bonus-Anlage",
+      "url": "https://www.barmer.de/resource/blob/1022552/90bdcd25998b6738d7ea10183a0a00cf/barmer-satzung-der-barmer-barrierefrei-19-data.pdf",
+      "checked": "2026-11-13",
+      "edition": "39./40. Nachtrag · Stand 15.10.2026"
+    },
+    {
+      "id": "dstatute",
+      "title": "DAK · Satzung: §§ 19 und 19a",
+      "url": "https://caas.content.dak.de/caas/v1/media/227064/data/a7fdcf5826965a284c8e25e049c6dfbf/satzung-der-dak-gesundheit-vom-01-07-2016-in-der-fassung-67-nachtrag-stand-01-09-2026.pdf",
+      "checked": "2026-11-13",
+      "edition": "67. Nachtrag · Stand 01.09.2026"
+    },
+    {
+      "id": "dpzr",
+      "title": "DAK · PZR: Höhe des Zuschusses",
+      "url": "https://www.dak.de/dak/ihr-anliegen/zaehne/professionelle-zahnreinigung/hoehe-zuschuss-pzr-dak_15030",
+      "checked": "2026-11-13",
+      "edition": "Seitenstand 01.10.2026"
+    },
+    {
+      "id": "pzrprofession",
+      "title": "Bundeszahnärztekammer · Empfehlung zur PZR",
+      "url": "https://www.bzaek.de/service/positionen-statements/einzelansicht/die-professionelle-zahnreinigung-zur-prophylaxe-von-zahnkaries-und-parodontalerkrankungen.html",
+      "checked": "2026-11-13",
+      "edition": ""
+    },
+    {
+      "id": "pzrreview",
+      "title": "Cochrane Oral Health · Studien zu Scaling und Polishing",
+      "url": "https://www.cochrane.org/evidence/CD004625_routine-scale-and-polish-periodontal-health-adults",
+      "checked": "2026-11-13",
+      "edition": "Review 2018 · Recherche bis 10.01.2018"
+    },
+    {
+      "id": "covidstiko",
+      "title": "BIÖG · STIKO-Empfehlung zur COVID-19-Impfung",
+      "url": "https://www.infektionsschutz.de/impfen/fuer-erwachsene/corona-impfung-bei-erwachsenen",
+      "checked": "2026-11-13",
+      "edition": "STIKO-Änderung Juli 2026"
     }
   ],
   "rules": [
@@ -296,7 +457,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Ein normaler Check-up schließt Erkrankungen nicht aus; zusätzliche Tests ohne Anlass können unnötige Abklärungen auslösen."
+      "harm": "Ein normaler Check-up schließt Erkrankungen nicht aus; zusätzliche Tests ohne Anlass können unnötige Abklärungen auslösen.",
+      "coverageSources": [
+        "gurl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "gurl"
+      ]
     },
     {
       "id": "check35",
@@ -315,7 +484,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "gurl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "gurl"
+      ]
     },
     {
       "id": "hep",
@@ -334,7 +511,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "gurl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "gurl"
+      ]
     },
     {
       "id": "skin",
@@ -356,7 +541,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "kfe"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "kfe"
+      ]
     },
     {
       "id": "gyn",
@@ -376,7 +569,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "cervix",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "kfe"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "kfe"
+      ]
     },
     {
       "id": "pap",
@@ -395,7 +596,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "cervix",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "okferl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "okferl"
+      ]
     },
     {
       "id": "cotest",
@@ -414,7 +623,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "cervix",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "okferl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "okferl"
+      ]
     },
     {
       "id": "breast",
@@ -434,7 +651,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "breast",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "kfe"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "kfe"
+      ]
     },
     {
       "id": "mammo",
@@ -453,7 +678,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "breast",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "kfe"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "kfe"
+      ]
     },
     {
       "id": "mammo45",
@@ -472,7 +705,15 @@
       "coverage": "PLANNED",
       "risk": "",
       "organ": "breast",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "mammo45"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA hat die Erweiterung beschlossen, aber am Prüfdatum gilt für 45–49-Jährige noch kein regulärer Anspruch. Die Ankündigung ist keine Aufforderung, das Screening bereits privat durchführen zu lassen.",
+      "recommendationSources": [
+        "mammo45"
+      ]
     },
     {
       "id": "prostate",
@@ -493,7 +734,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "prostate",
-      "harm": "PSA kann relevante Tumoren entdecken, aber auch unnötige Biopsien und Behandlungen auslösen. Gesundheitszustand und erwartete Lebenszeit sind für die Entscheidung relevant."
+      "harm": "PSA kann relevante Tumoren entdecken, aber auch unnötige Biopsien und Behandlungen auslösen. Gesundheitszustand und erwartete Lebenszeit sind für die Entscheidung relevant.",
+      "coverageSources": [
+        "kfe"
+      ],
+      "recommendationBy": "Leitlinienprogramm Onkologie · S3-Leitlinie Prostatakarzinom",
+      "recommendation": "Version 8.0, Empfehlungen 4.1–4.4: keine rektale Tastuntersuchung zur Früherkennung; PSA nach ergebnisoffener Beratung auf Wunsch ab 45 bei mindestens zehn Jahren erwarteter Lebenszeit. Die Leitlinienempfehlung ist nicht mit dem GKV-Leistungskatalog identisch.",
+      "recommendationSources": [
+        "prostate"
+      ]
     },
     {
       "id": "fit",
@@ -513,7 +762,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "okferl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "okferl"
+      ]
     },
     {
       "id": "colo",
@@ -533,7 +790,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Kann Vorstufen entfernen; selten Blutungen oder Verletzungen, außerdem Belastung durch Vorbereitung und Sedierung."
+      "harm": "Kann Vorstufen entfernen; selten Blutungen oder Verletzungen, außerdem Belastung durch Vorbereitung und Sedierung.",
+      "coverageSources": [
+        "okferl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "okferl"
+      ]
     },
     {
       "id": "lung",
@@ -553,7 +818,15 @@
       "coverage": "STANDARD",
       "risk": "lung",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "kfe"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "kfe"
+      ]
     },
     {
       "id": "aaa",
@@ -572,7 +845,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "gurl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "gurl"
+      ]
     },
     {
       "id": "dental",
@@ -591,7 +872,17 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Die zahnärztliche Praxis legt bei Erkrankungen einen eigenen Kontrollabstand fest."
+      "harm": "Die zahnärztliche Praxis legt bei Erkrankungen einen eigenen Kontrollabstand fest.",
+      "coverageSources": [
+        "dental",
+        "dentalgba"
+      ],
+      "recommendationBy": "Kassenzahnärztliche Bundesvereinigung (KZBV)",
+      "recommendation": "Die KZBV beschreibt regelmäßige Kontrollen, Zahnsteinentfernung bei Bedarf und den PSI zur Früherkennung von Zahnfleischerkrankungen. Der konkrete Bedarf kann vom regelmäßigen Kassenintervall abweichen; eine PZR ist eine andere Leistung.",
+      "recommendationSources": [
+        "dental",
+        "psi"
+      ]
     },
     {
       "id": "psi",
@@ -610,7 +901,18 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Ein auffälliger Screeningbefund erfordert weitere zahnärztliche Untersuchung."
+      "harm": "Ein auffälliger Screeningbefund erfordert weitere zahnärztliche Untersuchung.",
+      "coverageSources": [
+        "psi",
+        "dental",
+        "dentalgba"
+      ],
+      "recommendationBy": "Kassenzahnärztliche Bundesvereinigung (KZBV)",
+      "recommendation": "Die KZBV beschreibt regelmäßige Kontrollen, Zahnsteinentfernung bei Bedarf und den PSI zur Früherkennung von Zahnfleischerkrankungen. Der konkrete Bedarf kann vom regelmäßigen Kassenintervall abweichen; eine PZR ist eine andere Leistung.",
+      "recommendationSources": [
+        "dental",
+        "psi"
+      ]
     },
     {
       "id": "tartar",
@@ -629,7 +931,17 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Den Bedarf prüft die Zahnarztpraxis."
+      "harm": "Den Bedarf prüft die Zahnarztpraxis.",
+      "coverageSources": [
+        "dental",
+        "dentalgba"
+      ],
+      "recommendationBy": "Kassenzahnärztliche Bundesvereinigung (KZBV)",
+      "recommendation": "Die KZBV beschreibt regelmäßige Kontrollen, Zahnsteinentfernung bei Bedarf und den PSI zur Früherkennung von Zahnfleischerkrankungen. Der konkrete Bedarf kann vom regelmäßigen Kassenintervall abweichen; eine PZR ist eine andere Leistung.",
+      "recommendationSources": [
+        "dental",
+        "psi"
+      ]
     },
     {
       "id": "vaccinereview",
@@ -648,7 +960,16 @@
       "coverage": "CONDITIONAL",
       "risk": "",
       "organ": "",
-      "harm": "Die jeweils aktuelle STIKO-Empfehlung und Schutzimpfungs-Richtlinie bestimmen den individuellen Plan."
+      "harm": "Die jeweils aktuelle STIKO-Empfehlung und Schutzimpfungs-Richtlinie bestimmen den individuellen Plan.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "td",
@@ -667,7 +988,16 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "hpv",
@@ -686,7 +1016,16 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "flu",
@@ -706,27 +1045,45 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "covid",
       "title": "COVID-19: Auffrischung prüfen",
-      "minAge": 60,
+      "minAge": 75,
       "maxAge": 120,
       "interval": "Y1",
       "category": "Impfen",
-      "summary": "Jährlich bei Standardindikation ab 60",
-      "detail": "Vorzugsweise im Herbst. Letzte Impfung, Infektion, Basisimmunität und individuelle Risiken beeinflussen den Zeitpunkt; bei Immungesunden kann eine Infektion eine saisonale Auffrischung entbehrlich machen.",
+      "summary": "Jährlich bei Standardindikation ab 75",
+      "detail": "STIKO-Änderung Juli 2026, GKV-Regelung seit 29.10.2026: jährliche Standardimpfung ab 75, bevorzugt im Spätsommer/Frühherbst. Unter 75 nur bei entsprechender Indikation, z. B. bestimmten Grunderkrankungen, Pflegeeinrichtung oder beruflichem Risiko. Möglichst mindestens sechs Monate seit letzter Impfung oder nachgewiesener Infektion; den Termin legt die Praxis fest.",
       "sources": [
-        "vaccine60",
-        "vaccines"
+        "covidstiko",
+        "sir"
       ],
       "sex": "ALL",
       "kind": "STANDARD",
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "covidstiko",
+        "sir"
+      ]
     },
     {
       "id": "pneumo",
@@ -746,7 +1103,16 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "zoster",
@@ -766,7 +1132,16 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "rsv",
@@ -785,7 +1160,16 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "rsvrisk",
@@ -804,7 +1188,16 @@
       "coverage": "CONDITIONAL",
       "risk": "chronic",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "skinextra",
@@ -814,7 +1207,7 @@
       "interval": "M24",
       "category": "Kassen-Extras",
       "summary": "Zusatzleistung abhängig von Kasse und Region",
-      "detail": "TK meist ab 15 (Bayern, Hessen, Schleswig-Holstein auch früher), bei Vertragspraxen. BARMER unter 35 im Vertrag, regionale Altersgrenzen vorher prüfen. DAK 17–34 bis 60 € je zwei Jahre. Kostenübernahme bedeutet nicht, dass ein früheres Screening für jede Person nötig ist.",
+      "detail": "TK meist ab 15 (Bayern, Hessen, Schleswig-Holstein auch früher), bei Vertragspraxen. BARMER unter 35 im Vertrag, regionale Altersgrenzen vorher prüfen. DAK 17–34 nur bei Risikofaktoren bis 60 € je zwei Kalenderjahre in qualifizierter Praxis. Kostenübernahme bedeutet nicht, dass ein früheres Screening für jede Person nötig ist.",
       "sources": [
         "tkskin",
         "bskin",
@@ -825,7 +1218,19 @@
       "coverage": "SKIN",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "tkskin",
+        "bskin",
+        "dskin"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "tkskin",
+        "bskin",
+        "dskin"
+      ]
     },
     {
       "id": "checkextra",
@@ -846,7 +1251,19 @@
       "coverage": "CHECK",
       "risk": "chronic",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "tkstatute",
+        "bcheck",
+        "dcheck"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "tkstatute",
+        "bcheck",
+        "dcheck"
+      ]
     },
     {
       "id": "fitextra",
@@ -865,7 +1282,17 @@
       "coverage": "FIT",
       "risk": "family",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "dcolon",
+        "dstatute"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "dcolon",
+        "dstatute"
+      ]
     },
     {
       "id": "pzr",
@@ -874,8 +1301,8 @@
       "maxAge": 120,
       "interval": "NONE",
       "category": "Kassen-Extras",
-      "summary": "Bedarf individuell festlegen",
-      "detail": "Zusatzleistung, keine allgemeine jährliche medizinische Pflicht. TK ab 18 bis 40 € einmal je Kalenderjahr; DAK bis 60 € pro Jahr; BARMER über Bonusbedingungen. Regelmäßige häusliche Zahnpflege und Kontrollen bleiben wesentlich.",
+      "summary": "Privatleistung mit möglichem Zuschuss",
+      "detail": "Keine allgemeine GKV-Regelleistung und keine volle Kostenzusage: TK ab 18 bis 40 € einmal je Kalenderjahr; DAK bis 60 € je Kalenderjahr; BARMER über erworbene Bonuspunkte. Beträge oberhalb des verfügbaren Zuschusses bleiben selbst zu zahlen. Besondere Leistungen während einer Schwangerschaft separat anhand der Satzung prüfen. Nicht mit bezahlter Zahnkontrolle oder Zahnsteinentfernung verwechseln.",
       "sources": [
         "tkpzr",
         "bpzr",
@@ -887,7 +1314,20 @@
       "coverage": "PZR",
       "risk": "",
       "organ": "",
-      "harm": "Die sinnvolle Häufigkeit hängt vom Gebiss und Erkrankungsrisiko ab, nicht allein vom Erstattungsbudget."
+      "harm": "Die sinnvolle Häufigkeit hängt vom Gebiss und Erkrankungsrisiko ab, nicht allein vom Erstattungsbudget.",
+      "coverageSources": [
+        "dental",
+        "tkpzr",
+        "dpzr",
+        "bbonus"
+      ],
+      "recommendationBy": "Bundeszahnärztekammer (BZÄK); ergänzend KZBV",
+      "recommendation": "Die BZÄK empfiehlt bei gesunden Zähnen und gesundem Zahnfleisch eine PZR ein- bis zweimal jährlich, mit individuell angepasstem Abstand. Auch die KZBV nennt ein bis zwei Termine nach Bedarf. Einordnung: Cochrane fand 2018 bei regelmäßig zahnärztlich betreuten Erwachsenen ohne schwere Parodontitis für routinemäßiges Scaling und Polishing kaum oder keinen Unterschied bei Zahnfleischentzündung und Taschentiefen über zwei bis drei Jahre. Das untersuchte Verfahren bildet nicht jedes deutsche PZR-Paket ab und die Ergebnisse gelten nicht pauschal für Parodontitis-Nachsorge. Bedarf und Häufigkeit persönlich besprechen.",
+      "recommendationSources": [
+        "pzrprofession",
+        "dental",
+        "pzrreview"
+      ]
     },
     {
       "id": "sport",
@@ -908,7 +1348,19 @@
       "coverage": "SPORT",
       "risk": "",
       "organ": "",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "tkstatute",
+        "dsport",
+        "bbonus"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "tkstatute",
+        "dsport",
+        "bbonus"
+      ]
     },
     {
       "id": "psaextra",
@@ -929,7 +1381,16 @@
       "coverage": "PRIVATE",
       "risk": "",
       "organ": "prostate",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "psa",
+        "kfe"
+      ],
+      "recommendationBy": "Leitlinienprogramm Onkologie · S3-Leitlinie Prostatakarzinom",
+      "recommendation": "Version 8.0, Empfehlungen 4.1–4.4: keine rektale Tastuntersuchung zur Früherkennung; PSA nach ergebnisoffener Beratung auf Wunsch ab 45 bei mindestens zehn Jahren erwarteter Lebenszeit. Die Leitlinienempfehlung ist nicht mit dem GKV-Leistungskatalog identisch.",
+      "recommendationSources": [
+        "prostate"
+      ]
     },
     {
       "id": "chlamydia",
@@ -948,7 +1409,15 @@
       "coverage": "STANDARD",
       "risk": "sexual",
       "organ": "cervix",
-      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden.",
+      "coverageSources": [
+        "chlamydiarl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "chlamydiarl"
+      ]
     },
     {
       "id": "u1",
@@ -971,7 +1440,15 @@
       "startMonths": 0,
       "endMonths": 0,
       "startDays": 0,
-      "endDays": 1
+      "endDays": 1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u2",
@@ -994,7 +1471,15 @@
       "startMonths": 0,
       "endMonths": 0,
       "startDays": 2,
-      "endDays": 10
+      "endDays": 10,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u3",
@@ -1017,7 +1502,15 @@
       "startMonths": 0,
       "endMonths": 0,
       "startDays": 21,
-      "endDays": 35
+      "endDays": 35,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u4",
@@ -1040,7 +1533,15 @@
       "startMonths": 2,
       "endMonths": 4,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u5",
@@ -1063,7 +1564,15 @@
       "startMonths": 5,
       "endMonths": 7,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u6",
@@ -1086,7 +1595,15 @@
       "startMonths": 9,
       "endMonths": 12,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u7",
@@ -1109,7 +1626,15 @@
       "startMonths": 20,
       "endMonths": 24,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u7a",
@@ -1132,7 +1657,15 @@
       "startMonths": 33,
       "endMonths": 36,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u8",
@@ -1155,7 +1688,15 @@
       "startMonths": 45,
       "endMonths": 48,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "u9",
@@ -1178,7 +1719,15 @@
       "startMonths": 59,
       "endMonths": 64,
       "startDays": -1,
-      "endDays": -1
+      "endDays": -1,
+      "coverageSources": [
+        "childrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childrl"
+      ]
     },
     {
       "id": "childteeth",
@@ -1197,7 +1746,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Bei Schmerzen oder Zahnproblemen unabhängig vom Vorsorgefenster zum Zahnarzt."
+      "harm": "Bei Schmerzen oder Zahnproblemen unabhängig vom Vorsorgefenster zum Zahnarzt.",
+      "coverageSources": [
+        "childdentalrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "childdentalrl"
+      ]
     },
     {
       "id": "j1",
@@ -1216,7 +1773,15 @@
       "coverage": "STANDARD",
       "risk": "",
       "organ": "",
-      "harm": "Vertrauliches Gespräch mit der ärztlichen Praxis ermöglichen."
+      "harm": "Vertrauliches Gespräch mit der ärztlichen Praxis ermöglichen.",
+      "coverageSources": [
+        "youthrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "youthrl"
+      ]
     },
     {
       "id": "u10",
@@ -1237,7 +1802,19 @@
       "coverage": "CHILD",
       "risk": "",
       "organ": "",
-      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme.",
+      "coverageSources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ]
     },
     {
       "id": "u11",
@@ -1258,7 +1835,19 @@
       "coverage": "CHILD",
       "risk": "",
       "organ": "",
-      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme.",
+      "coverageSources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ]
     },
     {
       "id": "j2",
@@ -1279,7 +1868,19 @@
       "coverage": "CHILD",
       "risk": "",
       "organ": "",
-      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme.",
+      "coverageSources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ]
     },
     {
       "id": "pregvisit",
@@ -1302,7 +1903,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 0,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "preginitial",
@@ -1325,7 +1934,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 0,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregus1",
@@ -1348,7 +1965,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 56,
-      "pregEndDay": 83
+      "pregEndDay": 83,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregus2",
@@ -1371,7 +1996,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 126,
-      "pregEndDay": 153
+      "pregEndDay": 153,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregus3",
@@ -1394,7 +2027,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 196,
-      "pregEndDay": 223
+      "pregEndDay": 223,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregglucose",
@@ -1417,7 +2058,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 168,
-      "pregEndDay": 195
+      "pregEndDay": 195,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregantibody",
@@ -1439,7 +2088,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 161,
-      "pregEndDay": 188
+      "pregEndDay": 188,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregrh",
@@ -1462,7 +2119,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 77,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregantid",
@@ -1484,7 +2149,15 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 189,
-      "pregEndDay": 209
+      "pregEndDay": 209,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA legt dieses Untersuchungsangebot und seine Voraussetzungen in der verlinkten Grundlage fest. Das ist eine Regelung des Versorgungsprogramms, keine persönliche Empfehlung zur Teilnahme. Nutzen und mögliche Nachteile gemeinsam mit der Praxis abwägen.",
+      "recommendationSources": [
+        "maternityrl"
+      ]
     },
     {
       "id": "pregpertussis",
@@ -1506,7 +2179,16 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 189,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "pregflu",
@@ -1528,7 +2210,16 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 0,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "sir"
+      ],
+      "recommendationBy": "STIKO am Robert Koch-Institut",
+      "recommendation": "Die STIKO empfiehlt Impfungen nach Alter, Vorimpfungen und konkreten Risiken. Der hier beschriebene Anlass muss zu dir passen; die Praxis prüft Impfstoff und Zeitpunkt. Den GKV-Anspruch regelt gesondert die Schutzimpfungs-Richtlinie.",
+      "recommendationSources": [
+        "vaccines",
+        "sir"
+      ]
     },
     {
       "id": "pregnipt",
@@ -1550,7 +2241,16 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 0,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "maternityrl"
+      ],
+      "recommendationBy": "Gemeinsamer Bundesausschuss (G-BA) · Vorsorgeprogramm",
+      "recommendation": "Der G-BA beschreibt den NIPT ausdrücklich als Einzelfallleistung, nicht als Routineempfehlung nach Alter. Qualifizierte Beratung und eine informierte persönliche Entscheidung sind erforderlich.",
+      "recommendationSources": [
+        "nipt",
+        "maternityrl"
+      ]
     },
     {
       "id": "pregtoxo",
@@ -1560,7 +2260,7 @@
       "interval": "NONE",
       "category": "Schwangerschaft",
       "summary": "Ohne Verdacht keine allgemeine Regelleistung",
-      "detail": "Nutzen und Folgen eines zusätzlichen Tests besprechen. Bei Infektionsverdacht andere Abrechnung. TK: ohne Verdacht selbst bezahlen; BARMER Familie Plus gemeinsames Budget; DAK MamaPLUS übernimmt den Test laut Leistungsseite.",
+      "detail": "Kein allgemeines Routinetest-Angebot der Mutterschafts-Richtlinie ohne Infektionsverdacht. TK: ohne Verdacht privat. BARMER und DAK: Satzungsleistungen bei besonderer Infektionsgefahr und individuellem Untersuchungsanlass. Die Erstattung allein belegt keinen Nutzen für jede Schwangere.",
       "sources": [
         "pregtk",
         "pregbarmer",
@@ -1574,7 +2274,21 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 0,
-      "pregEndDay": 294
+      "pregEndDay": 294,
+      "coverageSources": [
+        "maternityrl",
+        "pregtk",
+        "bstatute",
+        "dstatute"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "maternityrl",
+        "pregtk",
+        "bstatute",
+        "dstatute"
+      ]
     },
     {
       "id": "preggbs",
@@ -1584,7 +2298,7 @@
       "interval": "NONE",
       "category": "Schwangerschaft",
       "summary": "Etwa 35.–37. Schwangerschaftswoche",
-      "detail": "Abstrich vor der Geburt kann das Vorgehen bei der Entbindung beeinflussen. Keine pauschale Regelleistung; Kosten und Indikation vorher prüfen. Nicht mit einer akuten Infektionsdiagnostik verwechseln.",
+      "detail": "Ein Abstrich kann die Betreuung bei der Geburt beeinflussen. Ohne konkrete Indikation keine allgemeine GKV-Regelleistung. BARMER und DAK nennen Satzungsleistungen in der 35.–37. Schwangerschaftswoche bei individuellem Untersuchungsanlass. Ärztliche Beratung und Kostenbedingungen vorab klären.",
       "sources": [
         "pregdakgbs",
         "pregbarmer"
@@ -1597,7 +2311,19 @@
       "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
       "pregnancy": true,
       "pregStartDay": 238,
-      "pregEndDay": 258
+      "pregEndDay": 258,
+      "coverageSources": [
+        "maternityrl",
+        "bstatute",
+        "dstatute"
+      ],
+      "recommendationBy": "Informationen der genannten Krankenkassen · Zusatzangebot",
+      "recommendation": "Dieses Angebot wird hier aufgrund der verlinkten Kassenbedingungen gezeigt. Eine eigenständige fachliche Empfehlung für eine routinemäßige Untersuchung aller Personen dieses Alters wird damit nicht behauptet. Den individuellen Bedarf mit der Praxis besprechen.",
+      "recommendationSources": [
+        "maternityrl",
+        "bstatute",
+        "dstatute"
+      ]
     }
   ],
   "knowledge": [

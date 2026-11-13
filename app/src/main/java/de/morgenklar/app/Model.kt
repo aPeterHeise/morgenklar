@@ -9,12 +9,13 @@ import java.util.UUID
 fun today(): LocalDate = LocalDate.now()
 fun JSONArray.objects() = (0 until length()).map { getJSONObject(it) }
 fun JSONArray.strings() = (0 until length()).map { getString(it) }
-data class Source(val id: String, val title: String, val url: String)
+data class Source(val id: String, val title: String, val url: String, val checked: LocalDate? = null, val edition: String = "")
 data class Article(val label: String, val title: String, val body: String, val sources: List<String>)
 data class Rule(val id: String, val title: String, val minAge: Int, val maxAge: Int, val interval: String,
     val category: String, val summary: String, val detail: String, val harm: String, val sources: List<String>,
     val sex: String, val organ: String, val risk: String, val kind: String, val coverage: String,
-    val pregnancy: Boolean = false, val pregStartDay: Int = 0, val pregEndDay: Int = 294, val startMonths: Int = -1, val endMonths: Int = -1, val startDays: Int = -1, val endDays: Int = -1)
+    val pregnancy: Boolean = false, val pregStartDay: Int = 0, val pregEndDay: Int = 294, val startMonths: Int = -1, val endMonths: Int = -1, val startDays: Int = -1, val endDays: Int = -1,
+    val coverageSources: List<String> = emptyList(), val recommendationBy: String = "", val recommendation: String = "", val recommendationSources: List<String> = emptyList())
 data class Catalog(val reviewed: LocalDate, val rules: List<Rule>, val sources: List<Source>, val articles: List<Article>) {
     companion object {
         fun parse(raw: String): Catalog {
@@ -23,8 +24,9 @@ data class Catalog(val reviewed: LocalDate, val rules: List<Rule>, val sources: 
                 Rule(it.getString("id"),it.getString("title"),it.getInt("minAge"),it.getInt("maxAge"),it.getString("interval"),
                     it.getString("category"),it.getString("summary"),it.getString("detail"),it.getString("harm"),it.getJSONArray("sources").strings(),
                     it.getString("sex"),it.getString("organ"),it.getString("risk"),it.getString("kind"),it.getString("coverage"),
-                    it.optBoolean("pregnancy",false),it.optInt("pregStartDay",0),it.optInt("pregEndDay",294),it.optInt("startMonths",-1),it.optInt("endMonths",-1),it.optInt("startDays",-1),it.optInt("endDays",-1))
-            }, j.getJSONArray("sources").objects().map { Source(it.getString("id"),it.getString("title"),it.getString("url")) },
+                    it.optBoolean("pregnancy",false),it.optInt("pregStartDay",0),it.optInt("pregEndDay",294),it.optInt("startMonths",-1),it.optInt("endMonths",-1),it.optInt("startDays",-1),it.optInt("endDays",-1),
+                    it.getJSONArray("coverageSources").strings(),it.getString("recommendationBy"),it.getString("recommendation"),it.getJSONArray("recommendationSources").strings())
+            }, j.getJSONArray("sources").objects().map { Source(it.getString("id"),it.getString("title"),it.getString("url"),it.optString("checked").takeIf(String::isNotBlank)?.let(LocalDate::parse),it.optString("edition")) },
                 j.getJSONArray("knowledge").objects().map { Article(it.getString("label"),it.getString("title"),it.getString("body"),it.getJSONArray("sources").strings()) })
         }
     }

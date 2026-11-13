@@ -166,22 +166,26 @@ val Warm=Color(0xFFF2E8D9)
         if(p.family || p.chronic || p.smoking in listOf("CURRENT","FORMER")) item { Panel(color=Warm) {
             Eyebrow("DEINE GESUNDHEITSANGABEN",Amber);Body("Risiken können frühere oder andere Untersuchungen begründen. Besprich die Angaben mit deiner Praxis; der Standardplan allein bildet das nicht vollständig ab.",Amber)
         } }
-        items(needs,key={it.rule.id}) { RuleCard(it,p,on,open) }
+        items(needs,key={it.rule.id}) { RuleCard(a.catalog,it,p,on,open) }
         if(needs.isEmpty()) item { Panel { Text("Keine offenen Standardtermine in dieser Ansicht",fontWeight=FontWeight.SemiBold);Body("Prüfe auch die weiteren Angebote und dokumentierte Untersuchungen unten.") } }
         item { TextButton(onClick={showAll=!showAll},Modifier.fillMaxWidth()) { Text(if(showAll) "Weitere Angebote einklappen" else "Weitere Angebote & Erledigtes (${others.size})");Icon(if(showAll) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,null) } }
-        if(showAll) items(others,key={it.rule.id}) { RuleCard(it,p,on,open) }
+        if(showAll) items(others,key={it.rule.id}) { RuleCard(a.catalog,it,p,on,open) }
         item { Panel(color=Lime.copy(alpha=.35f)) { Eyebrow("DER NÄCHSTE KLEINE SCHRITT");Text("Historie ergänzen. Klarer planen.",fontSize=18.sp,fontWeight=FontWeight.Medium);Body("Öffne eine Untersuchung und trage das tatsächliche Datum ein. Bei Impfserien erst die abgeschlossene Serie speichern.") } }
         item { Footer(a.catalog) }
     }
 }
-@Composable fun RuleCard(item:PlanItem,p:Person,on:LocalDate,open:(Rule)->Unit) {
+@Composable fun RuleCard(c:Catalog,item:PlanItem,p:Person,on:LocalDate,open:(Rule)->Unit) {
     val b=Coverage.forRule(item.rule,p,on)
     Panel(Modifier.clickable { open(item.rule) }) {
         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) { Eyebrow(item.rule.category);Spacer(Modifier.weight(1f));Icon(Icons.Outlined.NorthEast,null,Modifier.size(17.dp),tint=Muted) }
         Text(item.rule.title,fontSize=20.sp,fontWeight=FontWeight.SemiBold,lineHeight=25.sp)
         Body(item.rule.summary)
-        Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(7.dp)) { Tag(item.status.label,if(item.status in listOf(Status.CHECK,Status.CONDITION,Status.CHOICE)) "UNKNOWN" else "FULL");Tag(b.label,b.type) }
+        Tag(item.status.label,if(item.status in listOf(Status.CHECK,Status.CONDITION,Status.CHOICE)) "UNKNOWN" else "FULL")
+        Tag(b.label,b.type)
+        if(b.type in listOf("PARTIAL","BONUS")) Body("Zuschuss / Budget – Kosten können bei dir verbleiben.",Amber)
         Text(item.note,fontSize=12.sp,lineHeight=18.sp,color=Muted)
+        CoverageEvidence(c,b)
+        Text("Empfehlung & Grundlage: ${item.rule.recommendationBy} · Details öffnen",fontSize=12.sp,lineHeight=18.sp,color=Muted)
     }
 }
 @Composable fun Atlas(c:Catalog,base:Person,now:LocalDate,open:(Rule,Person)->Unit) {
@@ -202,7 +206,12 @@ val Warm=Color(0xFFF2E8D9)
             Body("Geschlechtsbezogene Standardangebote. Im persönlichen Profil lässt sich die relevante Anatomie anpassen.")
         } }
         if(age!=null) item { Eyebrow("${rs.size} ANGEBOTE MIT $age") }
-        items(rs,key={it.id}) { r -> Panel(Modifier.clickable { open(r,p) }) { Text(r.title,fontSize=18.sp,fontWeight=FontWeight.SemiBold);Body(r.summary);Tag(if(r.kind=="STANDARD") "GKV-Angebot" else if(r.kind=="PLANNED") "Angekündigt" else "Bedingungen beachten",if(r.kind=="STANDARD") "FULL" else "UNKNOWN") } }
+        items(rs,key={it.id}) { r -> Panel(Modifier.clickable { open(r,p) }) {
+            val b=Coverage.forRule(r,p,now)
+            Text(r.title,fontSize=18.sp,fontWeight=FontWeight.SemiBold);Body(r.summary);Tag(b.label,b.type)
+            CoverageEvidence(c,b)
+            Text("Empfehlung & Grundlage: ${r.recommendationBy} · Details öffnen",fontSize=12.sp,lineHeight=18.sp,color=Muted)
+        } }
         item { Panel { Text("Und wann noch nicht?",fontWeight=FontWeight.SemiBold);Body("Außerhalb der genannten Altersfenster besteht kein pauschaler Screeninganspruch. Neue Beschwerden, familiäre Risiken oder Vorbefunde können trotzdem eine Untersuchung begründen.") } }
         item { Footer(c) }
     }
@@ -211,27 +220,28 @@ val Warm=Color(0xFFF2E8D9)
     var selected by rememberSaveable { mutableStateOf(if(p.insurer=="NONE") "TK" else p.insurer) }
     var invoice by rememberSaveable { mutableStateOf("100") }
     val extra=c.rules.filter { it.id in listOf("skinextra","checkextra","fitextra","pzr","sport","psaextra","u10") }
-    LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(22.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
+    LazyColumn(Modifier.fillMaxSize().testTag("insurersList"),contentPadding=PaddingValues(22.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
         item { Eyebrow("WAS WIRD ÜBERNOMMEN?");Spacer(Modifier.height(9.dp));Heading("Deine Kasse.\nDeine Möglichkeiten.");Spacer(Modifier.height(12.dp));Body("Die drei größten einzelnen GKV-Kassen nach Versicherten. Die AOK-Gemeinschaft besteht aus eigenständigen Kassen.") }
         item { Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)) { listOf("TK","BARMER","DAK").forEach { FilterChip(selected==it,{selected=it},label={Text(it)}) } } }
         item { Panel(color=Forest) {
             Eyebrow(insurers[selected]!!,Lime)
             Text(when(selected){"TK"->"12,45 Mio.";"BARMER"->"8,18 Mio.";else->"5,39 Mio."},fontSize=35.sp,color=Color.White,fontFamily=FontFamily.Serif)
             Text("Versicherte · Stand 01.07.2026",color=Color.White.copy(alpha=.7f),fontSize=12.sp)
-            Text("Reguläre GKV-Vorsorge: 100 % ohne Zuzahlung, wenn Alter, Intervall und Voraussetzungen passen.",color=Color.White,fontSize=14.sp,lineHeight=21.sp)
+            Text("Regelleistung, begrenzter Zuschuss oder Bonus: Die Bedingungen stehen bei jedem Angebot.",color=Color.White,fontSize=14.sp,lineHeight=21.sp)
         } }
         item { Body("Zusatzleistungen unten zeigen Bedingungen auch außerhalb deines Alters. Eine Erstattung ist keine medizinische Empfehlung. „Nicht belegt“ bedeutet nicht automatisch „wird abgelehnt“.") }
         items(extra,key={it.id}) { r ->
             val demoAge=when(r.id){"skinextra","checkextra"->30;"fitextra"->40;"u10"->7;"psaextra"->50;else->maxOf(18,p.age(now))}
             val b=Coverage.forRule(r,p.copy(insurer=selected,birth=now.minusYears(demoAge.toLong())),now)
-            Panel(Modifier.clickable { open(r) }) { Text(r.title,fontSize=18.sp,fontWeight=FontWeight.SemiBold);Tag(b.label,b.type);Body(b.detail);Sources(c,b.sources) }
+            Panel(Modifier.clickable { open(r) }) { Text(r.title,fontSize=18.sp,fontWeight=FontWeight.SemiBold);Tag(b.label,b.type);Body(b.detail);CoverageEvidence(c,b);Text("Empfehlung & Grundlage ansehen",fontSize=12.sp,color=Forest) }
         }
         item { Panel { Eyebrow("BEISPIEL · ZAHNREINIGUNG");OutlinedTextField(invoice,{invoice=it.filter { ch->ch.isDigit() || ch=='.' || ch==',' }.take(8)},label={Text("Rechnungsbetrag in €")},singleLine=true,keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Decimal),modifier=Modifier.fillMaxWidth())
             val amount=invoice.replace(',','.').toDoubleOrNull()
             if(amount!=null && amount>=0) {
                 if(selected=="BARMER") Body("Eigenanteil hängt von verfügbaren Bonuspunkten und dem bereits genutzten gemeinsamen Jahresbudget ab. Ohne diese Angaben nicht berechenbar.")
-                else { val paid=minOf(amount,if(selected=="TK")40.0 else 60.0);Text("Kasse bis ${money(paid)} € · Du ab ${money(amount-paid)} €",fontWeight=FontWeight.SemiBold);Body("Wenn der Jahreszuschuss noch ungenutzt ist und alle Voraussetzungen erfüllt sind.") }
+                else { val paid=minOf(amount,if(selected=="TK")40.0 else 60.0);Text("Zuschuss bis ${money(paid)} € · Eigenanteil ab ${money(amount-paid)} €",fontWeight=FontWeight.SemiBold);Body("Wenn der Jahreszuschuss noch ungenutzt ist und alle Voraussetzungen erfüllt sind. Ohne verfügbaren Zuschuss zahlst du die Rechnung selbst.") }
             }
+            Sources(c,when(selected){"TK"->listOf("tkpzr","tkstatute");"DAK"->listOf("dpzr","dstatute");else->listOf("bbonus","bstatute")})
         } }
         item { Sources(c,listOf("ranking"));Footer(c) }
     }
@@ -260,7 +270,20 @@ fun money(v:Double)=String.format(java.util.Locale.GERMANY,"%.2f",v)
 @Composable fun Footer(c:Catalog) { Column(verticalArrangement=Arrangement.spacedBy(6.dp)) { HorizontalDivider(color=Line);Text("RECHERCHESTAND ${fmt(c.reviewed)}  ·  DEUTSCHLAND",fontSize=10.sp,letterSpacing=1.sp,color=Muted);Body("Beschwerden nicht bis zum nächsten Vorsorgetermin abwarten. Persönliche Empfehlungen und Kostenübernahme mit Praxis und Kasse klären.") } }
 @Composable fun Sources(c:Catalog,ids:List<String>) {
     val context=LocalContext.current
-    ids.distinct().mapNotNull { id->c.sources.find { it.id==id } }.forEach { s -> TextButton(onClick={runCatching { context.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(s.url))) }},contentPadding=PaddingValues(0.dp)) { Text(s.title,fontSize=12.sp,modifier=Modifier.weight(1f));Icon(Icons.Outlined.OpenInNew,null,Modifier.size(14.dp)) } }
+    ids.distinct().mapNotNull { id->c.sources.find { it.id==id } }.forEach { s ->
+        Column {
+            TextButton(onClick={runCatching { context.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(s.url))) }},modifier=Modifier.testTag("source-${s.id}"),contentPadding=PaddingValues(0.dp)) {
+                Text(s.title,fontSize=12.sp,modifier=Modifier.weight(1f));Icon(Icons.Outlined.OpenInNew,"Quelle im Browser öffnen",Modifier.size(14.dp))
+            }
+            Text("${Uri.parse(s.url).host} · ${s.checked?.let { "Zuletzt geprüft: ${fmt(it)}" } ?: "Bisheriger Katalogstand: ${fmt(c.reviewed)}; nicht erneut geprüft"}",fontSize=11.sp,lineHeight=16.sp,color=Muted)
+            if(s.edition.isNotBlank()) Text(s.edition,fontSize=11.sp,lineHeight=16.sp,color=Muted)
+        }
+    }
+}
+@Composable fun CoverageEvidence(c:Catalog,b:Benefit) {
+    Eyebrow("LEISTUNGSBEDINGUNGEN & PRÜFDATUM")
+    if(b.sources.isEmpty()) Body("Keine belegte Kostenzusage. Vorab mit der Kasse klären.",Amber)
+    else Sources(c,b.sources)
 }
 
 fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT)) }.getOrNull()
@@ -369,9 +392,16 @@ fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),Date
             Heading(r.title);Body(r.summary)
             if(editable) { val item=Engine.evaluate(r,actual,a.currentDay);Tag(item.status.label,"UNKNOWN");Body(item.note) }
             Panel { Text("Worum geht es?",fontWeight=FontWeight.SemiBold);Body(r.detail);Text("Nutzen & Grenzen",fontWeight=FontWeight.SemiBold);Body(r.harm) }
+            Panel {
+                Eyebrow("WER EMPFIEHLT DAS?")
+                Text(r.recommendationBy,fontWeight=FontWeight.SemiBold)
+                Body(r.recommendation)
+                Sources(a.catalog,r.recommendationSources)
+            }
             if(r.id in listOf("colo","fit")) Panel(color=Warm) { Body("Stuhltest und Darmspiegelung sind Alternativen. Vorbefunde oder eine diagnostische Spiegelung können den Plan verändern. Diese Historie ist für reguläre Vorsorge bei unauffälligem Befund gedacht.",Amber) }
             Eyebrow("KOSTEN IM VERGLEICH")
-            listOf("TK","BARMER","DAK").forEach { k -> val b=Coverage.forRule(r,actual.copy(insurer=k),a.currentDay);Panel { Row(verticalAlignment=Alignment.CenterVertically) { Text(k,fontWeight=FontWeight.SemiBold);Spacer(Modifier.weight(1f));Tag(b.label,b.type) };Body(b.detail);Sources(a.catalog,b.sources) } }
+            Body("Für gesetzliche Leistungen gilt die G-BA-Richtlinie; für Extras die Satzung, der Vertrag oder die Bonusbedingungen der Kasse. Ein Zuschuss kann einen Eigenanteil lassen.")
+            listOf("TK","BARMER","DAK").forEach { k -> val b=Coverage.forRule(r,actual.copy(insurer=k),a.currentDay);Panel(Modifier.testTag("coverage-$k")) { Text(k,fontWeight=FontWeight.SemiBold);Tag(b.label,b.type);Body(b.detail);CoverageEvidence(a.catalog,b) } }
             if(editable && r.kind!="PLANNED") {
                 Eyebrow("DEINE HISTORIE")
                 val history=actual.entries.filter { it.rule==r.id && (!r.pregnancy || it.episode==actual.pregnancyId) }.sortedByDescending { it.date }

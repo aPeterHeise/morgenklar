@@ -23,7 +23,7 @@ object Engine {
     }
     fun next(r: Rule, last: LocalDate): LocalDate? = when {
         r.id=="flu" -> LocalDate.of(last.year+1,9,1)
-        r.id=="covid" -> maxOf(LocalDate.of(last.year+1,9,1),last.plusYears(1))
+        r.id=="covid" -> maxOf(LocalDate.of(last.year+1,9,1),last.plusMonths(6))
         else -> when(r.interval) {
         "Y1" -> LocalDate.of(last.year+1,1,1)
         "Y2" -> LocalDate.of(last.year+2,1,1)
@@ -93,42 +93,42 @@ object Coverage {
     fun forRule(r: Rule,p: Person,on: LocalDate): Benefit {
         val age=p.age(on); val k=p.insurer
         if(r.pregnancy) return Pregnancy.coverage(r,p)
-        if(r.kind=="PLANNED") return Benefit("UNKNOWN","Noch kein Regelanspruch","Erweiterung angekündigt; endgültigen Startstatus prüfen.",r.sources)
-        if(age<r.minAge || age>r.maxAge) return Benefit("UNKNOWN","Außerhalb Altersfenster","Dieser Regelanspruch gilt von ${r.minAge} bis ${r.maxAge} Jahren. Bei Symptomen oder medizinischer Indikation andere Abrechnung prüfen.",r.sources)
-        if(r.coverage=="STANDARD" && (r.risk.isNotEmpty() || (r.organ in listOf("cervix","breast") && p.sex!="FEMALE") || (r.organ=="prostate" && p.sex!="MALE"))) return Benefit("CONDITIONAL","Bei Voraussetzungen: 100 %","Persönliche Eignung, relevante Anatomie und konkreten Anspruch mit der Praxis klären; keine automatische Zusage allein aufgrund der Profilangabe.",r.sources)
-        if(r.coverage=="STANDARD") return Benefit("FULL","Kasse zahlt","100 % der vorgesehenen GKV-Leistung ohne Zuzahlung bei erfülltem Alter, Intervall und Indikation. Privat vereinbarte Extras sind nicht eingeschlossen.")
-        if(r.coverage=="CONDITIONAL") return Benefit("CONDITIONAL","Bei Indikation bezahlt","Nach aktueller Schutzimpfungs-Richtlinie und ärztlich bestätigten Voraussetzungen. Keine Zusage für beliebige Impfungen oder Tests.",r.sources)
-        if(k=="NONE") return Benefit("UNKNOWN","Kasse ergänzen","Kein allgemeiner GKV-Regelanspruch für diese Zusatzleistung. Mit der Kasse lassen sich Extras genauer zuordnen.",r.sources)
+        if(r.kind=="PLANNED") return Benefit("UNKNOWN","Noch kein Regelanspruch","Erweiterung angekündigt; endgültigen Startstatus prüfen.",r.coverageSources)
+        if(age<r.minAge || age>r.maxAge) return Benefit("UNKNOWN","Außerhalb Angebotsfenster","Dieses App-Angebot ist für ${r.minAge} bis ${r.maxAge} Jahre erfasst. Weitere Ansprüche, Kassenextras oder medizinisch begründete Diagnostik sind dadurch nicht ausgeschlossen; Bedingungen mit der Kasse prüfen.",r.coverageSources)
+        if(r.coverage=="STANDARD" && (r.risk.isNotEmpty() || (r.organ in listOf("cervix","breast") && p.sex!="FEMALE") || (r.organ=="prostate" && p.sex!="MALE"))) return Benefit("CONDITIONAL","GKV: Voraussetzungen prüfen","Persönliche Eignung, relevante Anatomie und konkreten Anspruch mit der Praxis klären; keine automatische Zusage allein aufgrund der Profilangabe.",r.coverageSources)
+        if(r.coverage=="STANDARD") return Benefit("FULL","GKV-Regelleistung","Die in der verlinkten Richtlinie vorgesehene Leistung wird bei erfülltem Alter, Intervall und weiteren Voraussetzungen über die Gesundheitskarte abgerechnet. Privat vereinbarte Extras sind nicht eingeschlossen.",r.coverageSources)
+        if(r.coverage=="CONDITIONAL") return Benefit("CONDITIONAL","GKV: bei Indikation","Nach aktueller Schutzimpfungs-Richtlinie und ärztlich bestätigten Voraussetzungen. Keine Zusage für beliebige Impfungen oder Tests.",r.coverageSources)
+        if(k=="NONE") return Benefit("UNKNOWN","Kasse ergänzen","Kein allgemeiner GKV-Regelanspruch für diese Zusatzleistung. Mit der Kasse lassen sich Extras genauer zuordnen.",r.coverageSources)
         return when(r.coverage) {
             "SKIN" -> when(k) {
                 "TK" -> if(age>=15 || p.region in listOf("Bayern","Hessen","Schleswig-Holstein")) Benefit("FULL","Vertrag: 100 %","Alle 24 Monate in teilnehmender Hautarztpraxis. Regionale Vertragsbedingungen prüfen.",listOf("tkskin")) else Benefit("UNKNOWN","Region prüfen","Unter 15 nur in bestimmten Ländern; Bundesland und Praxis klären.",listOf("tkskin"))
-                "BARMER" -> Benefit("CONDITIONAL","Vertrag: 100 %","Unter 35 alle zwei Jahre bei erfüllten regionalen Alters- und Vertragsbedingungen. Teilnahme der Praxis vorab klären.",listOf("bskin"))
-                else -> if(age>=17) Benefit("PARTIAL","Bis 60 € / 2 Jahre","17–34 Jahre, Rechnung einreichen. Eigenanteil = Rechnung minus Erstattung, mindestens 0 €.",listOf("dskin")) else Benefit("UNKNOWN","Kein bestätigtes Extra","DAK-Zuschuss in dieser Recherche erst ab 17 belegt. Bei auffälligen Hautstellen handelt es sich um Abklärung.",listOf("dskin"))
+                "BARMER" -> Benefit("CONDITIONAL","Vertrag: 100 %","Unter 35 alle zwei Jahre bei erfüllten regionalen Alters- und Vertragsbedingungen. Teilnahme der Praxis vorab klären.",listOf("bskin","bstatute"))
+                else -> if(age>=17) Benefit("PARTIAL","Bis 60 € / 2 Jahre","17–34 Jahre, nur bei bestehenden Risikofaktoren und qualifizierter Praxis (§ 19 Abs. 3). Rechnung einreichen. Über 60 € bleibt ein Eigenanteil.",listOf("dskin","dstatute")) else Benefit("UNKNOWN","Kein bestätigtes Extra","DAK-Zuschuss in dieser Recherche erst ab 17 belegt. Bei auffälligen Hautstellen handelt es sich um Abklärung.",listOf("dskin","dstatute"))
             }
             "CHECK" -> when(k) {
                 "TK" -> if(age>=18) Benefit("PARTIAL","Bis 35 € / 3 Jahre","18–34 bei bestehenden Risiken, spezifizierte Rechnung mit Risikofaktoren; § 27n. Einmaligen GKV-Check vorher nutzen.",listOf("tkstatute")) else Benefit("UNKNOWN","Kein bestätigtes Extra","TK-Satzungsleistung hier erst ab 18 belegt.",listOf("tkstatute"))
-                "DAK" -> Benefit("PARTIAL","Bis 40 € / 2 Jahre","17–34, mindestens ein Risikofaktor. Je zwei Kalenderjahre, tatsächliche Rechnungskosten bis zum Höchstbetrag.",listOf("dcheck"))
+                "DAK" -> Benefit("PARTIAL","Bis 40 € / 2 Jahre","17–34, mindestens ein Risikofaktor. Je zwei Kalenderjahre, tatsächliche Rechnungskosten bis zum Höchstbetrag.",listOf("dcheck","dstatute"))
                 else -> Benefit("UNKNOWN","Kein pauschales Extra belegt","Einmaliger GKV-Check 18–34 ist bezahlt. Keine zusätzliche regelmäßige Erstattung aus der geprüften Leistungsseite ableitbar.",listOf("bcheck"))
             }
-            "FIT" -> if(k=="DAK") Benefit("PARTIAL","Bis 40 € / 2 Jahre","39–49 bei erhöhtem Risiko, ärztlicher Stuhltest, Rechnung einreichen. Individuelle Risikovorsorge separat planen.",listOf("dcolon")) else Benefit("UNKNOWN","Kein pauschales Extra belegt","Bei familiärem Risiko medizinisch begründete frühere Diagnostik mit der Praxis klären. Keine pauschale Ablehnung der Kostenübernahme.",r.sources)
+            "FIT" -> if(k=="DAK") Benefit("PARTIAL","Bis 40 € / 2 Jahre","39–49 bei erhöhtem Risiko, ärztlicher Stuhltest, Rechnung einreichen. Individuelle Risikovorsorge separat planen.",listOf("dcolon","dstatute")) else Benefit("UNKNOWN","Kein pauschales Extra belegt","Bei familiärem Risiko medizinisch begründete frühere Diagnostik mit der Praxis klären. Keine pauschale Ablehnung der Kostenübernahme.",r.coverageSources)
             "PZR" -> when(k) {
-                "TK" -> Benefit("PARTIAL","Bis 40 € / Jahr","Ab 18, einmal pro Kalenderjahr. Rechnung mit PZR/GOZ 1040 nach Bezahlung einreichen.",listOf("tkpzr"))
-                "DAK" -> Benefit("PARTIAL","Bis 60 € / Jahr","Bis zur Höhe der tatsächlichen Kosten. Rechnung einreichen; weitere Extras vorab prüfen.",listOf("dextras"))
+                "TK" -> Benefit("PARTIAL","Zuschuss: bis 40 € / Jahr","Keine GKV-Regelleistung. TK ab 18: einmal je Kalenderjahr bis 40 € (§ 27o), höchstens die tatsächlichen Kosten. Rechnung nach Bezahlung mit PZR/GOZ 1040 einreichen. Bei 100 € Rechnung bleiben mindestens 60 € Eigenanteil; ein bereits genutzter Zuschuss steht nicht erneut zur Verfügung.",listOf("tkpzr","tkstatute"))
+                "DAK" -> Benefit("PARTIAL","Zuschuss: bis 60 € / Jahr","Keine GKV-Regelleistung. DAK: bis 60 € je Kalenderjahr (§ 19 Abs. 6), höchstens die tatsächlichen Kosten bei zugelassenen Leistungserbringern. Antrag für Vorjahresrechnungen bis 31.03. des Folgejahres. Bei 100 € Rechnung bleiben mindestens 40 € Eigenanteil. Besondere Schwangerschaftsleistung separat prüfen.",listOf("dpzr","dstatute"))
                 else -> bonus()
             }
             "SPORT" -> when(k) {
-                "TK" -> Benefit("PARTIAL","80 %, bis 60 / 120 €","Alle zwei Jahre: Basis höchstens 60 €, erweitert insgesamt höchstens 120 €. Ärztlich bestätigte Notwendigkeit, bei Erweiterung Risiken; zugelassene Sportmedizinpraxis.",listOf("tksport","tkstatute"))
-                "DAK" -> Benefit("PARTIAL","Bis 60 / 120 €","Alle zwei Jahre bis 60 €, bei nachgewiesenen Risiken und erweiterter Untersuchung insgesamt bis 120 €. Bescheinigung und Rechnung einer qualifizierten Praxis.",listOf("dsport"))
+                "TK" -> Benefit("PARTIAL","80 %, bis 60 / 120 €","Alle zwei Jahre: Basis höchstens 60 €, erweitert insgesamt höchstens 120 €. Ärztlich bestätigte Notwendigkeit, bei Erweiterung Risiken; zugelassene Sportmedizinpraxis.",listOf("tkstatute"))
+                "DAK" -> Benefit("PARTIAL","Bis 60 / 120 €","Alle zwei Jahre bis 60 €, bei nachgewiesenen Risiken und erweiterter Untersuchung insgesamt bis 120 €. Bescheinigung und Rechnung einer qualifizierten Praxis.",listOf("dsport","dstatute"))
                 else -> bonus()
             }
             "CHILD" -> when(k) {
-                "TK" -> Benefit("FULL","Kasse zahlt","U10/U11/J2 im Altersfenster über Gesundheitskarte in Kinder- und Jugendarztpraxen.",listOf("tkchild"))
+                "TK" -> Benefit("FULL","Vertragsleistung","U10/U11/J2 im Altersfenster über Gesundheitskarte in Kinder- und Jugendarztpraxen.",listOf("tkchild"))
                 "BARMER" -> Benefit("CONDITIONAL","Programm: 100 %","Teilnahme am Kinder- und Jugend-Programm und Vertragspraxis erforderlich.",listOf("bchild"))
-                else -> Benefit("FULL","Kasse zahlt","U10/U11/J2 zusätzlich kostenfrei; Teilnahme und Praxis vorab klären.",listOf("dchild"))
+                else -> Benefit("CONDITIONAL","Vertragsleistung prüfen","U10/U11/J2 zusätzlich kostenfrei; Teilnahme und Praxis vorab klären.",listOf("dchild"))
             }
-            "PRIVATE" -> if(k=="BARMER") Benefit("BONUS","Privat / Bonus möglich","Kein regulärer Screeninganspruch. Bonusbudget kann für Krebsfrüherkennungsleistungen nutzbar sein, Bedingungen vorher bestätigen. Bei Verdacht andere Abrechnung.",listOf("psa","bbonus")) else Benefit("PRIVATE","Regulär selbst bezahlt","PSA ohne Verdacht ist keine reguläre GKV-Früherkennung. Sonderprogramme/Bonus vorher erfragen; medizinisch begründete Diagnostik ist getrennt zu beurteilen.",listOf("psa"))
+            "PRIVATE" -> if(k=="BARMER") Benefit("BONUS","Privat / Bonus möglich","Kein regulärer Screeninganspruch. Bonusbudget kann für Krebsfrüherkennungsleistungen nutzbar sein, Bedingungen vorher bestätigen. Bei Verdacht andere Abrechnung.",listOf("psa","bbonus","bstatute")) else Benefit("PRIVATE","Regulär selbst bezahlt","PSA ohne Verdacht ist keine reguläre GKV-Früherkennung. Sonderprogramme/Bonus vorher erfragen; medizinisch begründete Diagnostik ist getrennt zu beurteilen.",listOf("psa"))
             else -> Benefit("UNKNOWN","Vorab klären","Für dieses Extra liegt keine verlässliche pauschale Zusage vor.")
         }
     }
-    private fun bonus() = Benefit("BONUS","Bonus: bis 200 € gesamt","BARMER Top-Geldprämie: 50 Punkte = 10 €, max. 1.000 eingelöste Punkte/Jahr. Gemeinsam genutztes Budget für alle Bonusleistungen, kein eigener 200-€-Anspruch je Untersuchung. Teilnahme, Punkte und Rechnung erforderlich.",listOf("bbonus","bpzr"))
+    private fun bonus() = Benefit("BONUS","Bonusbudget: bis 200 €","BARMER Top-Geldprämie: 50 Punkte = 10 €, max. 1.000 eingelöste Punkte/Jahr. Gemeinsam genutztes Budget für alle Bonusleistungen, kein eigener 200-€-Anspruch je Untersuchung. Teilnahme, Punkte und Rechnung erforderlich. Ohne verfügbare Punkte selbst bezahlen; zusätzliche Schwangerschaftsleistungen nach § 28d separat prüfen.",listOf("bbonus","bstatute"))
 }

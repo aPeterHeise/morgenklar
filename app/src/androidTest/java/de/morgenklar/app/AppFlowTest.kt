@@ -88,6 +88,20 @@ class AppFlowTest {
         File(dir,"$name.png").outputStream().use{bitmap.compress(Bitmap.CompressFormat.PNG,100,it)}
         bitmap.recycle()
     }
+    @Test fun gPzrShowsSubsidyCheckedConditionsAndRecommendation() {
+        seed();ui.onNodeWithText("Kassen",useUnmergedTree=true).performClick()
+        ui.onNodeWithTag("insurersList").performScrollToNode(hasText("Professionelle Zahnreinigung"))
+        ui.onNodeWithText("Zuschuss: bis 40 € / Jahr").assertExists()
+        ui.onNodeWithText("Professionelle Zahnreinigung").performClick()
+        ui.onNodeWithText("WER EMPFIEHLT DAS?").performScrollTo().assertIsDisplayed()
+        ui.onNodeWithText("Bundeszahnärztekammer (BZÄK); ergänzend KZBV").assertExists()
+        ui.onNodeWithTag("source-pzrprofession").performScrollTo().assertIsDisplayed()
+        capture("08-pzr-empfehlung")
+        ui.onNode(hasTestTag("source-tkpzr") and hasAnyAncestor(hasTestTag("coverage-TK"))).performScrollTo().assertIsDisplayed()
+        ui.onAllNodesWithText("Zuletzt geprüft: 13.11.2026",substring=true).onFirst().assertExists()
+        ui.onNode(hasTestTag("source-tkstatute") and hasAnyAncestor(hasTestTag("coverage-TK"))).performScrollTo().assertIsDisplayed()
+        capture("09-pzr-kosten")
+    }
     @Test fun zCaptureDemoScreens() {
         capture("01-willkommen")
         seed();capture("02-plan")
