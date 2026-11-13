@@ -13,3 +13,16 @@ dist/SHA256.txt
 google-services.json
 gha-creds-*.json
 firebase-debug*.log
+.firebase/
+.env
+.env.*
+!.env.example
+*service-account*.json
+*service_account*.json
+*firebase-adminsdk*.json
+*credentials*.json
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx

@@ -3,9 +3,11 @@
 ## Firebase-Verteilung, 13.11.2026
 
 - Version 0.1.1 (Versionscode 2) erfolgreich zu Firebase App Distribution hochgeladen und an den vom Eigentümer ausgewählten Tester verteilt; Release-ID `34fe10uvi4erg` per API bestätigt.
-- Der vorbereitete GitHub-Workflow übernimmt die veröffentlichte APK unverändert. Download und SHA-256-Prüfung am echten GitHub-Release v0.1.1 erfolgreich.
-- 4 Python-Tests für ungültige Tags, Entwürfe, fehlende Assets, falsche Dateinamen und manipulierte APKs bestanden; `actionlint` und `git diff --check` ohne Befund.
-- Der automatische GitHub→Firebase-Lauf wurde noch nicht ausgeführt: Die einmalige IAM-Einrichtung benötigt noch Zustimmung. Der lokale Upload belegt daher nicht die Funktion der GitHub-OIDC-Anmeldung.
+- Das manuelle Release-Werkzeug übernimmt die veröffentlichte APK unverändert. Download und SHA-256-Prüfung am echten GitHub-Release v0.1.1 erfolgreich.
+- 4 Python-Tests für ungültige Tags, Entwürfe, fehlende Assets, falsche Dateinamen und manipulierte APKs bestanden; Shell-Syntax und `git diff --check` ohne Befund.
+- Manueller Release-Befehl im Trockenlauf gegen den echten GitHub-Release geprüft: korrekte App-/Empfängerargumente, geprüfte APK und anschließende Bereinigung der temporären Dateien. Dabei kein weiterer Firebase-Upload und keine erneute Einladung.
+- Arbeitsdateien und 72 vorhandene historische Git-Blobs auf private Schlüssel, typische GitHub-/Google-Zugangsdaten und die Werte aus der bereitgestellten Firebase-Konfiguration geprüft: keine Treffer. 15 relevante Ignore-Fälle geprüft; keine Zugangsdaten-Dateien getrackt.
+- Auf ausdrücklichen Wunsch bleiben Uploads manuell. Der zunächst vorbereitete GitHub-Workflow wurde entfernt. Es wurden weder Servicekonto noch Workload-Identity-Provider angelegt oder IAM-Berechtigungen vergeben.
 - Keine Änderung am Android-Code oder an der APK für diese Verteilungsintegration.
 
 Stand: 13. November 2026.
