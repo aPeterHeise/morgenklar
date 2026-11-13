@@ -6,20 +6,25 @@ import java.time.temporal.ChronoUnit
 enum class Status(val label: String) { CHECK("Termin prüfen"), DUE("Fällig laut Eintrag"), CURRENT("Noch nicht fällig"), COMPLETE("Dokumentiert"), FUTURE("Kommt hinzu"), CONDITION("Voraussetzung prüfen"), CHOICE("Alternative wählen"), ADVICE("Individuell besprechen"), PLANNED("Angekündigt") }
 data class PlanItem(val rule: Rule, val status: Status, val note: String, val date: LocalDate? = null)
 object Engine {
-    fun matches(r: Rule,p: Person): Boolean = (r.sex == "ALL" || r.sex == p.sex) && when(r.organ) {
+    fun matches(r: Rule,p: Person): Boolean = (!r.pregnancy || p.pregnant) && (r.sex == "ALL" || r.sex == p.sex) && when(r.organ) {
         "cervix" -> p.cervix; "breast" -> p.breast; "prostate" -> p.prostate; else -> true
     }
     fun start(r: Rule,p: Person): LocalDate = when {
+        r.pregnancy -> p.dueDate?.minusDays(280)?.plusDays(r.pregStartDay.toLong()) ?: p.birth
         r.startDays >= 0 -> p.birth.plusDays(r.startDays.toLong())
         r.startMonths >= 0 -> p.birth.plusMonths(r.startMonths.toLong())
         else -> p.birth.plusYears(r.minAge.toLong())
     }
     fun end(r: Rule,p: Person): LocalDate = when {
+        r.pregnancy -> p.dueDate?.minusDays(280)?.plusDays(r.pregEndDay.toLong()) ?: p.birth.plusYears(121)
         r.endDays >= 0 -> p.birth.plusDays(r.endDays.toLong()).minusDays(1)
         r.endMonths >= 0 -> p.birth.plusMonths(r.endMonths.toLong()).minusDays(1)
         else -> p.birth.plusYears(r.maxAge.toLong()+1).minusDays(1)
     }
-    fun next(r: Rule, last: LocalDate): LocalDate? = when(r.interval) {
+    fun next(r: Rule, last: LocalDate): LocalDate? = when {
+        r.id=="flu" -> LocalDate.of(last.year+1,9,1)
+        r.id=="covid" -> maxOf(LocalDate.of(last.year+1,9,1),last.plusYears(1))
+        else -> when(r.interval) {
         "Y1" -> LocalDate.of(last.year+1,1,1)
         "Y2" -> LocalDate.of(last.year+2,1,1)
         "Y3" -> LocalDate.of(last.year+3,1,1)
@@ -29,11 +34,13 @@ object Engine {
         "M120" -> last.plusYears(10)
         "HALF" -> maxOf(if(last.monthValue <= 6) LocalDate.of(last.year,7,1) else LocalDate.of(last.year+1,1,1),last.plusMonths(4))
         else -> null
+        }
     }
     fun evaluate(r: Rule,p: Person,on: LocalDate): PlanItem {
+        if(r.pregnancy) return Pregnancy.evaluate(r,p,on)
         val since=start(r,p)
         if(on.isBefore(since)) return PlanItem(r,Status.FUTURE,"Ab ${fmt(since)} · ${r.summary}",since)
-        val history=p.entries.filter { it.rule==r.id && !it.date.isAfter(on) }.sortedBy { it.date }
+        val history=p.entries.filter { it.rule==r.id && !it.date.isAfter(on) && it.date>=since }.sortedBy { it.date }
         val last=history.lastOrNull()?.date
         if(r.kind=="PLANNED") return PlanItem(r,Status.PLANNED,"Voraussichtlich 01.08.2027 · Startstatus vor Buchung prüfen")
         if(p.followup) return PlanItem(r,Status.ADVICE,"Individueller Nachsorgeplan hat Vorrang; keine automatische Fälligkeit.")
@@ -71,13 +78,13 @@ object Engine {
     }
     fun plan(c: Catalog,p: Person,on: LocalDate): List<PlanItem> {
         val yearEnd=LocalDate.of(on.year,12,31)
-        return c.rules.filter { matches(it,p) && end(it,p)>=on && start(it,p)<=yearEnd }.map { evaluate(it,p,on) }
+        return c.rules.filter { !it.pregnancy && matches(it,p) && end(it,p)>=on && start(it,p)<=yearEnd }.map { evaluate(it,p,on) }
     }
     fun atlas(c: Catalog,p: Person,age: Int): List<Rule> {
         val a=p.birth.plusYears(age.toLong()); val b=a.plusYears(1).minusDays(1)
-        return c.rules.filter { matches(it,p) && start(it,p)<=b && end(it,p)>=a }
+        return c.rules.filter { !it.pregnancy && matches(it,p) && start(it,p)<=b && end(it,p)>=a }
     }
-    fun validEntry(r: Rule,p: Person,date: LocalDate,now: LocalDate): Boolean = date>=p.birth && date<=now && date>=start(r,p) && date<=end(r,p) && p.entries.none { it.rule==r.id && it.date==date }
+    fun validEntry(r: Rule,p: Person,date: LocalDate,now: LocalDate): Boolean = date>=p.birth && date<=now && date>=start(r,p) && date<=end(r,p) && p.entries.none { it.rule==r.id && it.date==date && (!r.pregnancy || it.episode==p.pregnancyId) }
 }
 fun fmt(d: LocalDate): String = d.format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))
 val insurers = linkedMapOf("NONE" to "Ohne Angabe", "TK" to "Techniker", "BARMER" to "BARMER", "DAK" to "DAK-Gesundheit")
@@ -85,7 +92,10 @@ data class Benefit(val type: String,val label: String,val detail: String,val sou
 object Coverage {
     fun forRule(r: Rule,p: Person,on: LocalDate): Benefit {
         val age=p.age(on); val k=p.insurer
+        if(r.pregnancy) return Pregnancy.coverage(r,p)
         if(r.kind=="PLANNED") return Benefit("UNKNOWN","Noch kein Regelanspruch","Erweiterung angekündigt; endgültigen Startstatus prüfen.",r.sources)
+        if(age<r.minAge || age>r.maxAge) return Benefit("UNKNOWN","Außerhalb Altersfenster","Dieser Regelanspruch gilt von ${r.minAge} bis ${r.maxAge} Jahren. Bei Symptomen oder medizinischer Indikation andere Abrechnung prüfen.",r.sources)
+        if(r.coverage=="STANDARD" && (r.risk.isNotEmpty() || (r.organ in listOf("cervix","breast") && p.sex!="FEMALE") || (r.organ=="prostate" && p.sex!="MALE"))) return Benefit("CONDITIONAL","Bei Voraussetzungen: 100 %","Persönliche Eignung, relevante Anatomie und konkreten Anspruch mit der Praxis klären; keine automatische Zusage allein aufgrund der Profilangabe.",r.sources)
         if(r.coverage=="STANDARD") return Benefit("FULL","Kasse zahlt","100 % der vorgesehenen GKV-Leistung ohne Zuzahlung bei erfülltem Alter, Intervall und Indikation. Privat vereinbarte Extras sind nicht eingeschlossen.")
         if(r.coverage=="CONDITIONAL") return Benefit("CONDITIONAL","Bei Indikation bezahlt","Nach aktueller Schutzimpfungs-Richtlinie und ärztlich bestätigten Voraussetzungen. Keine Zusage für beliebige Impfungen oder Tests.",r.sources)
         if(k=="NONE") return Benefit("UNKNOWN","Kasse ergänzen","Kein allgemeiner GKV-Regelanspruch für diese Zusatzleistung. Mit der Kasse lassen sich Extras genauer zuordnen.",r.sources)

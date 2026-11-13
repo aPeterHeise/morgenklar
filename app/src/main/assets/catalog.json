@@ -221,6 +221,61 @@
       "id": "kfe",
       "title": "G-BA · Krebsfrüherkennungs-Richtlinie",
       "url": "https://www.g-ba.de/richtlinien/17/"
+    },
+    {
+      "id": "maternity",
+      "title": "G-BA · Mutterschafts-Richtlinie 2026",
+      "url": "https://www.g-ba.de/downloads/62-492-4201/Mu-RL_2026-07-16_iK-2026-08-25.pdf"
+    },
+    {
+      "id": "pregnancy",
+      "title": "Bund · Schwangerschaftsvorsorge",
+      "url": "https://gesund.bund.de/schwangerschaftsvorsorge"
+    },
+    {
+      "id": "pregschedule",
+      "title": "Bund · Vorsorgetermine in der Schwangerschaft",
+      "url": "https://gesund.bund.de/wege-im-gesundheitswesen/schwangerschaft-und-geburt/schwangerschaft/schwangerschaftsvorsorge"
+    },
+    {
+      "id": "pregscreen",
+      "title": "G-BA · Schwangerschaft und Mutterschaft",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/schwangerschaft-mutterschaft/"
+    },
+    {
+      "id": "nipt",
+      "title": "G-BA · NIPT ist keine Routine",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/schwangerschaft-mutterschaft/faqs-nipt/"
+    },
+    {
+      "id": "pregvax",
+      "title": "RKI · Impfungen in der Schwangerschaft",
+      "url": "https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Informationsmaterialien/Faktenblaetter-zum-Impfen/Schwangerschaft.pdf?__blob=publicationFile&v=9"
+    },
+    {
+      "id": "pregflu",
+      "title": "RKI · Influenza bei Schwangeren",
+      "url": "https://www.rki.de/SharedDocs/FAQs/DE/Impfen/Influenza/FAQ_Liste_Indikationsgruppen.html"
+    },
+    {
+      "id": "pregtk",
+      "title": "TK · Zusätzliche Schwangerschaftstests",
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-erwachsene/zusaetzliche-untersuchungen-schwangerschaft-2007986"
+    },
+    {
+      "id": "pregbarmer",
+      "title": "BARMER · Familie Plus und Vorsorge",
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/familie/schwangerschaftsvorsorge-1003036"
+    },
+    {
+      "id": "pregdaktoxo",
+      "title": "DAK · Toxoplasmose-Test",
+      "url": "https://www.dak.de/dak/leistungen/schwangerschaft-und-geburt/schwangerschaftsuntersuchungen/toxoplasmose-test_11424"
+    },
+    {
+      "id": "pregdakgbs",
+      "title": "DAK · B-Streptokokken-Test",
+      "url": "https://www.dak.de/dak/leistungen/schwangerschaft-und-geburt/schwangerschaftsuntersuchungen/b-streptokokken-test-so-schuetzen-sie-ihr-ungeborenes-kind_11414"
     }
   ],
   "rules": [
@@ -756,7 +811,7 @@
       "title": "Haut-Check vor 35",
       "minAge": 0,
       "maxAge": 34,
-      "interval": "Y2",
+      "interval": "M24",
       "category": "Kassen-Extras",
       "summary": "Zusatzleistung abhängig von Kasse und Region",
       "detail": "TK meist ab 15 (Bayern, Hessen, Schleswig-Holstein auch früher), bei Vertragspraxen. BARMER unter 35 im Vertrag, regionale Altersgrenzen vorher prüfen. DAK 17–34 bis 60 € je zwei Jahre. Kostenübernahme bedeutet nicht, dass ein früheres Screening für jede Person nötig ist.",
@@ -1225,6 +1280,324 @@
       "risk": "",
       "organ": "",
       "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+    },
+    {
+      "id": "pregvisit",
+      "title": "Regelmäßige Schwangerschaftsvorsorge",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Schwangerschaft",
+      "summary": "Zunächst etwa alle 4 Wochen, ab SSW 32 enger",
+      "detail": "Üblicherweise ab SSW 32 alle zwei Wochen; bei Risiken oder Terminüberschreitung individuell häufiger. Hebammen und ärztliche Praxis können die Betreuung abstimmen. Blutdruck, Gewicht, Urin, Entwicklung und Beschwerden gehören zur Betreuung.",
+      "sources": [
+        "pregschedule",
+        "pregnancy"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 0,
+      "pregEndDay": 294
+    },
+    {
+      "id": "preginitial",
+      "title": "Erstuntersuchung & Mutterpass",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "Möglichst früh nach Feststellung",
+      "detail": "Anamnese, Beratung und erste Laboruntersuchungen: unter anderem Blutgruppe/Rhesusfaktor, Antikörpersuchtest und Hämoglobin. Infektionsscreenings auf Syphilis, Chlamydien und Hepatitis B sowie Angebot eines HIV-Tests; Rötelnimmunität nach vorhandenen Nachweisen klären. Nicht bis zur späten Schwangerschaft warten.",
+      "sources": [
+        "pregnancy",
+        "maternity"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 0,
+      "pregEndDay": 294
+    },
+    {
+      "id": "pregus1",
+      "title": "1. Basis-Ultraschall",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "SSW 8+0 bis 11+6",
+      "detail": "Erstes reguläres Ultraschallfenster. Die Praxis prüft unter anderem Schwangerschaftssitz, Entwicklung und Schwangerschaftsalter.",
+      "sources": [
+        "maternity",
+        "pregscreen"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 56,
+      "pregEndDay": 83
+    },
+    {
+      "id": "pregus2",
+      "title": "2. Basis-Ultraschall",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "SSW 18+0 bis 21+6",
+      "detail": "Wahl zwischen Basis- und erweitertem Basis-Ultraschall als Kassenleistung. Für die erweiterte Untersuchung ist eine entsprechende ärztliche Qualifikation nötig.",
+      "sources": [
+        "maternity",
+        "pregscreen"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 126,
+      "pregEndDay": 153
+    },
+    {
+      "id": "pregus3",
+      "title": "3. Basis-Ultraschall",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "SSW 28+0 bis 31+6",
+      "detail": "Drittes reguläres Ultraschallfenster zur Beurteilung von Wachstum und Entwicklung. Zusätzliche medizinisch notwendige Kontrollen sind von diesem Screening getrennt.",
+      "sources": [
+        "maternity",
+        "pregscreen"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 196,
+      "pregEndDay": 223
+    },
+    {
+      "id": "pregglucose",
+      "title": "Test auf Schwangerschaftsdiabetes",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "SSW 24+0 bis 27+6",
+      "detail": "Vortest mit 50 g Glukose; bei entsprechend auffälligem Ergebnis folgt ein diagnostischer 75-g-Test. Die Praxis erklärt Vorbereitung und Ablauf. Bestehender Diabetes benötigt einen eigenen Betreuungsplan.",
+      "sources": [
+        "maternity",
+        "pregnancy"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 168,
+      "pregEndDay": 195
+    },
+    {
+      "id": "pregantibody",
+      "title": "Erneuter Antikörpersuchtest",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "SSW 23+0 bis 26+6",
+      "detail": "Erneute Suche nach Blutgruppen-Antikörpern bei allen Schwangeren, auch bei positivem Rhesusfaktor.",
+      "sources": [
+        "maternity"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 161,
+      "pregEndDay": 188
+    },
+    {
+      "id": "pregrh",
+      "title": "Fetalen Rhesusfaktor besprechen",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Schwangerschaft",
+      "summary": "Ab SSW 11+0 · bei RhD-negativer Mutter",
+      "detail": "Nichtinvasiver Test auf den kindlichen Rhesusfaktor kann eine unnötige Anti-D-Prophylaxe vermeiden. Keine Trisomie-Untersuchung. Eignung, Einwilligung und Beratung in der Praxis prüfen.",
+      "sources": [
+        "maternity",
+        "pregscreen"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "PREG_CONDITION",
+      "risk": "pregRh",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 77,
+      "pregEndDay": 294
+    },
+    {
+      "id": "pregantid",
+      "title": "Anti-D-Prophylaxe prüfen",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "SSW 27+0 bis 29+6 · nur bei Indikation",
+      "detail": "Bei RhD-negativer Mutter ohne Anti-D-Antikörper und RhD-positivem oder unbekanntem fetalem Status prüfen. Nicht nötig bei sicher RhD-negativem Fetus. Weitere Indikationen etwa nach Blutungen oder Geburt gehören in ärztliche Hände.",
+      "sources": [
+        "maternity"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "PREG_CONDITION",
+      "risk": "pregRh",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 189,
+      "pregEndDay": 209
+    },
+    {
+      "id": "pregpertussis",
+      "title": "Keuchhusten-Impfung besprechen",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Schwangerschaft",
+      "summary": "Ab der 28. SSW · in jeder Schwangerschaft",
+      "detail": "Im frühen dritten Trimenon empfohlen, unabhängig von früheren Pertussisimpfungen. Bei erhöhter Frühgeburtswahrscheinlichkeit schon im zweiten Trimenon. Das angezeigte Fenster dient der frühzeitigen Terminabsprache; die Praxis legt den geeigneten Impftermin fest.",
+      "sources": [
+        "pregvax"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "PREG_CONDITION",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 189,
+      "pregEndDay": 294
+    },
+    {
+      "id": "pregflu",
+      "title": "Grippeimpfung in der Schwangerschaft",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Schwangerschaft",
+      "summary": "Ab dem 2. Trimenon, bei Risiko schon früher",
+      "detail": "Saisonalen Impfschutz prüfen. Bei zusätzlichen Grunderkrankungen bereits im ersten Trimenon empfohlen. Keine zweite Impfung in derselben Saison allein wegen einer Schwangerschaft.",
+      "sources": [
+        "pregflu"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "PREG_CONDITION",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 0,
+      "pregEndDay": 294
+    },
+    {
+      "id": "pregnipt",
+      "title": "NIPT: Beratung nach persönlichem Bedarf",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Schwangerschaft",
+      "summary": "Keine Routine allein aufgrund des Alters",
+      "detail": "GKV-Leistung in begründeten persönlichen Situationen, wenn die Frage nach einer Trisomie entsteht und die Ungewissheit unzumutbar belastet. Qualifizierte Beratung und informierte Entscheidung notwendig. Ein auffälliges Ergebnis ist keine gesicherte Diagnose.",
+      "sources": [
+        "nipt"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "PREG_CONDITION",
+      "risk": "pregNipt",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 0,
+      "pregEndDay": 294
+    },
+    {
+      "id": "pregtoxo",
+      "title": "Toxoplasmose: Zusatztest einordnen",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Schwangerschaft",
+      "summary": "Ohne Verdacht keine allgemeine Regelleistung",
+      "detail": "Nutzen und Folgen eines zusätzlichen Tests besprechen. Bei Infektionsverdacht andere Abrechnung. TK: ohne Verdacht selbst bezahlen; BARMER Familie Plus gemeinsames Budget; DAK MamaPLUS übernimmt den Test laut Leistungsseite.",
+      "sources": [
+        "pregtk",
+        "pregbarmer",
+        "pregdaktoxo"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "PREG_EXTRA",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 0,
+      "pregEndDay": 294
+    },
+    {
+      "id": "preggbs",
+      "title": "B-Streptokokken: Test besprechen",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Schwangerschaft",
+      "summary": "Etwa 35.–37. Schwangerschaftswoche",
+      "detail": "Abstrich vor der Geburt kann das Vorgehen bei der Entbindung beeinflussen. Keine pauschale Regelleistung; Kosten und Indikation vorher prüfen. Nicht mit einer akuten Infektionsdiagnostik verwechseln.",
+      "sources": [
+        "pregdakgbs",
+        "pregbarmer"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "PREG_EXTRA",
+      "risk": "",
+      "organ": "",
+      "harm": "Untersuchungen sind freiwillig. Der persönliche Plan der betreuenden Praxis und der Mutterpass haben Vorrang. Bei Beschwerden nicht auf dieses Zeitfenster warten.",
+      "pregnancy": true,
+      "pregStartDay": 238,
+      "pregEndDay": 258
     }
   ],
   "knowledge": [

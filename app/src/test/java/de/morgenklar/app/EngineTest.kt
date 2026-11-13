@@ -10,7 +10,7 @@ class EngineTest {
     private fun person(age:Int=38, female:Boolean=false) = Person(name="Test",birth=now.minusYears(age.toLong()),sex=if(female)"FEMALE" else "MALE",prostate=!female,cervix=female,breast=female)
     private fun rule(id:String)=c.rules.single{it.id==id}
     private fun evaluate(id:String,p:Person,on:LocalDate=now)=Engine.evaluate(rule(id),p,on)
-    @Test fun sourceIntegrity() { assertEquals(49,c.rules.size);assertEquals(c.rules.size,c.rules.map{it.id}.toSet().size);c.rules.forEach { r -> assertTrue(r.sources.isNotEmpty());r.sources.forEach { s -> assertTrue(c.sources.any { it.id==s && it.url.startsWith("https://") }) } } }
+    @Test fun sourceIntegrity() { assertEquals(63,c.rules.size);assertEquals(c.rules.size,c.rules.map{it.id}.toSet().size);c.rules.forEach { r -> assertTrue(r.sources.isNotEmpty());r.sources.forEach { s -> assertTrue(c.sources.any { it.id==s && it.url.startsWith("https://") }) } } }
     @Test fun man38DoesNotGetProstateOrColonoscopy() { val ids=Engine.plan(c,person(),now).map{it.rule.id};assertTrue(ids.containsAll(listOf("check35","skin","hep","dental")));assertFalse(ids.contains("prostate"));assertFalse(ids.contains("colo"));assertFalse(ids.contains("cotest")) }
     @Test fun woman60GetsRelevantScreeningsAndVaccines() { val ids=Engine.plan(c,person(60,true),now).map{it.rule.id};assertTrue(ids.containsAll(listOf("mammo","cotest","flu","pneumo","zoster","fit")));assertFalse(ids.contains("aaa"));assertFalse(ids.contains("prostate")) }
     @Test fun allYearsHaveAnHonestOverview() { for(age in 0..110) for(female in listOf(false,true)) { val p=person(age,female);assertTrue(Engine.atlas(c,p,age).isNotEmpty());assertTrue(Engine.plan(c,p,now).isNotEmpty()) } }

@@ -3,3 +3,10 @@
 **/build/
 local.properties
 *.iml
+.DS_Store
+__pycache__/
+*.jks
+*.keystore
+dist/*.apk
+dist/*.zip
+dist/SHA256.txt

@@ -50,7 +50,7 @@ val Line=Color(0xFFE1E5DB)
 val Amber=Color(0xFF8A542D)
 val Warm=Color(0xFFF2E8D9)
 @Composable fun MorgenTheme(content:@Composable ()->Unit) {
-    MaterialTheme(colorScheme=lightColorScheme(primary=Forest,onPrimary=Color.White,secondary=Forest,background=Cream,surface=Cream,onSurface=Ink,surfaceVariant=Line),content=content)
+    MaterialTheme(colorScheme=lightColorScheme(primary=Forest,onPrimary=Color.White,secondary=Forest,secondaryContainer=Lime,onSecondaryContainer=Ink,primaryContainer=Lime,onPrimaryContainer=Forest,outline=Muted,background=Cream,surface=Cream,onSurface=Ink,surfaceVariant=Line),content=content)
 }
 @Composable fun Eyebrow(text:String,color:Color=Muted) { Text(text.uppercase(),color=color,fontSize=11.sp,fontWeight=FontWeight.SemiBold,letterSpacing=1.5.sp) }
 @Composable fun Heading(text:String) { Text(text,fontSize=30.sp,fontFamily=FontFamily.Serif,lineHeight=36.sp,color=Ink) }
@@ -128,8 +128,11 @@ val Warm=Color(0xFFF2E8D9)
 }
 @Composable fun Plan(a:MainActivity,p:Person,open:(Rule)->Unit,add:()->Unit) {
     var offset by rememberSaveable(p.id) { mutableIntStateOf(0) }
-    var showAll by rememberSaveable(p.id) { mutableStateOf(false) }
-    val on=a.currentDay.plusYears(offset.toLong());val items=Engine.plan(a.catalog,p,on)
+    var pregnancyView by rememberSaveable(p.id) { mutableStateOf(p.pregnant) }
+    var showAll by rememberSaveable(p.id) { mutableStateOf(true) }
+    val isPreg=p.pregnant && pregnancyView
+    val on=if(isPreg) a.currentDay else a.currentDay.plusYears(offset.toLong())
+    val items=if(isPreg) a.catalog.rules.filter { it.pregnancy }.map { Pregnancy.evaluate(it,p,on) }.sortedBy { when(it.status) { Status.CHECK -> 0;Status.ADVICE -> 1;Status.CONDITION -> 2;Status.FUTURE -> 3;else -> 4 } } else Engine.plan(a.catalog,p,on)
     val needs=items.filter { it.status in listOf(Status.CHECK,Status.DUE,Status.CHOICE) && it.rule.kind!="EXTRA" }
     val others=items.filterNot { it in needs }
     LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(start=22.dp,end=22.dp,bottom=24.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
@@ -137,22 +140,26 @@ val Warm=Color(0xFFF2E8D9)
             a.data.people.forEach { person -> FilterChip(selected=person.id==p.id,onClick={a.commit(a.data.copy(selected=person.id))},label={Text(person.name)},leadingIcon={Icon(Icons.Outlined.Person,null,Modifier.size(16.dp))}) }
             IconButton(onClick=add) { Icon(Icons.Outlined.Add,"Person hinzufügen") }
         } }
+        if(p.pregnant) item { Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            FilterChip(!pregnancyView,{pregnancyView=false},label={Text("Allgemeine Vorsorge")})
+            FilterChip(pregnancyView,{pregnancyView=true},label={Text("Schwangerschaft")},leadingIcon={Icon(Icons.Outlined.ChildCare,null,Modifier.size(18.dp))})
+        } }
         item { Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(26.dp)).background(Forest).padding(23.dp),verticalArrangement=Arrangement.spacedBy(13.dp)) {
             Row(verticalAlignment=Alignment.CenterVertically) { Column(Modifier.weight(1f)) {
                 Eyebrow("DEIN BLICK NACH VORN",Lime)
                 Text("Gut für dich,\n${p.name}.",fontSize=34.sp,lineHeight=39.sp,fontFamily=FontFamily.Serif,color=Color.White,modifier=Modifier.padding(top=10.dp))
             };Sun(Modifier.size(75.dp)) }
-            Text("${if(p.approximate) "ca. " else ""}${p.age(on)} Jahre  ·  ${insurers[p.insurer]}",color=Color.White.copy(alpha=.8f),fontSize=13.sp)
+            Text(if(isPreg) Pregnancy.stage(p,on) else "${if(p.approximate) "ca. " else ""}${p.age(on)} Jahre  ·  ${insurers[p.insurer]}",color=Color.White.copy(alpha=.8f),fontSize=13.sp)
             HorizontalDivider(color=Color.White.copy(alpha=.16f))
             Text(if(needs.isEmpty()) "Deine Übersicht ist bereit." else "${needs.size} Angebote: Termin oder Verfahren prüfen",color=Lime,fontSize=15.sp,fontWeight=FontWeight.SemiBold)
             Text("Ein Überblick über Ansprüche, keine Bewertung deiner Gesundheit.",color=Color.White.copy(alpha=.7f),fontSize=12.sp,lineHeight=17.sp)
         } }
-        item { Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        if(!isPreg) item { Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             (0..3).forEach { i -> FilterChip(selected=i==offset,onClick={offset=i},label={Text(if(i==0) "Dieses Jahr" else "+$i ${if(i==1) "Jahr" else "Jahre"}")}) }
         } }
         item { Column(verticalArrangement=Arrangement.spacedBy(7.dp)) {
-            Heading(if(offset==0) "Dein Plan für ${on.year}" else "Ausblick auf ${on.year}")
-            Body(if(offset==0) "Ohne Historie bedeutet „Termin prüfen“: erst den letzten Termin klären." else "Prognose nach heutigem Regelstand und bisherigen Einträgen. Künftige Untersuchungen sind noch nicht eingerechnet; Kassenleistungen können sich ändern.")
+            Heading(if(isPreg) "Dein Schwangerschaftsplan" else if(offset==0) "Dein Plan für ${on.year}" else "Ausblick auf ${on.year}")
+            Body(if(isPreg) "${p.dueDate?.let { "Errechneter Geburtstermin: ${fmt(it)}. " } ?: "Geburtstermin ergänzen für konkrete Wochenfenster. "}Alle Zeitfenster mit Mutterpass und Praxis abgleichen. Nach Ende der Schwangerschaft den Profilstatus aktualisieren." else if(offset==0) "Ohne Historie bedeutet „Termin prüfen“: erst den letzten Termin klären." else "Prognose nach heutigem Regelstand und bisherigen Einträgen. Künftige Untersuchungen sind noch nicht eingerechnet; Kassenleistungen können sich ändern.")
             if(p.approximate) Body("Alter nur näherungsweise: Bitte für genaue Altersgrenzen das Geburtsdatum im Profil ergänzen.",Amber)
             if(ChronoUnit.DAYS.between(a.catalog.reviewed,a.currentDay)>180) Tag("Datenstand älter als 6 Monate · Quellen prüfen","UNKNOWN")
         } }
@@ -183,7 +190,7 @@ val Warm=Color(0xFFF2E8D9)
     val age=value.toIntOrNull()?.takeIf { it in 0..110 }
     val p=base.copy(birth=now.minusYears((age?:38).toLong()),approximate=false,sex=sex,prostate=sex=="MALE",cervix=sex=="FEMALE",breast=sex=="FEMALE",entries=emptyList(),followup=false)
     val rs=if(age!=null) Engine.atlas(c,p,age) else emptyList()
-    LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(22.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
+    LazyColumn(Modifier.fillMaxSize().testTag("atlasList"),contentPadding=PaddingValues(22.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
         item { Eyebrow("JAHR FÜR JAHR");Spacer(Modifier.height(9.dp));Heading("Jedes Alter.\nEin klarer Überblick.");Spacer(Modifier.height(12.dp));Body("Alle Altersjahre von 0 bis 110. Diese Ansicht verändert kein Profil und zeigt Angebote ohne Untersuchungshistorie.") }
         item { Panel {
             Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -272,6 +279,8 @@ fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),Date
     var chronic by rememberSaveable { mutableStateOf(existing?.chronic ?: false) }
     var family by rememberSaveable { mutableStateOf(existing?.family ?: false) }
     var followup by rememberSaveable { mutableStateOf(existing?.followup ?: false) }
+    var pregnant by rememberSaveable { mutableStateOf(existing?.pregnant ?: false) }
+    var dueText by rememberSaveable { mutableStateOf(existing?.dueDate?.let(::fmt) ?: "") }
     var smoking by rememberSaveable { mutableStateOf(existing?.smoking ?: "UNKNOWN") }
     var years by rememberSaveable { mutableStateOf(existing?.smokeYears?.toString() ?: "") }
     var packs by rememberSaveable { mutableStateOf(existing?.packYears?.toString() ?: "") }
@@ -288,9 +297,19 @@ fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),Date
                     Row(verticalAlignment=Alignment.CenterVertically) { Text("Genaues Geburtsdatum",Modifier.weight(1f));Switch(exact,{exact=it}) }
                     if(exact) OutlinedTextField(dob,{dob=it.take(10)},label={Text("Geburtsdatum · TT.MM.JJJJ")},singleLine=true,modifier=Modifier.fillMaxWidth(),keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Ascii))
                     else { OutlinedTextField(age,{age=it.filter(Char::isDigit).take(3)},label={Text("Aktuelles Alter")},singleLine=true,modifier=Modifier.fillMaxWidth(),keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Number));Body("Ohne Geburtsdatum sind Alterswechsel und Vorschau ungefähr. Für Kinder und Jugendliche bitte das genaue Datum angeben.") }
-                    Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) { listOf("MALE" to "Männlich","FEMALE" to "Weiblich","OTHER" to "Individuell").forEach { (key,label) -> FilterChip(sex==key,{sex=key;prostate=key=="MALE";cervix=key=="FEMALE";breast=key=="FEMALE";if(key=="OTHER") advanced=true},label={Text(label,fontSize=12.sp)}) } }
+                    Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) { listOf("MALE" to "Männlich","FEMALE" to "Weiblich","OTHER" to "Individuell").forEach { (key,label) -> FilterChip(sex==key,{sex=key;if(key=="MALE") pregnant=false;prostate=key=="MALE";cervix=key=="FEMALE";breast=key=="FEMALE";if(key=="OTHER") advanced=true},label={Text(label,fontSize=12.sp)}) } }
                     TextButton(onClick={advanced=!advanced},contentPadding=PaddingValues(0.dp)) { Text("Relevante Anatomie anpassen");Icon(Icons.Outlined.ExpandMore,null) }
                     if(advanced) { Body("Nach Operationen oder bei abweichender Anatomie Angebote gezielt auswählen. Anspruch und persönlicher Plan können individuelle Prüfung erfordern.");Toggle("Gebärmutterhals vorhanden",cervix){cervix=it};Toggle("Prostata vorhanden",prostate){prostate=it};Toggle("Brustfrüherkennung berücksichtigen",breast){breast=it} }
+                    if(sex=="FEMALE" || sex=="OTHER") {
+                        Panel(color=Lime.copy(alpha=.4f)) {
+                            Toggle("Ich bin schwanger",pregnant){pregnant=it}
+                            if(pregnant) {
+                                OutlinedTextField(dueText,{dueText=it.take(10)},label={Text("Errechneter Geburtstermin · TT.MM.JJJJ")},singleLine=true,modifier=Modifier.fillMaxWidth())
+                                Body("Optional. Mit dem Termin zeigt die App Schwangerschaftswochen und passende Zeitfenster. Nutze den ärztlich bestätigten Termin aus dem Mutterpass.")
+                            }
+                            if(existing?.pregnant==true && !pregnant) Body("Der Schwangerschaftsplan wird ausgeblendet. Die bisherigen Einträge bleiben gespeichert; eine später neu aktivierte Schwangerschaft erhält eine eigene Historie.")
+                        }
+                    }
                     Eyebrow("02 · KRANKENKASSE, OPTIONAL")
                     Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(7.dp)) { insurers.forEach { (key,label) -> FilterChip(insurer==key,{insurer=key},label={Text(label)}) } }
                     Body("Ohne Angabe oder bei einer anderen Kasse wird der gesetzliche Standard angezeigt. Extras bleiben offen.")
@@ -321,14 +340,16 @@ fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),Date
                     val nAge=age.toIntOrNull()
                     val birthday=if(exact) parseDate(dob) else nAge?.takeIf { it in 18..110 }?.let { if(existing?.approximate==true && existing.age(now)==it) existing.birth else now.minusYears(it.toLong()) }
                     val sy=years.toIntOrNull();val py=packs.replace(',','.').toDoubleOrNull();val q=quit.toIntOrNull()
+                    val due=if(pregnant && dueText.isNotBlank()) parseDate(dueText) else null
                     val actualAge=birthday?.let { java.time.Period.between(it,now).years } ?: -1
                     error=when {
+                        pregnant && dueText.isNotBlank() && (due==null || due<now.minusDays(14) || due>now.plusDays(280)) -> "Bitte einen plausiblen Geburtstermin (TT.MM.JJJJ) eingeben oder das Feld leer lassen."
                         name.isBlank()->"Bitte einen Namen eingeben."
                         birthday==null || birthday>now || actualAge !in 0..110 -> "Bitte ein gültiges Geburtsdatum oder ein Alter von 18–110 eingeben."
                         smoking in listOf("CURRENT","FORMER") && ((years.isNotBlank() && (sy==null || sy !in 0..actualAge)) || (packs.isNotBlank() && (py==null || !py.isFinite() || py !in 0.0..500.0)) || (smoking=="FORMER" && quit.isNotBlank() && (q==null || q !in 0..actualAge))) -> "Bitte plausible Rauchangaben eingeben oder die Felder leer lassen."
                         else->""
                     }
-                    if(error.isEmpty() && birthday!=null) save((existing ?: Person(name=name.trim(),birth=birthday)).copy(name=name.trim(),birth=birthday,approximate=!exact,sex=sex,insurer=insurer,region=region.trim(),cervix=cervix,prostate=prostate,breast=breast,chronic=chronic,family=family,followup=followup,smoking=smoking,smokeYears=sy,packYears=py,quitYears=q,smokingAsOf=now,colonChoice=colon))
+                    if(error.isEmpty() && birthday!=null) save((existing ?: Person(name=name.trim(),birth=birthday)).copy(name=name.trim(),birth=birthday,approximate=!exact,sex=sex,insurer=insurer,region=region.trim(),cervix=cervix,prostate=prostate,breast=breast,chronic=chronic,family=family,followup=followup,smoking=smoking,smokeYears=sy,packYears=py,quitYears=q,smokingAsOf=now,colonChoice=colon,pregnant=pregnant,dueDate=if(pregnant)due else null,pregnancyId=if(pregnant && existing?.pregnant!=true)java.util.UUID.randomUUID().toString() else existing?.pregnancyId ?: ""))
                 },Modifier.fillMaxWidth().padding(20.dp).height(52.dp),shape=RoundedCornerShape(16.dp)) { Text("Profil speichern") }
             }
         }
@@ -353,7 +374,7 @@ fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),Date
             listOf("TK","BARMER","DAK").forEach { k -> val b=Coverage.forRule(r,actual.copy(insurer=k),a.currentDay);Panel { Row(verticalAlignment=Alignment.CenterVertically) { Text(k,fontWeight=FontWeight.SemiBold);Spacer(Modifier.weight(1f));Tag(b.label,b.type) };Body(b.detail);Sources(a.catalog,b.sources) } }
             if(editable && r.kind!="PLANNED") {
                 Eyebrow("DEINE HISTORIE")
-                val history=actual.entries.filter { it.rule==r.id }.sortedByDescending { it.date }
+                val history=actual.entries.filter { it.rule==r.id && (!r.pregnancy || it.episode==actual.pregnancyId) }.sortedByDescending { it.date }
                 if(history.isEmpty()) Body("Noch kein Termin eingetragen.")
                 history.forEach { e -> Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) { Icon(Icons.Outlined.CheckCircleOutline,null,tint=Forest);Spacer(Modifier.width(9.dp));Text(fmt(e.date),Modifier.weight(1f));IconButton(onClick={deleting=e}) { Icon(Icons.Outlined.DeleteOutline,"Eintrag ${fmt(e.date)} löschen") } } }
                 if(logging) Panel {

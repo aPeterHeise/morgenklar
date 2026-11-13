@@ -30,6 +30,6 @@ class MainActivity : ComponentActivity() {
     fun addEntry(personId: String,rule: Rule,date: LocalDate): Boolean {
         val p=data.people.find { it.id==personId } ?: return false
         if(!Engine.validEntry(rule,p,date,currentDay)) { notice="Datum passt nicht zum Altersfenster, liegt in der Zukunft oder ist bereits eingetragen.";return false }
-        return savePerson(p.copy(entries=p.entries+Entry(rule=rule.id,date=date)))
+        return savePerson(p.copy(entries=p.entries+Entry(rule=rule.id,date=date,episode=if(rule.pregnancy)p.pregnancyId else "")))
     }
 }
