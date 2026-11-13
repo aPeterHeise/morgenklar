@@ -16,6 +16,8 @@ Version 0.1.1 ist mit demselben Schlüssel wie 0.1.0 signiert und kann als Updat
 
 Die APK ist eine mit dem lokalen Android-Debugschlüssel signierte Vorschau, keine Play-Store-Veröffentlichung. Die erste Nutzung startet mit einem leeren Profilformular; Demo-Personen werden nicht mitgeliefert. Im Release liegt außerdem `SHA256-0.1.1.txt` zur Integritätsprüfung. Selbst gebaute APKs nutzen den jeweiligen lokalen Signierschlüssel und können deshalb möglicherweise nicht als Update über die veröffentlichte Vorschau installiert werden. Eine Deinstallation löscht die lokalen Profile.
 
+Für die Verteilung über Firebase App Distribution ist ein [GitHub-Release-Workflow](docs/RELEASING.md) vorbereitet. Die einmalige Cloud-Berechtigung muss vor dem automatischen Betrieb noch freigegeben und eingerichtet werden.
+
 ## Änderungen in 0.1.1
 
 - Leistungsbedingungen und ein explizites Prüfdatum je nachgeprüfter Quelle direkt in Plan, Altersübersicht und Kassenvergleich; Richtlinien, Satzungen und Bonusbedingungen sind getrennt von medizinischen Empfehlungen zugeordnet.

@@ -1,5 +1,13 @@
 # Validierung
 
+## Firebase-Verteilung, 13.11.2026
+
+- Version 0.1.1 (Versionscode 2) erfolgreich zu Firebase App Distribution hochgeladen und an den vom Eigentümer ausgewählten Tester verteilt; Release-ID `34fe10uvi4erg` per API bestätigt.
+- Der vorbereitete GitHub-Workflow übernimmt die veröffentlichte APK unverändert. Download und SHA-256-Prüfung am echten GitHub-Release v0.1.1 erfolgreich.
+- 4 Python-Tests für ungültige Tags, Entwürfe, fehlende Assets, falsche Dateinamen und manipulierte APKs bestanden; `actionlint` und `git diff --check` ohne Befund.
+- Der automatische GitHub→Firebase-Lauf wurde noch nicht ausgeführt: Die einmalige IAM-Einrichtung benötigt noch Zustimmung. Der lokale Upload belegt daher nicht die Funktion der GitHub-OIDC-Anmeldung.
+- Keine Änderung am Android-Code oder an der APK für diese Verteilungsintegration.
+
 Stand: 13. November 2026.
 
 ## Version 0.1.1: Leistungen und Empfehlungen

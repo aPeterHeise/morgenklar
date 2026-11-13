@@ -10,3 +10,6 @@ __pycache__/
 dist/*.apk
 dist/*.zip
 dist/SHA256.txt
+google-services.json
+gha-creds-*.json
+firebase-debug*.log
