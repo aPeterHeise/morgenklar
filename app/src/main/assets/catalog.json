@@ -1,0 +1,1301 @@
+{
+  "version": 1,
+  "reviewed": "2026-11-13",
+  "sources": [
+    {
+      "id": "gcheck",
+      "title": "G-BA · Gesundheitsuntersuchung",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/erwachsene/gesundheitsuntersuchungen/"
+    },
+    {
+      "id": "overview",
+      "title": "G-BA · Früherkennung im Überblick",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/frueherkennungsuntersuchungen/"
+    },
+    {
+      "id": "cervix",
+      "title": "G-BA · Gebärmutterhals",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/erwachsene/krebsfrueherkennung/gebaermutterhalskrebs-screening/"
+    },
+    {
+      "id": "colon",
+      "title": "G-BA · Darmkrebs",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/erwachsene/krebsfrueherkennung/darmkrebs-screening/"
+    },
+    {
+      "id": "colonrl",
+      "title": "G-BA · Regeln zu Darmspiegelungen",
+      "url": "https://www.g-ba.de/downloads/62-492-3766/oKFE-RL-2025-01-16-iK-2025-04-01.pdf"
+    },
+    {
+      "id": "mammo",
+      "title": "G-BA · Mammographie",
+      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1193/"
+    },
+    {
+      "id": "mammo45",
+      "title": "G-BA · Geplante Erweiterung ab 45",
+      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1356/"
+    },
+    {
+      "id": "lung",
+      "title": "KBV · Lungenkrebs-Screening",
+      "url": "https://www.kbv.de/praxis/patientenversorgung/praevention/lungenkrebs-screening"
+    },
+    {
+      "id": "lungrisk",
+      "title": "G-BA · Kriterien Lungenkrebs",
+      "url": "https://www.g-ba.de/downloads/40-268-11634/2025-06-18_KFE-RL_Einf-Lungenkrebsfrueherkennung-Niedrigdosis-CT-Raucher_TrG.pdf"
+    },
+    {
+      "id": "prostate",
+      "title": "S3-Leitlinie · Prostatakarzinom 8.0",
+      "url": "https://www.leitlinienprogramm-onkologie.de/fileadmin/user_upload/Downloads/Leitlinien/Prostatatkarzinom/Version_8/22_05_2026_Prostatakarzinom_Kurzversion_8.0_final_KL.pdf"
+    },
+    {
+      "id": "psa",
+      "title": "G-BA · Prüfung des PSA-Angebots",
+      "url": "https://www.g-ba.de/presse/pressemitteilungen-meldungen/1290/"
+    },
+    {
+      "id": "dental",
+      "title": "KZBV · Zahnvorsorge",
+      "url": "https://www.kzbv.de/patienten/medizinische-infos/parodontitis/vorsorge-und-frueherkennung/"
+    },
+    {
+      "id": "psi",
+      "title": "KZBV · Parodontaler Screening-Index",
+      "url": "https://www.kzbv.de/patienten/medizinische-infos/parodontitis/der-parodontale-screening-index-psi/"
+    },
+    {
+      "id": "children",
+      "title": "BIÖG · U1 bis U9",
+      "url": "https://www.kindergesundheit-info.de/themen/frueherkennung-u1-u9-und-j1/untersuchungen-u1-bis-u9/die-untersuchungen-u1-bis-u9/"
+    },
+    {
+      "id": "j1",
+      "title": "G-BA · Jugendliche und Chlamydien",
+      "url": "https://www.g-ba.de/themen/methodenbewertung/jugendliche/"
+    },
+    {
+      "id": "vaccines",
+      "title": "STIKO · Impfkalender 2026",
+      "url": "https://www.infektionsschutz.de/download/7741-BIOEG-26-06476_Impfkalender_2026_A3_BFREI_grau.pdf"
+    },
+    {
+      "id": "rsv",
+      "title": "BMG · RSV-Impfung",
+      "url": "https://www.bundesgesundheitsministerium.de/themen/praevention/impfungen/schutz-vor-rsv-infektionen/rsv-impfung-erwachsene"
+    },
+    {
+      "id": "vaccine60",
+      "title": "Bund · Impfungen im Alter",
+      "url": "https://gesund.bund.de/wege-im-gesundheitswesen/erwachsenenleben/alter/vorsorge-und-frueherkennung/impfungen"
+    },
+    {
+      "id": "tkskin",
+      "title": "TK · Hautkrebs-Screening",
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-erwachsene/kostenuebernahme-hautkrebssreening-2007966"
+    },
+    {
+      "id": "bskin",
+      "title": "BARMER · Haut-Check",
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/vorsorge/krebsvorsorge/hautkrebsvorsorge-1055270"
+    },
+    {
+      "id": "dskin",
+      "title": "DAK · Hautkrebs-Screening",
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/krebsvorsorge/kostenuebernahme-fuer-ihr-hautkrebs-screening_10752"
+    },
+    {
+      "id": "tkpzr",
+      "title": "TK · Zahnreinigung",
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/zaehne/zahnvorsorge-und-bonusheft/zahlt-tk-professionelle-zahnreinigung-2002368"
+    },
+    {
+      "id": "bpzr",
+      "title": "BARMER · Zahnreinigung",
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/zahngesundheit/professionelle-zahnreinigung-1055474"
+    },
+    {
+      "id": "bbonus",
+      "title": "BARMER · Bonusbedingungen",
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/barmer-bonus"
+    },
+    {
+      "id": "dextras",
+      "title": "DAK · Zusätzliche Leistungen",
+      "url": "https://www.dak.de/dak/leistungen/ihre-extra-leistungen_26624"
+    },
+    {
+      "id": "dcheck",
+      "title": "DAK · Check-up 17",
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/vorsorge/check-up-17-unsere-extra-leistung-fuer-sie_10730"
+    },
+    {
+      "id": "dcolon",
+      "title": "DAK · Darmkrebs vor 50",
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/krebsvorsorge/darmkrebsvorsorge_10748"
+    },
+    {
+      "id": "dsport",
+      "title": "DAK · Sportmedizin",
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/vorsorge/sportmedizinische-untersuchung_10740"
+    },
+    {
+      "id": "tkstatute",
+      "title": "TK · Satzung §§ 27e, 27n, 27o",
+      "url": "https://www.tk.de/resource/blob/2077108/f12d255c99f0c1b3194ebb217d31aa4f/tk-satzung-data.pdf"
+    },
+    {
+      "id": "bcheck",
+      "title": "BARMER · Check-up",
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/vorsorge/check-up-1055268"
+    },
+    {
+      "id": "tksport",
+      "title": "TK · Leistungsübersicht Sportmedizin",
+      "url": "https://www.tk.de/resource/blob/2115980/fc1c84d8e85f20e4cfe481a51395fb2d/tk-highlights-deutsch-data.pdf"
+    },
+    {
+      "id": "tkchild",
+      "title": "TK · U10, U11, J2",
+      "url": "https://www.tk.de/techniker/versicherung/tk-leistungen/weitere-leistungen/praevention/frueherkennungsuntersuchungen-kind-jugend/kostenuebernahme-u10-u11-j2-erstattung-2008052"
+    },
+    {
+      "id": "bchild",
+      "title": "BARMER · Kinderprogramm",
+      "url": "https://www.barmer.de/unsere-leistungen/leistungen-a-z/familie/kinder-und-jugend-programm-1003056"
+    },
+    {
+      "id": "dchild",
+      "title": "DAK · Kindervorsorge",
+      "url": "https://www.dak.de/dak/leistungen/praevention-und-vorsorge/kindervorsorge_20596"
+    },
+    {
+      "id": "dge",
+      "title": "DGE · Nahrungsergänzung",
+      "url": "https://www.dge.de/gesunde-ernaehrung/faq/nahrungsergaenzungsmittel/"
+    },
+    {
+      "id": "dvit",
+      "title": "DGE · Vitamin D",
+      "url": "https://www.dge.de/gesunde-ernaehrung/faq/vitamin-d/"
+    },
+    {
+      "id": "b12",
+      "title": "NIH · Vitamin B12",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminB12-Consumer/"
+    },
+    {
+      "id": "hormones",
+      "title": "IQWiG · Wechseljahrsbeschwerden",
+      "url": "https://www.gesundheitsinformation.de/wechseljahrsbeschwerden.html"
+    },
+    {
+      "id": "aging",
+      "title": "NIA · Forschung zu Alterungsprozessen",
+      "url": "https://www.nia.nih.gov/news/live-long-good-health-could-calorie-restriction-mimetics-hold-key"
+    },
+    {
+      "id": "fasting",
+      "title": "NIA · Grenzen der Kalorienrestriktionsforschung",
+      "url": "https://www.nia.nih.gov/news/cutting-calories-may-slow-pace-aging-healthy-adults"
+    },
+    {
+      "id": "at",
+      "title": "Österreich · Vorsorgeuntersuchung",
+      "url": "https://www.gesundheit.gv.at/leben/gesundheitsvorsorge/vorsorgeuntersuchung.html"
+    },
+    {
+      "id": "uk",
+      "title": "NHS England · Health Check",
+      "url": "https://www.nhs.uk/tests-and-treatments/nhs-health-check/"
+    },
+    {
+      "id": "ranking",
+      "title": "Versichertenzahlen · Stand 01.07.2026",
+      "url": "https://www.krankenkassen.de/krankenkassen-vergleich/statistik/versicherte/aktuell/"
+    },
+    {
+      "id": "kfe",
+      "title": "G-BA · Krebsfrüherkennungs-Richtlinie",
+      "url": "https://www.g-ba.de/richtlinien/17/"
+    }
+  ],
+  "rules": [
+    {
+      "id": "check18",
+      "title": "Gesundheits-Check-up",
+      "minAge": 18,
+      "maxAge": 34,
+      "interval": "ONCE",
+      "category": "Basis",
+      "summary": "Einmal zwischen 18 und 34",
+      "detail": "Anamnese, Untersuchung, Blutdruck, Risiken und Impfstatus. Blutlabor in diesem Alter nur bei entsprechenden Risiken. Nicht automatisch jedes Jahr wiederholen.",
+      "sources": [
+        "gcheck"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Ein normaler Check-up schließt Erkrankungen nicht aus; zusätzliche Tests ohne Anlass können unnötige Abklärungen auslösen."
+    },
+    {
+      "id": "check35",
+      "title": "Gesundheits-Check-up",
+      "minAge": 35,
+      "maxAge": 120,
+      "interval": "Y3",
+      "category": "Basis",
+      "summary": "Alle 3 Kalenderjahre ab 35",
+      "detail": "Mit Blutdruck, Urin, Blutzucker und Lipidprofil; Risiken und Lebensstil besprechen. Kein pauschales großes Blutbild, EKG oder Vitaminpanel. Der letzte Untersuchungstermin bestimmt das nächste Anspruchsjahr.",
+      "sources": [
+        "gcheck"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "hep",
+      "title": "Hepatitis B & C",
+      "minAge": 35,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Basis",
+      "summary": "Einmalig im Check-up",
+      "detail": "Einmaliger Test auf bisher unerkannte Infektionen im Rahmen der Gesundheitsuntersuchung. Vorbefunde und Impfstatus mitbringen.",
+      "sources": [
+        "gcheck"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "skin",
+      "title": "Hautkrebs-Screening",
+      "minAge": 35,
+      "maxAge": 120,
+      "interval": "Y2",
+      "category": "Früherkennung",
+      "summary": "Alle 2 Kalenderjahre ab 35",
+      "detail": "Untersuchung der gesamten Haut in einer qualifizierten Praxis. Auffällige oder sich verändernde Hautstellen unabhängig vom Vorsorgetermin abklären.",
+      "sources": [
+        "overview",
+        "tkskin",
+        "bskin",
+        "dskin"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "gyn",
+      "title": "Gynäkologische Früherkennung",
+      "minAge": 20,
+      "maxAge": 120,
+      "interval": "Y1",
+      "category": "Früherkennung",
+      "summary": "Jährliches Angebot ab 20",
+      "detail": "Klinische Untersuchung und Beratung. Der jährliche Termin bleibt auch ab 35 möglich; der Pap-/HPV-Kotest erfolgt dann nur alle drei Jahre. Leistungen im selben Termin bündeln. Nach Operationen individuell klären.",
+      "sources": [
+        "cervix",
+        "kfe"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "cervix",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "pap",
+      "title": "Pap-Abstrich",
+      "minAge": 20,
+      "maxAge": 34,
+      "interval": "Y1",
+      "category": "Früherkennung",
+      "summary": "Jährlich von 20 bis 34",
+      "detail": "Zellabstrich vom Gebärmutterhals, normalerweise beim gynäkologischen Termin. Nicht zusätzlich zum Kotest für ab 35 einplanen. Auffällige Vorbefunde brauchen einen eigenen Kontrollplan.",
+      "sources": [
+        "cervix"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "cervix",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "cotest",
+      "title": "HPV- & Pap-Kotest",
+      "minAge": 35,
+      "maxAge": 120,
+      "interval": "Y3",
+      "category": "Früherkennung",
+      "summary": "Alle 3 Kalenderjahre ab 35",
+      "detail": "Gemeinsamer HPV-Test und Zellabstrich. HPV-Impfung ersetzt dieses Screening nicht. Nach auffälligen Befunden gelten ärztlich festgelegte Kontrollen.",
+      "sources": [
+        "cervix"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "cervix",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "breast",
+      "title": "Brust: klinische Untersuchung",
+      "minAge": 30,
+      "maxAge": 120,
+      "interval": "Y1",
+      "category": "Früherkennung",
+      "summary": "Jährlich ab 30",
+      "detail": "Abtasten von Brust und Achselhöhlen, Veränderungen besprechen. Meist Teil der gynäkologischen Früherkennung. Ein neuer Knoten braucht zeitnahe Abklärung, unabhängig vom Alter.",
+      "sources": [
+        "overview",
+        "kfe"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "breast",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "mammo",
+      "title": "Mammographie-Screening",
+      "minAge": 50,
+      "maxAge": 75,
+      "interval": "M24",
+      "category": "Früherkennung",
+      "summary": "Alle 2 Jahre · 50 bis einschließlich 75",
+      "detail": "Röntgenuntersuchung in einer Screening-Einheit. Der Anspruch endet am 76. Geburtstag. Nutzen, Strahlenbelastung, Fehlalarme und Überdiagnosen abwägen.",
+      "sources": [
+        "mammo"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "breast",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "mammo45",
+      "title": "Mammographie ab 45: angekündigt",
+      "minAge": 45,
+      "maxAge": 49,
+      "interval": "NONE",
+      "category": "Ausblick",
+      "summary": "Voraussichtlich ab 1. August 2027",
+      "detail": "Am 15.10.2026 beschlossen, zum Recherchestand noch kein geltender Regelanspruch für 45–49-Jährige. Start vorbehaltlich Rechtsaufsicht voraussichtlich 01.08.2027, Einladungen ab 2028. Auch in der Vorschau zuerst den aktuellen Startstatus prüfen.",
+      "sources": [
+        "mammo45"
+      ],
+      "sex": "ALL",
+      "kind": "PLANNED",
+      "coverage": "PLANNED",
+      "risk": "",
+      "organ": "breast",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "prostate",
+      "title": "Prostata: Entscheidungsgespräch",
+      "minAge": 45,
+      "maxAge": 120,
+      "interval": "Y1",
+      "category": "Früherkennung",
+      "summary": "Ab 45 · Empfehlung und Kasse unterscheiden",
+      "detail": "Die GKV bezahlt jährlich die bisherige Genital-/Prostatafrüherkennung einschließlich Tastuntersuchung. Die S3-Leitlinie empfiehlt die rektale Tastuntersuchung zur Früherkennung nicht mehr. Wer nach ergebnisoffener Beratung Früherkennung wünscht, soll PSA angeboten bekommen; das Intervall richtet sich nach dem Ergebnis. Nicht automatisch jährlich PSA testen.",
+      "sources": [
+        "prostate",
+        "psa",
+        "kfe"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "prostate",
+      "harm": "PSA kann relevante Tumoren entdecken, aber auch unnötige Biopsien und Behandlungen auslösen. Gesundheitszustand und erwartete Lebenszeit sind für die Entscheidung relevant."
+    },
+    {
+      "id": "fit",
+      "title": "Darmkrebs: Stuhltest (FIT)",
+      "minAge": 50,
+      "maxAge": 120,
+      "interval": "Y2",
+      "category": "Früherkennung",
+      "summary": "Alle 2 Kalenderjahre · Alternative zur Spiegelung",
+      "detail": "Immunologischer Test auf verborgenes Blut. Bei positivem Ergebnis folgt eine diagnostische Darmspiegelung. Nach einer Vorsorgekoloskopie pausieren reguläre Stuhltests für neun folgende Kalenderjahre.",
+      "sources": [
+        "colon",
+        "colonrl"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "colo",
+      "title": "Darmkrebs: Darmspiegelung",
+      "minAge": 50,
+      "maxAge": 120,
+      "interval": "Y10",
+      "category": "Früherkennung",
+      "summary": "Höchstens 2 · Abstand 10 Kalenderjahre",
+      "detail": "Alternative zum FIT. Eine Vorsorgekoloskopie ab 65 zählt bereits als zweite. Nach einer Spiegelung in den folgenden neun Kalenderjahren kein reguläres Darm-Screening. Polypen, Symptome und Hochrisikokonstellationen brauchen individuelle Nachsorge; diese App berechnet sie nicht.",
+      "sources": [
+        "colon",
+        "colonrl"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Kann Vorstufen entfernen; selten Blutungen oder Verletzungen, außerdem Belastung durch Vorbereitung und Sedierung."
+    },
+    {
+      "id": "lung",
+      "title": "Lungenkrebs: Niedrigdosis-CT",
+      "minAge": 50,
+      "maxAge": 75,
+      "interval": "M12",
+      "category": "Nach Risiko",
+      "summary": "Jährlich, nur bei erfüllten Rauchkriterien",
+      "detail": "Seit April 2026: Alter 50–75, mindestens 25 Rauchjahre und 15 Packungsjahre, aktuell rauchend oder Rauchstopp vor weniger als 10 Jahren. Längere Unterbrechungen und medizinische Eignung prüft die Praxis. Ein Packungsjahr = 20 Zigaretten täglich für ein Jahr. Kein CT-Screening für alle.",
+      "sources": [
+        "lung",
+        "lungrisk"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "lung",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "aaa",
+      "title": "Bauchschlagader: Ultraschall",
+      "minAge": 65,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Früherkennung",
+      "summary": "Einmalig für Männer ab 65",
+      "detail": "Ultraschall zur Suche nach einer Erweiterung der Bauchschlagader. Für Frauen kein pauschaler altersbezogener GKV-Screeninganspruch; bei begründetem Verdacht individuell untersuchen.",
+      "sources": [
+        "gcheck"
+      ],
+      "sex": "MALE",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "dental",
+      "title": "Zahnärztliche Kontrolle",
+      "minAge": 6,
+      "maxAge": 120,
+      "interval": "HALF",
+      "category": "Zähne",
+      "summary": "Einmal je Kalenderhalbjahr",
+      "detail": "Zähne, Zahnfleisch und Mund kontrollieren lassen; zwischen Kontrollen mindestens vier Monate. Bonusheft führen. Nicht mit einer professionellen Zahnreinigung gleichsetzen.",
+      "sources": [
+        "dental"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Die zahnärztliche Praxis legt bei Erkrankungen einen eigenen Kontrollabstand fest."
+    },
+    {
+      "id": "psi",
+      "title": "Zahnfleisch: PSI",
+      "minAge": 18,
+      "maxAge": 120,
+      "interval": "M24",
+      "category": "Zähne",
+      "summary": "Alle 2 Jahre",
+      "detail": "Kurze Messung zur Früherkennung von Parodontalerkrankungen, oft beim Kontrolltermin. Während einer systematischen Parodontitisbehandlung gelten andere Abrechnungsregeln.",
+      "sources": [
+        "psi"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Ein auffälliger Screeningbefund erfordert weitere zahnärztliche Untersuchung."
+    },
+    {
+      "id": "tartar",
+      "title": "Zahnstein entfernen",
+      "minAge": 18,
+      "maxAge": 120,
+      "interval": "Y1",
+      "category": "Zähne",
+      "summary": "Einmal pro Kalenderjahr",
+      "detail": "GKV-Leistung bei vorhandenem Zahnstein. Bei Pflegegrad oder Eingliederungshilfe gelten erweiterte Ansprüche. Nicht identisch mit professioneller Zahnreinigung.",
+      "sources": [
+        "dental"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Den Bedarf prüft die Zahnarztpraxis."
+    },
+    {
+      "id": "vaccinereview",
+      "title": "Impfpass prüfen",
+      "minAge": 0,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Impfen",
+      "summary": "Impfstatus statt starrer Geburtstagsregel",
+      "detail": "Impfpass mit der Praxis durchgehen: fehlende Grundimmunisierung und Auffrischungen hängen von dokumentierten Dosen, Risiken und Geburtsjahr ab. Bei Kindern gelten Monats- und Dosisabstände. Diese App ersetzt keinen vollständigen Impfplan.",
+      "sources": [
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "ADVICE",
+      "coverage": "CONDITIONAL",
+      "risk": "",
+      "organ": "",
+      "harm": "Die jeweils aktuelle STIKO-Empfehlung und Schutzimpfungs-Richtlinie bestimmen den individuellen Plan."
+    },
+    {
+      "id": "td",
+      "title": "Tetanus & Diphtherie",
+      "minAge": 18,
+      "maxAge": 120,
+      "interval": "M120",
+      "category": "Impfen",
+      "summary": "Auffrischung alle 10 Jahre",
+      "detail": "Bei abgeschlossener Grundimmunisierung. Die nächste fällige Td-Impfung einmalig mit Pertussis kombinieren. Fehlende Dosen und besondere Indikationen mit der Praxis klären. Hier nur eine tatsächlich abgeschlossene Auffrischung dokumentieren.",
+      "sources": [
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "hpv",
+      "title": "HPV-Impfserie",
+      "minAge": 9,
+      "maxAge": 17,
+      "interval": "ONCE",
+      "category": "Impfen",
+      "summary": "9–14 Jahre · Nachholen bis einschließlich 17",
+      "detail": "Für alle Geschlechter. Anzahl und Abstand hängen vom Alter beim Start ab. Erst als erledigt speichern, wenn die gesamte Serie abgeschlossen ist; Einzeldosen im Impfpass führen. Für Erwachsene Extras der Kasse gesondert erfragen.",
+      "sources": [
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "flu",
+      "title": "Grippeimpfung",
+      "minAge": 60,
+      "maxAge": 120,
+      "interval": "Y1",
+      "category": "Impfen",
+      "summary": "Jährlich, vorzugsweise im Herbst",
+      "detail": "Standardimpfung ab 60. Unter 60 bei besonderen Risiken, Schwangerschaft oder beruflicher Indikation; einige Kassen bieten zusätzliche Leistungen. Kalenderjahresanzeige ist nur Planung, die Impfsaison und Vorimpfung entscheiden.",
+      "sources": [
+        "vaccine60",
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "covid",
+      "title": "COVID-19: Auffrischung prüfen",
+      "minAge": 60,
+      "maxAge": 120,
+      "interval": "Y1",
+      "category": "Impfen",
+      "summary": "Jährlich bei Standardindikation ab 60",
+      "detail": "Vorzugsweise im Herbst. Letzte Impfung, Infektion, Basisimmunität und individuelle Risiken beeinflussen den Zeitpunkt; bei Immungesunden kann eine Infektion eine saisonale Auffrischung entbehrlich machen.",
+      "sources": [
+        "vaccine60",
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "pneumo",
+      "title": "Pneumokokken-Impfung",
+      "minAge": 60,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Impfen",
+      "summary": "Standardimpfung ab 60",
+      "detail": "PCV20 nach aktuellem STIKO-Schema. Frühere Pneumokokkenimpfungen bestimmen den Abstand. Keine automatische jährliche Wiederholung; bei bestimmten Risiken schon früher.",
+      "sources": [
+        "vaccine60",
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "zoster",
+      "title": "Gürtelrose: Impfserie",
+      "minAge": 60,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Impfen",
+      "summary": "2 Dosen ab 60",
+      "detail": "Zwei Impfungen; bei besonderen Risiken früher möglich. Erst die abgeschlossene Serie als erledigt speichern. Den Abstand der Dosen legt die Praxis nach aktuellem Schema fest.",
+      "sources": [
+        "vaccine60",
+        "vaccines"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "rsv",
+      "title": "RSV-Impfung",
+      "minAge": 75,
+      "maxAge": 120,
+      "interval": "ONCE",
+      "category": "Impfen",
+      "summary": "Einmalig ab 75",
+      "detail": "Möglichst vor der RSV-Saison. Bereits mit 60–74 bei schwerer Grunderkrankung oder Pflegeheimbewohnenden; nicht automatisch jährlich wiederholen.",
+      "sources": [
+        "rsv"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "rsvrisk",
+      "title": "RSV: früheren Schutz besprechen",
+      "minAge": 60,
+      "maxAge": 74,
+      "interval": "NONE",
+      "category": "Nach Risiko",
+      "summary": "60–74 nur mit besonderer Indikation",
+      "detail": "Schwere Grunderkrankung oder Wohnen in einer Pflegeeinrichtung können eine einmalige RSV-Impfung begründen. Ein allgemeines Risikofeld im Profil bestätigt die konkrete Indikation nicht.",
+      "sources": [
+        "rsv"
+      ],
+      "sex": "ALL",
+      "kind": "ADVICE",
+      "coverage": "CONDITIONAL",
+      "risk": "chronic",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "skinextra",
+      "title": "Haut-Check vor 35",
+      "minAge": 0,
+      "maxAge": 34,
+      "interval": "Y2",
+      "category": "Kassen-Extras",
+      "summary": "Zusatzleistung abhängig von Kasse und Region",
+      "detail": "TK meist ab 15 (Bayern, Hessen, Schleswig-Holstein auch früher), bei Vertragspraxen. BARMER unter 35 im Vertrag, regionale Altersgrenzen vorher prüfen. DAK 17–34 bis 60 € je zwei Jahre. Kostenübernahme bedeutet nicht, dass ein früheres Screening für jede Person nötig ist.",
+      "sources": [
+        "tkskin",
+        "bskin",
+        "dskin"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "SKIN",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "checkextra",
+      "title": "Zusätzlicher Check-up vor 35",
+      "minAge": 17,
+      "maxAge": 34,
+      "interval": "NONE",
+      "category": "Kassen-Extras",
+      "summary": "Nur mit Risikofaktoren",
+      "detail": "Einmaliger regulärer Check-up 18–34 bleibt bestehen. TK-Satzung: bei Risiken bis 35 € alle drei Jahre; DAK 17–34 bei Risiken bis 40 € alle zwei Kalenderjahre. Kein automatisches zusätzliches Laborpaket.",
+      "sources": [
+        "tkstatute",
+        "dcheck",
+        "bcheck"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "CHECK",
+      "risk": "chronic",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "fitextra",
+      "title": "Darm-Stuhltest vor 50",
+      "minAge": 39,
+      "maxAge": 49,
+      "interval": "Y2",
+      "category": "Kassen-Extras",
+      "summary": "DAK-Zuschuss nur bei erhöhtem Risiko",
+      "detail": "DAK 39–49: bis 40 € alle zwei Kalenderjahre bei Risikofaktoren, z. B. erstgradiger Verwandtschaft oder chronisch-entzündlicher Darmerkrankung. Individuelle Hochrisikovorsorge kann deutlich anders aussehen.",
+      "sources": [
+        "dcolon"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "FIT",
+      "risk": "family",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "pzr",
+      "title": "Professionelle Zahnreinigung",
+      "minAge": 18,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Kassen-Extras",
+      "summary": "Bedarf individuell festlegen",
+      "detail": "Zusatzleistung, keine allgemeine jährliche medizinische Pflicht. TK ab 18 bis 40 € einmal je Kalenderjahr; DAK bis 60 € pro Jahr; BARMER über Bonusbedingungen. Regelmäßige häusliche Zahnpflege und Kontrollen bleiben wesentlich.",
+      "sources": [
+        "tkpzr",
+        "bpzr",
+        "dextras",
+        "bbonus"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "PZR",
+      "risk": "",
+      "organ": "",
+      "harm": "Die sinnvolle Häufigkeit hängt vom Gebiss und Erkrankungsrisiko ab, nicht allein vom Erstattungsbudget."
+    },
+    {
+      "id": "sport",
+      "title": "Sportmedizinischer Check",
+      "minAge": 18,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Kassen-Extras",
+      "summary": "Bei Anlass, z. B. Wiedereinstieg",
+      "detail": "Vor intensivem Training bei Risiken sinnvoll zu besprechen. TK: 80 %, maximal 60 € Basis / 120 € erweitert alle zwei Jahre. DAK: bis 60 € / 120 € bei Risiken alle zwei Jahre. Ärztliche Notwendigkeit und Sportmedizin-Qualifikation erforderlich.",
+      "sources": [
+        "tksport",
+        "dsport",
+        "bbonus"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "SPORT",
+      "risk": "",
+      "organ": "",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "psaextra",
+      "title": "PSA-Test: gemeinsame Entscheidung",
+      "minAge": 45,
+      "maxAge": 120,
+      "interval": "NONE",
+      "category": "Kostenlücken",
+      "summary": "Kein regulärer GKV-Screeningtest",
+      "detail": "S3-Leitlinie: nach Beratung für Männer ab 45, die Früherkennung wünschen und voraussichtlich mindestens zehn Jahre leben. Intervalle abhängig vom PSA-Wert. Ohne Verdacht typischerweise Selbstzahlerleistung; bei medizinischer Indikation andere Abrechnung. Bonus kann teilweise helfen.",
+      "sources": [
+        "prostate",
+        "psa",
+        "bbonus"
+      ],
+      "sex": "ALL",
+      "kind": "ADVICE",
+      "coverage": "PRIVATE",
+      "risk": "",
+      "organ": "prostate",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "chlamydia",
+      "title": "Chlamydien-Screening",
+      "minAge": 0,
+      "maxAge": 24,
+      "interval": "Y1",
+      "category": "Nach Risiko",
+      "summary": "Jährlich für sexuell aktive Frauen unter 25",
+      "detail": "Urinuntersuchung. Die Altersdarstellung allein sagt nichts über sexuelle Aktivität aus. Angebot erst nach Beginn sexueller Aktivität; bei Symptomen oder in der Schwangerschaft gelten eigene Regeln.",
+      "sources": [
+        "j1"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "sexual",
+      "organ": "cervix",
+      "harm": "Früherkennung kann Fehlalarme, übersehene Befunde und Überdiagnosen verursachen. Über Nutzen und mögliche Folgen gemeinsam entscheiden."
+    },
+    {
+      "id": "u1",
+      "title": "U1 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "Unmittelbar nach der Geburt",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 0,
+      "endMonths": 0,
+      "startDays": 0,
+      "endDays": 1
+    },
+    {
+      "id": "u2",
+      "title": "U2 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "3.–10. Lebenstag",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 0,
+      "endMonths": 0,
+      "startDays": 2,
+      "endDays": 10
+    },
+    {
+      "id": "u3",
+      "title": "U3 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "4.–5. Lebenswoche",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 0,
+      "endMonths": 0,
+      "startDays": 21,
+      "endDays": 35
+    },
+    {
+      "id": "u4",
+      "title": "U4 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "3.–4. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 2,
+      "endMonths": 4,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "u5",
+      "title": "U5 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "6.–7. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 5,
+      "endMonths": 7,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "u6",
+      "title": "U6 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "10.–12. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 9,
+      "endMonths": 12,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "u7",
+      "title": "U7 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "21.–24. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 20,
+      "endMonths": 24,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "u7a",
+      "title": "U7a · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "34.–36. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 33,
+      "endMonths": 36,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "u8",
+      "title": "U8 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "46.–48. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 45,
+      "endMonths": 48,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "u9",
+      "title": "U9 · Entwicklung prüfen",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "60.–64. Lebensmonat",
+      "detail": "Entwicklung und Gesundheit im vorgesehenen Zeitfenster prüfen. Bei U1–U3 auch die gesonderten Neugeborenen-Screenings mit der Praxis kontrollieren. Toleranzfristen bei verpasstem Termin erfragen; keine automatische Nachholzusage.",
+      "sources": [
+        "children"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Hier werden reguläre Zeitfenster gezeigt. Das gelbe Untersuchungsheft enthält weitere Details und einzelne Screenings.",
+      "startMonths": 59,
+      "endMonths": 64,
+      "startDays": -1,
+      "endDays": -1
+    },
+    {
+      "id": "childteeth",
+      "title": "Kinderzähne: Früherkennung",
+      "minAge": 0,
+      "maxAge": 5,
+      "interval": "NONE",
+      "category": "Kindheit",
+      "summary": "6 Untersuchungen ab dem 6. Lebensmonat",
+      "detail": "Altersabhängige zahnärztliche Termine und Fluoridprophylaxe in der Praxis planen. Diese Übersicht ist kein Ersatz für die genauen sechs Zeitfenster.",
+      "sources": [
+        "overview"
+      ],
+      "sex": "ALL",
+      "kind": "ADVICE",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Bei Schmerzen oder Zahnproblemen unabhängig vom Vorsorgefenster zum Zahnarzt."
+    },
+    {
+      "id": "j1",
+      "title": "J1 · Jugendgesundheit",
+      "minAge": 12,
+      "maxAge": 14,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "Einmal von 12 bis 14",
+      "detail": "Körperliche und seelische Entwicklung, Risiken und Impfstatus besprechen.",
+      "sources": [
+        "j1"
+      ],
+      "sex": "ALL",
+      "kind": "STANDARD",
+      "coverage": "STANDARD",
+      "risk": "",
+      "organ": "",
+      "harm": "Vertrauliches Gespräch mit der ärztlichen Praxis ermöglichen."
+    },
+    {
+      "id": "u10",
+      "title": "U10 · Zusätzlicher Entwicklungscheck",
+      "minAge": 7,
+      "maxAge": 8,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "Einmal im Altersfenster",
+      "detail": "TK und DAK übernehmen die zusätzliche Untersuchung; BARMER im Kinder- und Jugend-Programm nach Einschreibung. Praxis und Teilnahmebedingungen vorher klären.",
+      "sources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "CHILD",
+      "risk": "",
+      "organ": "",
+      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+    },
+    {
+      "id": "u11",
+      "title": "U11 · Zusätzlicher Entwicklungscheck",
+      "minAge": 9,
+      "maxAge": 10,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "Einmal im Altersfenster",
+      "detail": "TK und DAK übernehmen die zusätzliche Untersuchung; BARMER im Kinder- und Jugend-Programm nach Einschreibung. Praxis und Teilnahmebedingungen vorher klären.",
+      "sources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "CHILD",
+      "risk": "",
+      "organ": "",
+      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+    },
+    {
+      "id": "j2",
+      "title": "J2 · Zusätzlicher Entwicklungscheck",
+      "minAge": 16,
+      "maxAge": 17,
+      "interval": "ONCE",
+      "category": "Kindheit",
+      "summary": "Einmal im Altersfenster",
+      "detail": "TK und DAK übernehmen die zusätzliche Untersuchung; BARMER im Kinder- und Jugend-Programm nach Einschreibung. Praxis und Teilnahmebedingungen vorher klären.",
+      "sources": [
+        "tkchild",
+        "bchild",
+        "dchild"
+      ],
+      "sex": "ALL",
+      "kind": "EXTRA",
+      "coverage": "CHILD",
+      "risk": "",
+      "organ": "",
+      "harm": "Die Untersuchung ersetzt keine Abklärung konkreter Entwicklungsprobleme."
+    }
+  ],
+  "knowledge": [
+    {
+      "label": "Fundiert",
+      "title": "Die größte Wirkung liegt im Alltag",
+      "body": "In jedem Erwachsenenalter: nicht rauchen, regelmäßig bewegen und Kraft erhalten, ausreichend schlafen, ausgewogen essen und soziale Kontakte pflegen. Blutdruck und individuelle Risiken beim Check-up ansprechen. Das sind alltagstaugliche Präventionsansätze, kein garantierter Lebensverlängerungsplan.",
+      "sources": [
+        "aging"
+      ]
+    },
+    {
+      "label": "Gezielt statt pauschal",
+      "title": "Vitamine: kein Startalter für alle",
+      "body": "Für gut versorgte gesunde Erwachsene gibt es keine allgemeine Pflicht zu Vitaminpräparaten. Vitamin D bei geringer Eigenbildung oder erhöhtem Risiko, B12 insbesondere bei veganer Ernährung oder Aufnahmestörungen gezielt klären. Alter allein begründet kein jährliches Vitaminpanel; nachgewiesenen Mangel gezielt behandeln.",
+      "sources": [
+        "dge",
+        "dvit",
+        "b12"
+      ]
+    },
+    {
+      "label": "Individuelle Behandlung",
+      "title": "Hormone sind keine allgemeine Vorsorge",
+      "body": "Wechseljahrsbeschwerden können eine individuell abgewogene Hormontherapie begründen. Sie ist kein allgemeines Anti-Aging-Programm; Nutzen und Risiken ärztlich besprechen. Keine automatische Testosteron-, Östrogen- oder Wachstumshormon-Empfehlung ab einem Geburtstag.",
+      "sources": [
+        "hormones",
+        "aging"
+      ]
+    },
+    {
+      "label": "Forschung",
+      "title": "Rapamycin, Metformin, NAD & Co.",
+      "body": "Forschung zu Alterungsprozessen ist interessant, begründet aber keinen Einnahmeplan für gesunde Menschen. Tierdaten und veränderte Biomarker beweisen keine längere gesunde Lebenszeit beim Menschen. Keine Selbstmedikation; für andere Erkrankungen verordnete Medikamente nicht eigenmächtig ändern.",
+      "sources": [
+        "aging",
+        "fasting"
+      ]
+    },
+    {
+      "label": "Kostenlücken",
+      "title": "Mehr Tests sind nicht automatisch besser",
+      "body": "Ganzkörper-MRT, routinemäßige Tumormarker, große Vitamin-/Hormonpanels und häufigere Screenings sind keine pauschalen altersbezogenen GKV-Vorsorgeleistungen. Bei Symptomen oder begründetem Verdacht kann dieselbe Untersuchung medizinisch angezeigt und abrechenbar sein. Vor Selbstzahlerleistungen Nutzen, Folgen und Preis klären.",
+      "sources": [
+        "gcheck",
+        "psa"
+      ]
+    },
+    {
+      "label": "Ausblick · Österreich",
+      "title": "Ein anderer Check-up-Rhythmus",
+      "body": "In Österreich gibt es für Menschen ab 18 mit Wohnsitz im Land einmal jährlich eine kostenlose Vorsorgeuntersuchung. Das ist ein anderes Versorgungsprogramm und kein Grund, in Deutschland alle Untersuchungen jährlich zu wiederholen.",
+      "sources": [
+        "at"
+      ]
+    },
+    {
+      "label": "Ausblick · England",
+      "title": "NHS Health Check: 40 bis 74",
+      "body": "In England erhalten geeignete Personen zwischen 40 und 74 ohne bestimmte Vorerkrankungen normalerweise alle fünf Jahre ein Angebot. Die Länderbeispiele sind Orientierung; der persönliche Plan in Morgenklar nutzt ausschließlich Deutschland.",
+      "sources": [
+        "uk"
+      ]
+    },
+    {
+      "label": "So liest du deinen Plan",
+      "title": "Angebot, Fälligkeit und Empfehlung",
+      "body": "Die App zeigt Vorsorgeangebote für Menschen ohne Beschwerden. Ein bezahltes Angebot ist keine Pflicht und nicht immer eine fachliche Empfehlung. Ohne dokumentierte Vorgeschichte heißt es „Termin prüfen“. Frühere Auffälligkeiten, Schwangerschaft, familiäre Risiken und Erkrankungen können einen anderen Plan erfordern.",
+      "sources": [
+        "overview"
+      ]
+    }
+  ]
+}
