@@ -2,14 +2,14 @@
 
 Uploads zu Firebase App Distribution bleiben auf Wunsch des Eigentümers manuell. GitHub-Releases lösen keinen automatischen Upload aus. Es gibt kein GitHub-Servicekonto, keinen Workload-Identity-Provider und keine in GitHub gespeicherten Firebase-Anmeldedaten für diesen Ablauf.
 
-Version 0.1.1 (Versionscode 2) ist bereits in Firebase verfügbar. Das manuelle Werkzeug verteilt die signierte APK aus dem GitHub-Release unverändert und übernimmt dessen Release-Notizen.
+Das manuelle Werkzeug verteilt die signierte APK aus dem GitHub-Release unverändert und übernimmt dessen Release-Notizen.
 
 ## Ein Release verteilen
 
 Nach Veröffentlichung des GitHub-Releases im Projektverzeichnis ausführen:
 
 ```bash
-bash scripts/distribute_firebase_release.sh v0.1.1
+bash scripts/distribute_firebase_release.sh v0.1.2
 ```
 
 Für eine neue Version den Tag entsprechend ersetzen. Voraussetzungen sind Python 3, Node.js 20 oder neuer, die GitHub-CLI und eine gültige lokale Firebase-Anmeldung. Bei Bedarf anmelden:

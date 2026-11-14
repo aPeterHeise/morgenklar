@@ -1,5 +1,11 @@
 # Validierung
 
+## Version 0.1.2: Übersicht und Terminerfassung
+
+- 37 JVM-Tests und 8 Android-Oberflächentests auf Android 16 bestanden. Geprüft wurden der direkte Einstieg in die Terminerfassung, die aktualisierte Fälligkeit nach dem Speichern, der Kassenwechsel ohne Profiländerung sowie Leistungsquellen mit Prüfdatum und Empfehlungsquellen.
+- Plan, Kassenübersicht und Kostenabschnitt anhand von Emulatoraufnahmen geprüft.
+- Release-Build mit Versionscode 3 erstellt. Signatur und SHA-256 geprüft sowie die APK über Version 0.1.1 auf einem Emulator installiert.
+
 ## Firebase-Verteilung, 13.11.2026
 
 - Version 0.1.1 (Versionscode 2) erfolgreich zu Firebase App Distribution hochgeladen und an den vom Eigentümer ausgewählten Tester verteilt; Release-ID `34fe10uvi4erg` per API bestätigt.

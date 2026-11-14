@@ -39,11 +39,14 @@ class AppFlowTest {
         ui.runOnIdle { assertEquals(2,ui.activity.data.people.size);assertEquals("Mutter",ui.activity.data.person()!!.name);assertTrue(ui.activity.data.person()!!.cervix) }
     }
     @Test fun cHistoryPersistsAndChangesSchedule() {
-        seed();ui.onNodeWithText("Gesundheits-Check-up").performScrollTo().performClick()
-        ui.onNodeWithText("Termin dokumentieren").performScrollTo().performClick()
+        seed()
+        ui.onNodeWithTag("planList").performScrollToNode(hasTestTag("complete-check35"))
+        ui.onNodeWithTag("complete-check35").assertIsDisplayed().performClick()
+        ui.onNodeWithText("Tatsächliches Datum · TT.MM.JJJJ").assertIsDisplayed()
         ui.onNodeWithText("Reguläre Vorsorge abgeschlossen / Impfserie vollständig").performScrollTo().performClick()
         ui.onNodeWithText("Untersuchung speichern").performScrollTo().performClick()
-        ui.onNodeWithContentDescription("Details schließen").performScrollTo().performClick()
+        ui.onNodeWithContentDescription("Details schließen").assertDoesNotExist()
+        ui.onNodeWithTag("complete-check35").assertDoesNotExist()
         ui.activityRule.scenario.recreate()
         ui.runOnIdle {
             val p=ui.activity.data.person()!!;assertEquals(1,p.entries.size)
@@ -62,7 +65,11 @@ class AppFlowTest {
     @Test fun eAllNavigationAndAtlas() {
         seed();ui.onNodeWithText("Alter",useUnmergedTree=true).performClick();ui.onNodeWithText("Alter in Jahren").performTextReplacement("60")
         ui.onNodeWithText("Frauen").performClick();ui.onNodeWithTag("atlasList").performScrollToNode(hasText("Mammographie-Screening"));ui.onNodeWithText("Mammographie-Screening").assertExists()
-        ui.onNodeWithText("Kassen",useUnmergedTree=true).performClick();ui.onNodeWithText("BARMER",substring=false).performClick();ui.onNodeWithText("8,18 Mio.").assertExists()
+        ui.onNodeWithText("Kassen",useUnmergedTree=true).performClick()
+        ui.onNodeWithTag("insurerPicker").assert(hasText("Techniker")).performClick()
+        ui.onNodeWithText("BARMER",substring=false).performClick()
+        ui.onNodeWithTag("insurerPicker").assert(hasText("BARMER"))
+        ui.runOnIdle { assertEquals("TK",ui.activity.data.person()!!.insurer) }
         ui.onNodeWithText("Wissen",useUnmergedTree=true).performClick();ui.onNodeWithText("Länger gut leben.").assertExists()
         ui.onNodeWithText("Personen",useUnmergedTree=true).performClick();ui.onNodeWithText("Weitere Person anlegen").performScrollTo().assertExists()
     }
@@ -93,14 +100,23 @@ class AppFlowTest {
         ui.onNodeWithTag("insurersList").performScrollToNode(hasText("Professionelle Zahnreinigung"))
         ui.onNodeWithText("Zuschuss: bis 40 € / Jahr").assertExists()
         ui.onNodeWithText("Professionelle Zahnreinigung").performClick()
-        ui.onNodeWithText("WER EMPFIEHLT DAS?").performScrollTo().assertIsDisplayed()
+        ui.onNodeWithText("Als erledigt markieren").assertDoesNotExist()
+        ui.onNodeWithTag("source-tkpzr").assertDoesNotExist()
+        ui.onNodeWithText("Wer empfiehlt das?").performScrollTo().performClick()
         ui.onNodeWithText("Bundeszahnärztekammer (BZÄK); ergänzend KZBV").assertExists()
         ui.onNodeWithTag("source-pzrprofession").performScrollTo().assertIsDisplayed()
         capture("08-pzr-empfehlung")
+        ui.onNodeWithText("Wer empfiehlt das?").performScrollTo().performClick()
+        ui.onNodeWithText("Kosten & Kasse").performScrollTo().performClick()
         ui.onNode(hasTestTag("source-tkpzr") and hasAnyAncestor(hasTestTag("coverage-TK"))).performScrollTo().assertIsDisplayed()
         ui.onAllNodesWithText("Zuletzt geprüft: 13.11.2026",substring=true).onFirst().assertExists()
         ui.onNode(hasTestTag("source-tkstatute") and hasAnyAncestor(hasTestTag("coverage-TK"))).performScrollTo().assertIsDisplayed()
         capture("09-pzr-kosten")
+        ui.onNode(hasTestTag("insurerPicker") and hasAnyAncestor(hasTestTag("ruleSheet"))).performScrollTo().performClick()
+        ui.onNodeWithText("DAK-Gesundheit",substring=false).performClick()
+        ui.onNodeWithTag("coverage-TK").assertDoesNotExist()
+        ui.onNode(hasTestTag("source-dstatute") and hasAnyAncestor(hasTestTag("coverage-DAK"))).performScrollTo().assertIsDisplayed()
+        ui.runOnIdle { assertEquals("TK",ui.activity.data.person()!!.insurer) }
     }
     @Test fun zCaptureDemoScreens() {
         capture("01-willkommen")

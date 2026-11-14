@@ -2,21 +2,28 @@
 
 Native Android-App in Kotlin / Jetpack Compose. Lokale Profile für dich und Angehörige, Gesundheitsfragen, altersbezogene Vorsorge, Untersuchungshistorie und eine Vorschau um ein bis drei Jahre. Schwerpunkt Deutschland und Erwachsene ab 30; Altersatlas von 0 bis 110.
 
-**Version 0.1.1 · Android 9 oder neuer · Recherchestand 13. November 2026**
+**Version 0.1.2 · Android 9 oder neuer · Recherchestand 13. November 2026**
 
-[APK 0.1.1 herunterladen](https://github.com/aPeterHeise/morgenklar/releases/download/v0.1.1/morgenklar-0.1.1.apk) · [Release und Prüfsumme](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.1) · [Ausführliche Recherche](research/RECHERCHE.md) · [Altersatlas](research/ALTERSATLAS.md)
+[APK 0.1.2 herunterladen](https://github.com/aPeterHeise/morgenklar/releases/download/v0.1.2/morgenklar-0.1.2.apk) · [Release und Prüfsumme](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.2) · [Ausführliche Recherche](research/RECHERCHE.md) · [Altersatlas](research/ALTERSATLAS.md)
 
 ## Installieren
 
-Version 0.1.1 ist mit demselben Schlüssel wie 0.1.0 signiert und kann als Update installiert werden. Die vorhandenen Profile bleiben dabei erhalten; eine Deinstallation ist nicht erforderlich.
+Version 0.1.2 ist mit demselben Schlüssel wie die bisherigen Vorschauen signiert und kann als Update installiert werden. Die vorhandenen Profile bleiben dabei erhalten.
 
-1. `morgenklar-0.1.1.apk` aus dem [GitHub-Release v0.1.1](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.1) auf dem Android-Gerät herunterladen und öffnen.
+1. `morgenklar-0.1.2.apk` aus dem [GitHub-Release v0.1.2](https://github.com/aPeterHeise/morgenklar/releases/tag/v0.1.2) auf dem Android-Gerät herunterladen und öffnen.
 2. Falls Android nachfragt, die Installation für den verwendeten Browser oder Dateimanager erlauben.
 3. Die App öffnen und ein Profil anlegen. Krankenkasse und Gesundheitsfragen sind freiwillig. Weitere Personen lassen sich anschließend hinzufügen.
 
-Die APK ist eine mit dem lokalen Android-Debugschlüssel signierte Vorschau, keine Play-Store-Veröffentlichung. Die erste Nutzung startet mit einem leeren Profilformular; Demo-Personen werden nicht mitgeliefert. Im Release liegt außerdem `SHA256-0.1.1.txt` zur Integritätsprüfung. Selbst gebaute APKs nutzen den jeweiligen lokalen Signierschlüssel und können deshalb möglicherweise nicht als Update über die veröffentlichte Vorschau installiert werden. Eine Deinstallation löscht die lokalen Profile.
+Die APK ist eine mit dem lokalen Android-Debugschlüssel signierte Vorschau, keine Play-Store-Veröffentlichung. Die erste Nutzung startet mit einem leeren Profilformular; Demo-Personen werden nicht mitgeliefert. Im Release liegt außerdem `SHA256-0.1.2.txt` zur Integritätsprüfung. Selbst gebaute APKs nutzen den jeweiligen lokalen Signierschlüssel und können deshalb möglicherweise nicht als Update über die veröffentlichte Vorschau installiert werden. Eine Deinstallation löscht die lokalen Profile.
 
-Firebase App Distribution wird [manuell mit einem Release-Befehl](docs/RELEASING.md) bedient. Version 0.1.1 wurde bereits hochgeladen; zukünftige GitHub-Releases lösen keinen automatischen Firebase-Upload aus.
+Firebase App Distribution wird [manuell mit einem Release-Befehl](docs/RELEASING.md) bedient.
+
+## Änderungen in 0.1.2
+
+- Kompakte Karten im Plan, im Altersatlas und bei den Kassen. Weitere Angebote und Erledigtes lassen sich bei Bedarf aufklappen.
+- „Als erledigt markieren“ öffnet direkt das Datumsformular. Nach dem Speichern zeigt der Plan den aktualisierten Status.
+- Die Detailansicht zeigt zuerst die Kasse aus dem Profil. Andere Kassen lassen sich für einen Vergleich im Dropdown auswählen.
+- Leistungsbedingungen, Prüfdaten und Empfehlungen stehen in aufklappbaren Abschnitten.
 
 ## Änderungen in 0.1.1
 

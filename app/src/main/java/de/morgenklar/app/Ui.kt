@@ -28,6 +28,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -55,8 +57,8 @@ val Warm=Color(0xFFF2E8D9)
 @Composable fun Eyebrow(text:String,color:Color=Muted) { Text(text.uppercase(),color=color,fontSize=11.sp,fontWeight=FontWeight.SemiBold,letterSpacing=1.5.sp) }
 @Composable fun Heading(text:String) { Text(text,fontSize=30.sp,fontFamily=FontFamily.Serif,lineHeight=36.sp,color=Ink) }
 @Composable fun Body(text:String,color:Color=Muted) { Text(text,color=color,fontSize=14.sp,lineHeight=21.sp) }
-@Composable fun Panel(modifier:Modifier=Modifier,color:Color=Color.White,content:@Composable ColumnScope.()->Unit) {
-    Column(modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(color).border(1.dp,Line,RoundedCornerShape(22.dp)).padding(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp),content=content)
+@Composable fun Panel(modifier:Modifier=Modifier,color:Color=Color.White,compact:Boolean=false,content:@Composable ColumnScope.()->Unit) {
+    Column(modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(color).border(1.dp,Line,RoundedCornerShape(22.dp)).padding(if(compact) 14.dp else 20.dp),verticalArrangement=Arrangement.spacedBy(if(compact) 6.dp else 12.dp),content=content)
 }
 @Composable fun Sun(modifier:Modifier=Modifier,color:Color=Lime) {
     Canvas(modifier) {
@@ -77,10 +79,16 @@ val Warm=Color(0xFFF2E8D9)
     var editor by remember { mutableStateOf<Person?>(null) }
     var creating by remember { mutableStateOf(false) }
     var detail by remember { mutableStateOf<Rule?>(null) }
-    var atlasDetail by remember { mutableStateOf<Person?>(null) }
+    var previewPerson by remember { mutableStateOf<Person?>(null) }
+    var logImmediately by remember { mutableStateOf(false) }
     var deleteId by remember { mutableStateOf<String?>(null) }
     var wipe by remember { mutableStateOf(false) }
     val person=a.data.person(); val now=a.currentDay
+    fun showRule(rule:Rule, preview:Person?=null, log:Boolean=false) {
+        previewPerson=preview
+        logImmediately=log
+        detail=rule
+    }
     if(a.loadError) {
         Column(Modifier.fillMaxSize().safeDrawingPadding().padding(24.dp),verticalArrangement=Arrangement.Center) {
             Heading("Daten bleiben geschützt");Spacer(Modifier.height(20.dp));Body(a.notice)
@@ -100,9 +108,9 @@ val Warm=Color(0xFFF2E8D9)
             if(a.notice.isNotEmpty()) Text(a.notice,Modifier.fillMaxWidth().background(Warm).padding(16.dp),color=Amber,fontSize=13.sp)
             if(person==null) Welcome { creating=true }
             else when(tab) {
-                0 -> Plan(a,person,{ detail=it;atlasDetail=null },{creating=true})
-                1 -> Atlas(a.catalog,person,now) { r,p -> detail=r;atlasDetail=p }
-                2 -> Insurers(a.catalog,person,now) { detail=it;atlasDetail=null }
+                0 -> Plan(a,person,{ showRule(it) },{ showRule(it,log=true) },{creating=true})
+                1 -> Atlas(a.catalog,person,now) { r,p -> showRule(r,p) }
+                2 -> Insurers(a.catalog,person,now) { r,p -> showRule(r,p) }
                 3 -> Knowledge(a.catalog)
                 4 -> People(a,{editor=it},{creating=true},{deleteId=it},{wipe=true})
             }
@@ -110,8 +118,8 @@ val Warm=Color(0xFFF2E8D9)
     }
     if(creating || editor!=null) ProfileEditor(editor,now,{creating=false;editor=null}) { if(a.savePerson(it)) { creating=false;editor=null;tab=0 } }
     detail?.let { r ->
-        val p=atlasDetail ?: a.data.person()
-        if(p!=null) RuleSheet(a,r,p,atlasDetail==null,{detail=null})
+        val p=previewPerson ?: a.data.person()
+        if(p!=null) RuleSheet(a,r,p,previewPerson==null,logImmediately,{detail=null})
     }
     if(deleteId!=null || wipe) AlertDialog(onDismissRequest={deleteId=null;wipe=false},title={Text(if(wipe) "Alle lokalen Daten löschen?" else "Person löschen?")},text={Body("Das entfernt das Profil und seine Untersuchungshistorie dauerhaft von diesem Gerät.")},confirmButton={TextButton(onClick={if(wipe) a.deleteAll() else a.removePerson(deleteId!!);deleteId=null;wipe=false}){Text("Löschen")}},dismissButton={TextButton(onClick={deleteId=null;wipe=false}){Text("Behalten")}})
 }
@@ -126,16 +134,16 @@ val Warm=Color(0xFFF2E8D9)
         Body("Vorsorge ist eine Entscheidung. Morgenklar informiert über Angebote für Menschen ohne Beschwerden; persönliche Risiken und auffällige Befunde gehören in die ärztliche Beratung.")
     }
 }
-@Composable fun Plan(a:MainActivity,p:Person,open:(Rule)->Unit,add:()->Unit) {
+@Composable fun Plan(a:MainActivity,p:Person,open:(Rule)->Unit,log:(Rule)->Unit,add:()->Unit) {
     var offset by rememberSaveable(p.id) { mutableIntStateOf(0) }
     var pregnancyView by rememberSaveable(p.id) { mutableStateOf(p.pregnant) }
-    var showAll by rememberSaveable(p.id) { mutableStateOf(true) }
+    var showAll by rememberSaveable(p.id,offset,pregnancyView) { mutableStateOf(false) }
     val isPreg=p.pregnant && pregnancyView
     val on=if(isPreg) a.currentDay else a.currentDay.plusYears(offset.toLong())
     val items=if(isPreg) a.catalog.rules.filter { it.pregnancy }.map { Pregnancy.evaluate(it,p,on) }.sortedBy { when(it.status) { Status.CHECK -> 0;Status.ADVICE -> 1;Status.CONDITION -> 2;Status.FUTURE -> 3;else -> 4 } } else Engine.plan(a.catalog,p,on)
     val needs=items.filter { it.status in listOf(Status.CHECK,Status.DUE,Status.CHOICE) && it.rule.kind!="EXTRA" }
     val others=items.filterNot { it in needs }
-    LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(start=22.dp,end=22.dp,bottom=24.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
+    LazyColumn(Modifier.fillMaxSize().testTag("planList"),contentPadding=PaddingValues(start=22.dp,end=22.dp,bottom=24.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
         item { Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp),verticalAlignment=Alignment.CenterVertically) {
             a.data.people.forEach { person -> FilterChip(selected=person.id==p.id,onClick={a.commit(a.data.copy(selected=person.id))},label={Text(person.name)},leadingIcon={Icon(Icons.Outlined.Person,null,Modifier.size(16.dp))}) }
             IconButton(onClick=add) { Icon(Icons.Outlined.Add,"Person hinzufügen") }
@@ -144,48 +152,57 @@ val Warm=Color(0xFFF2E8D9)
             FilterChip(!pregnancyView,{pregnancyView=false},label={Text("Allgemeine Vorsorge")})
             FilterChip(pregnancyView,{pregnancyView=true},label={Text("Schwangerschaft")},leadingIcon={Icon(Icons.Outlined.ChildCare,null,Modifier.size(18.dp))})
         } }
-        item { Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(26.dp)).background(Forest).padding(23.dp),verticalArrangement=Arrangement.spacedBy(13.dp)) {
+        item { Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(Forest).padding(18.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
             Row(verticalAlignment=Alignment.CenterVertically) { Column(Modifier.weight(1f)) {
-                Eyebrow("DEIN BLICK NACH VORN",Lime)
-                Text("Gut für dich,\n${p.name}.",fontSize=34.sp,lineHeight=39.sp,fontFamily=FontFamily.Serif,color=Color.White,modifier=Modifier.padding(top=10.dp))
-            };Sun(Modifier.size(75.dp)) }
+                Eyebrow(if(isPreg) "SCHWANGERSCHAFT" else "VORSORGE ${on.year}",Lime)
+                Text(p.name,fontSize=28.sp,lineHeight=34.sp,fontFamily=FontFamily.Serif,color=Color.White)
+            };Sun(Modifier.size(46.dp)) }
             Text(if(isPreg) Pregnancy.stage(p,on) else "${if(p.approximate) "ca. " else ""}${p.age(on)} Jahre  ·  ${insurers[p.insurer]}",color=Color.White.copy(alpha=.8f),fontSize=13.sp)
-            HorizontalDivider(color=Color.White.copy(alpha=.16f))
-            Text(if(needs.isEmpty()) "Deine Übersicht ist bereit." else "${needs.size} Angebote: Termin oder Verfahren prüfen",color=Lime,fontSize=15.sp,fontWeight=FontWeight.SemiBold)
-            Text("Ein Überblick über Ansprüche, keine Bewertung deiner Gesundheit.",color=Color.White.copy(alpha=.7f),fontSize=12.sp,lineHeight=17.sp)
         } }
         if(!isPreg) item { Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             (0..3).forEach { i -> FilterChip(selected=i==offset,onClick={offset=i},label={Text(if(i==0) "Dieses Jahr" else "+$i ${if(i==1) "Jahr" else "Jahre"}")}) }
         } }
         item { Column(verticalArrangement=Arrangement.spacedBy(7.dp)) {
-            Heading(if(isPreg) "Dein Schwangerschaftsplan" else if(offset==0) "Dein Plan für ${on.year}" else "Ausblick auf ${on.year}")
-            Body(if(isPreg) "${p.dueDate?.let { "Errechneter Geburtstermin: ${fmt(it)}. " } ?: "Geburtstermin ergänzen für konkrete Wochenfenster. "}Alle Zeitfenster mit Mutterpass und Praxis abgleichen. Nach Ende der Schwangerschaft den Profilstatus aktualisieren." else if(offset==0) "Ohne Historie bedeutet „Termin prüfen“: erst den letzten Termin klären." else "Prognose nach heutigem Regelstand und bisherigen Einträgen. Künftige Untersuchungen sind noch nicht eingerechnet; Kassenleistungen können sich ändern.")
-            if(p.approximate) Body("Alter nur näherungsweise: Bitte für genaue Altersgrenzen das Geburtsdatum im Profil ergänzen.",Amber)
+            Heading(if(isPreg || offset==0) "Termine im Blick" else "Ausblick auf ${on.year}")
+            if(isPreg) Body(p.dueDate?.let { "Geburtstermin: ${fmt(it)} · Zeitfenster mit dem Mutterpass abgleichen." } ?: "Geburtstermin für konkrete Wochenfenster ergänzen.")
+            else if(offset>0) Body("Vorschau nach aktuellem Stand und bisherigen Einträgen.")
+            if(p.approximate) Body("Geburtsdatum für genaue Altersgrenzen ergänzen.",Amber)
             if(ChronoUnit.DAYS.between(a.catalog.reviewed,a.currentDay)>180) Tag("Datenstand älter als 6 Monate · Quellen prüfen","UNKNOWN")
         } }
-        if(p.family || p.chronic || p.smoking in listOf("CURRENT","FORMER")) item { Panel(color=Warm) {
-            Eyebrow("DEINE GESUNDHEITSANGABEN",Amber);Body("Risiken können frühere oder andere Untersuchungen begründen. Besprich die Angaben mit deiner Praxis; der Standardplan allein bildet das nicht vollständig ab.",Amber)
-        } }
-        items(needs,key={it.rule.id}) { RuleCard(a.catalog,it,p,on,open) }
-        if(needs.isEmpty()) item { Panel { Text("Keine offenen Standardtermine in dieser Ansicht",fontWeight=FontWeight.SemiBold);Body("Prüfe auch die weiteren Angebote und dokumentierte Untersuchungen unten.") } }
-        item { TextButton(onClick={showAll=!showAll},Modifier.fillMaxWidth()) { Text(if(showAll) "Weitere Angebote einklappen" else "Weitere Angebote & Erledigtes (${others.size})");Icon(if(showAll) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,null) } }
-        if(showAll) items(others,key={it.rule.id}) { RuleCard(a.catalog,it,p,on,open) }
-        item { Panel(color=Lime.copy(alpha=.35f)) { Eyebrow("DER NÄCHSTE KLEINE SCHRITT");Text("Historie ergänzen. Klarer planen.",fontSize=18.sp,fontWeight=FontWeight.Medium);Body("Öffne eine Untersuchung und trage das tatsächliche Datum ein. Bei Impfserien erst die abgeschlossene Serie speichern.") } }
+        if(p.family || p.chronic || p.smoking in listOf("CURRENT","FORMER")) item {
+            Body("Besprich mit deiner Praxis, ob deine Risiken frühere oder zusätzliche Untersuchungen erfordern.",Amber)
+        }
+        items(needs,key={it.rule.id}) { RuleCard(it,p,on,open,log.takeIf { isPreg || offset==0 }) }
+        if(needs.isEmpty()) item { Body("Keine offenen Standardtermine in dieser Ansicht.") }
+        if(others.isNotEmpty()) item { OutlinedButton(onClick={showAll=!showAll},Modifier.fillMaxWidth()) { Text(if(showAll) "Weitere Angebote einklappen" else "Weitere Angebote & Erledigtes (${others.size})");Icon(if(showAll) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,null) } }
+        if(showAll) items(others,key={it.rule.id}) { RuleCard(it,p,on,open,log.takeIf { isPreg || offset==0 }) }
         item { Footer(a.catalog) }
     }
 }
-@Composable fun RuleCard(c:Catalog,item:PlanItem,p:Person,on:LocalDate,open:(Rule)->Unit) {
+@Composable fun RuleCard(item:PlanItem,p:Person,on:LocalDate,open:(Rule)->Unit,log:((Rule)->Unit)?) {
     val b=Coverage.forRule(item.rule,p,on)
-    Panel(Modifier.clickable { open(item.rule) }) {
-        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) { Eyebrow(item.rule.category);Spacer(Modifier.weight(1f));Icon(Icons.Outlined.NorthEast,null,Modifier.size(17.dp),tint=Muted) }
-        Text(item.rule.title,fontSize=20.sp,fontWeight=FontWeight.SemiBold,lineHeight=25.sp)
-        Body(item.rule.summary)
-        Tag(item.status.label,if(item.status in listOf(Status.CHECK,Status.CONDITION,Status.CHOICE)) "UNKNOWN" else "FULL")
+    val canLog=log!=null && item.status !in listOf(Status.FUTURE,Status.PLANNED,Status.COMPLETE,Status.CURRENT)
+    Panel(compact=true) {
+        CompactRuleHeading(item.rule.title,{ open(item.rule) })
+        val dateHint=when(item.status) {
+            Status.CURRENT,Status.FUTURE -> item.date?.let { " · ab ${fmt(it)}" }.orEmpty()
+            Status.DUE -> item.date?.let { " · seit ${fmt(it)}" }.orEmpty()
+            else -> ""
+        }
+        Body(item.status.label+dateHint,Ink)
         Tag(b.label,b.type)
-        if(b.type in listOf("PARTIAL","BONUS")) Body("Zuschuss / Budget – Kosten können bei dir verbleiben.",Amber)
-        Text(item.note,fontSize=12.sp,lineHeight=18.sp,color=Muted)
-        CoverageEvidence(c,b)
-        Text("Empfehlung & Grundlage: ${item.rule.recommendationBy} · Details öffnen",fontSize=12.sp,lineHeight=18.sp,color=Muted)
+        if(canLog) Button(onClick={log?.invoke(item.rule)},modifier=Modifier.testTag("complete-${item.rule.id}")) {
+            Icon(Icons.Outlined.Check,null,Modifier.size(18.dp))
+            Spacer(Modifier.width(6.dp))
+            Text("Als erledigt markieren")
+        }
+    }
+}
+@Composable private fun CompactRuleHeading(title:String,open:()->Unit) {
+    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp)).clickable(onClickLabel="Details öffnen",onClick=open)
+        .heightIn(min=48.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        Text(title,Modifier.weight(1f),fontSize=18.sp,fontWeight=FontWeight.SemiBold,lineHeight=23.sp)
+        Icon(Icons.Outlined.ChevronRight,null,Modifier.size(22.dp),tint=Muted)
     }
 }
 @Composable fun Atlas(c:Catalog,base:Person,now:LocalDate,open:(Rule,Person)->Unit) {
@@ -195,7 +212,7 @@ val Warm=Color(0xFFF2E8D9)
     val p=base.copy(birth=now.minusYears((age?:38).toLong()),approximate=false,sex=sex,prostate=sex=="MALE",cervix=sex=="FEMALE",breast=sex=="FEMALE",entries=emptyList(),followup=false)
     val rs=if(age!=null) Engine.atlas(c,p,age) else emptyList()
     LazyColumn(Modifier.fillMaxSize().testTag("atlasList"),contentPadding=PaddingValues(22.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
-        item { Eyebrow("JAHR FÜR JAHR");Spacer(Modifier.height(9.dp));Heading("Jedes Alter.\nEin klarer Überblick.");Spacer(Modifier.height(12.dp));Body("Alle Altersjahre von 0 bis 110. Diese Ansicht verändert kein Profil und zeigt Angebote ohne Untersuchungshistorie.") }
+        item { Heading("Vorsorge nach Alter");Body("Angebote von 0 bis 110 Jahren.") }
         item { Panel {
             Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
                 IconButton(onClick={value=((age?:38)-1).coerceAtLeast(0).toString()}) { Icon(Icons.Outlined.Remove,"Ein Jahr jünger") }
@@ -203,47 +220,65 @@ val Warm=Color(0xFFF2E8D9)
                 IconButton(onClick={value=((age?:38)+1).coerceAtMost(110).toString()}) { Icon(Icons.Outlined.Add,"Ein Jahr älter") }
             }
             Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) { FilterChip(sex=="MALE",{sex="MALE"},label={Text("Männer")});FilterChip(sex=="FEMALE",{sex="FEMALE"},label={Text("Frauen")}) }
-            Body("Geschlechtsbezogene Standardangebote. Im persönlichen Profil lässt sich die relevante Anatomie anpassen.")
         } }
         if(age!=null) item { Eyebrow("${rs.size} ANGEBOTE MIT $age") }
-        items(rs,key={it.id}) { r -> Panel(Modifier.clickable { open(r,p) }) {
+        items(rs,key={it.id}) { r -> Panel(compact=true) {
             val b=Coverage.forRule(r,p,now)
-            Text(r.title,fontSize=18.sp,fontWeight=FontWeight.SemiBold);Body(r.summary);Tag(b.label,b.type)
-            CoverageEvidence(c,b)
-            Text("Empfehlung & Grundlage: ${r.recommendationBy} · Details öffnen",fontSize=12.sp,lineHeight=18.sp,color=Muted)
+            CompactRuleHeading(r.title,{ open(r,p) })
+            Tag(b.label,b.type)
         } }
         item { Panel { Text("Und wann noch nicht?",fontWeight=FontWeight.SemiBold);Body("Außerhalb der genannten Altersfenster besteht kein pauschaler Screeninganspruch. Neue Beschwerden, familiäre Risiken oder Vorbefunde können trotzdem eine Untersuchung begründen.") } }
         item { Footer(c) }
     }
 }
-@Composable fun Insurers(c:Catalog,p:Person,now:LocalDate,open:(Rule)->Unit) {
-    var selected by rememberSaveable { mutableStateOf(if(p.insurer=="NONE") "TK" else p.insurer) }
-    var invoice by rememberSaveable { mutableStateOf("100") }
+@Composable private fun InsurerPicker(selected:String,includeNone:Boolean=false,select:(String)->Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    Box {
+        OutlinedButton(onClick={expanded=true},modifier=Modifier.fillMaxWidth().testTag("insurerPicker")) {
+            Text(insurers[selected] ?: insurers.getValue("NONE"),Modifier.weight(1f))
+            Icon(Icons.Outlined.ExpandMore,"Krankenkasse auswählen")
+        }
+        DropdownMenu(expanded=expanded,onDismissRequest={expanded=false},modifier=Modifier.testTag("insurerOptions")) {
+            insurers.filterKeys { includeNone || it!="NONE" }.forEach { (key,label) ->
+                DropdownMenuItem(text={Text(label)},onClick={select(key);expanded=false})
+            }
+        }
+    }
+}
+
+@Composable fun Insurers(c:Catalog,p:Person,now:LocalDate,open:(Rule,Person)->Unit) {
+    var selected by rememberSaveable(p.id,p.insurer) { mutableStateOf(p.insurer) }
+    var showExample by rememberSaveable(p.id,selected) { mutableStateOf(false) }
+    var invoice by rememberSaveable(p.id) { mutableStateOf("100") }
     val extra=c.rules.filter { it.id in listOf("skinextra","checkextra","fitextra","pzr","sport","psaextra","u10") }
     LazyColumn(Modifier.fillMaxSize().testTag("insurersList"),contentPadding=PaddingValues(22.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
-        item { Eyebrow("WAS WIRD ÜBERNOMMEN?");Spacer(Modifier.height(9.dp));Heading("Deine Kasse.\nDeine Möglichkeiten.");Spacer(Modifier.height(12.dp));Body("Die drei größten einzelnen GKV-Kassen nach Versicherten. Die AOK-Gemeinschaft besteht aus eigenständigen Kassen.") }
-        item { Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)) { listOf("TK","BARMER","DAK").forEach { FilterChip(selected==it,{selected=it},label={Text(it)}) } } }
-        item { Panel(color=Forest) {
-            Eyebrow(insurers[selected]!!,Lime)
-            Text(when(selected){"TK"->"12,45 Mio.";"BARMER"->"8,18 Mio.";else->"5,39 Mio."},fontSize=35.sp,color=Color.White,fontFamily=FontFamily.Serif)
-            Text("Versicherte · Stand 01.07.2026",color=Color.White.copy(alpha=.7f),fontSize=12.sp)
-            Text("Regelleistung, begrenzter Zuschuss oder Bonus: Die Bedingungen stehen bei jedem Angebot.",color=Color.White,fontSize=14.sp,lineHeight=21.sp)
-        } }
-        item { Body("Zusatzleistungen unten zeigen Bedingungen auch außerhalb deines Alters. Eine Erstattung ist keine medizinische Empfehlung. „Nicht belegt“ bedeutet nicht automatisch „wird abgelehnt“.") }
-        items(extra,key={it.id}) { r ->
-            val demoAge=when(r.id){"skinextra","checkextra"->30;"fitextra"->40;"u10"->7;"psaextra"->50;else->maxOf(18,p.age(now))}
-            val b=Coverage.forRule(r,p.copy(insurer=selected,birth=now.minusYears(demoAge.toLong())),now)
-            Panel(Modifier.clickable { open(r) }) { Text(r.title,fontSize=18.sp,fontWeight=FontWeight.SemiBold);Tag(b.label,b.type);Body(b.detail);CoverageEvidence(c,b);Text("Empfehlung & Grundlage ansehen",fontSize=12.sp,color=Forest) }
-        }
-        item { Panel { Eyebrow("BEISPIEL · ZAHNREINIGUNG");OutlinedTextField(invoice,{invoice=it.filter { ch->ch.isDigit() || ch=='.' || ch==',' }.take(8)},label={Text("Rechnungsbetrag in €")},singleLine=true,keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Decimal),modifier=Modifier.fillMaxWidth())
-            val amount=invoice.replace(',','.').toDoubleOrNull()
-            if(amount!=null && amount>=0) {
-                if(selected=="BARMER") Body("Eigenanteil hängt von verfügbaren Bonuspunkten und dem bereits genutzten gemeinsamen Jahresbudget ab. Ohne diese Angaben nicht berechenbar.")
-                else { val paid=minOf(amount,if(selected=="TK")40.0 else 60.0);Text("Zuschuss bis ${money(paid)} € · Eigenanteil ab ${money(amount-paid)} €",fontWeight=FontWeight.SemiBold);Body("Wenn der Jahreszuschuss noch ungenutzt ist und alle Voraussetzungen erfüllt sind. Ohne verfügbaren Zuschuss zahlst du die Rechnung selbst.") }
+        item { Heading("Krankenkasse");InsurerPicker(selected,includeNone=true) { selected=it } }
+        if(selected=="NONE") item { Body("Wähle eine Kasse, um ihre Zusatzleistungen anzusehen.") }
+        else {
+            item { Body("Zusatzleistungen mit beispielhaften Altersangaben.") }
+            items(extra,key={it.id}) { r ->
+                val demoAge=when(r.id){"skinextra","checkextra"->30;"fitextra"->40;"u10"->7;"psaextra"->50;else->maxOf(18,p.age(now))}
+                val preview=p.copy(insurer=selected,birth=now.minusYears(demoAge.toLong()),approximate=false)
+                val b=Coverage.forRule(r,preview,now)
+                Panel(compact=true) {
+                    CompactRuleHeading(r.title,{ open(r,preview) })
+                    Tag(b.label,b.type)
+                }
             }
-            Sources(c,when(selected){"TK"->listOf("tkpzr","tkstatute");"DAK"->listOf("dpzr","dstatute");else->listOf("bbonus","bstatute")})
-        } }
-        item { Sources(c,listOf("ranking"));Footer(c) }
+            item { Panel {
+                SectionToggle("Eigenanteil Zahnreinigung berechnen",showExample) { showExample=!showExample }
+                if(showExample) {
+                    OutlinedTextField(invoice,{invoice=it.filter { ch->ch.isDigit() || ch=='.' || ch==',' }.take(8)},label={Text("Rechnungsbetrag in €")},singleLine=true,keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Decimal),modifier=Modifier.fillMaxWidth())
+                    val amount=invoice.replace(',','.').toDoubleOrNull()
+                    if(amount!=null && amount>=0) {
+                        if(selected=="BARMER") Body("Eigenanteil hängt von verfügbaren Bonuspunkten und dem bereits genutzten gemeinsamen Jahresbudget ab. Ohne diese Angaben nicht berechenbar.")
+                        else { val paid=minOf(amount,if(selected=="TK")40.0 else 60.0);Text("Zuschuss bis ${money(paid)} € · Eigenanteil ab ${money(amount-paid)} €",fontWeight=FontWeight.SemiBold);Body("Wenn der Jahreszuschuss noch ungenutzt ist und alle Voraussetzungen erfüllt sind. Ohne verfügbaren Zuschuss zahlst du die Rechnung selbst.") }
+                    }
+                    Sources(c,when(selected){"TK"->listOf("tkpzr","tkstatute");"DAK"->listOf("dpzr","dstatute");else->listOf("bbonus","bstatute")})
+                }
+            } }
+        }
+        item { Footer(c) }
     }
 }
 fun money(v:Double)=String.format(java.util.Locale.GERMANY,"%.2f",v)
@@ -379,43 +414,92 @@ fun parseDate(s:String):LocalDate? = runCatching { LocalDate.parse(s.trim(),Date
     }
 }
 @Composable fun Toggle(label:String,value:Boolean,onChange:(Boolean)->Unit) { Row(Modifier.fillMaxWidth().clickable { onChange(!value) },verticalAlignment=Alignment.CenterVertically) { Text(label,Modifier.weight(1f),fontSize=14.sp,lineHeight=20.sp);Checkbox(value,onChange) } }
-@Composable fun RuleSheet(a:MainActivity,r:Rule,p:Person,editable:Boolean,dismiss:()->Unit) {
-    var logging by remember(r.id) { mutableStateOf(false) }
+@Composable private fun SectionToggle(title:String,expanded:Boolean,toggle:()->Unit) {
+    val state=if(expanded) "Ausgeklappt" else "Eingeklappt"
+    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp))
+        .clickable(onClickLabel=if(expanded) "Einklappen" else "Ausklappen",onClick=toggle)
+        .semantics { stateDescription=state }.heightIn(min=48.dp),
+        verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        Text(title,Modifier.weight(1f),fontSize=16.sp,fontWeight=FontWeight.SemiBold)
+        Icon(if(expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,null,tint=Forest)
+    }
+}
+
+@Composable fun RuleSheet(a:MainActivity,r:Rule,p:Person,editable:Boolean,logImmediately:Boolean,dismiss:()->Unit) {
+    var logging by remember(r.id) { mutableStateOf(logImmediately) }
     var dateText by remember(r.id) { mutableStateOf(fmt(a.currentDay)) }
     var acknowledged by remember(r.id) { mutableStateOf(false) }
     var error by remember(r.id) { mutableStateOf("") }
     var deleting by remember { mutableStateOf<Entry?>(null) }
     val actual=if(editable) a.data.people.find { it.id==p.id } ?: p else p
+    val history=actual.entries.filter { it.rule==r.id && (!r.pregnancy || it.episode==actual.pregnancyId) }.sortedByDescending { it.date }
+    var showHistory by remember(r.id) { mutableStateOf(false) }
+    var showCosts by remember(r.id) { mutableStateOf(false) }
+    var showRecommendation by remember(r.id) { mutableStateOf(false) }
+    var showAbout by remember(r.id) { mutableStateOf(false) }
+    var selectedInsurer by remember(r.id,actual.insurer) { mutableStateOf(actual.insurer) }
+    val benefit=Coverage.forRule(r,actual.copy(insurer=selectedInsurer),a.currentDay)
     ModalBottomSheet(onDismissRequest=dismiss,containerColor=Cream,sheetState=rememberModalBottomSheetState(skipPartiallyExpanded=true)) {
-        Column(Modifier.fillMaxHeight(.93f).verticalScroll(rememberScrollState()).padding(horizontal=24.dp).padding(bottom=32.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
+        Column(Modifier.fillMaxHeight(.93f).testTag("ruleSheet").verticalScroll(rememberScrollState()).padding(horizontal=24.dp).padding(bottom=32.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
             Row(verticalAlignment=Alignment.CenterVertically) { Eyebrow(r.category);Spacer(Modifier.weight(1f));IconButton(onClick=dismiss) { Icon(Icons.Outlined.Close,"Details schließen") } }
-            Heading(r.title);Body(r.summary)
-            if(editable) { val item=Engine.evaluate(r,actual,a.currentDay);Tag(item.status.label,"UNKNOWN");Body(item.note) }
-            Panel { Text("Worum geht es?",fontWeight=FontWeight.SemiBold);Body(r.detail);Text("Nutzen & Grenzen",fontWeight=FontWeight.SemiBold);Body(r.harm) }
-            Panel {
-                Eyebrow("WER EMPFIEHLT DAS?")
-                Text(r.recommendationBy,fontWeight=FontWeight.SemiBold)
-                Body(r.recommendation)
-                Sources(a.catalog,r.recommendationSources)
-            }
-            if(r.id in listOf("colo","fit")) Panel(color=Warm) { Body("Stuhltest und Darmspiegelung sind Alternativen. Vorbefunde oder eine diagnostische Spiegelung können den Plan verändern. Diese Historie ist für reguläre Vorsorge bei unauffälligem Befund gedacht.",Amber) }
-            Eyebrow("KOSTEN IM VERGLEICH")
-            Body("Für gesetzliche Leistungen gilt die G-BA-Richtlinie; für Extras die Satzung, der Vertrag oder die Bonusbedingungen der Kasse. Ein Zuschuss kann einen Eigenanteil lassen.")
-            listOf("TK","BARMER","DAK").forEach { k -> val b=Coverage.forRule(r,actual.copy(insurer=k),a.currentDay);Panel(Modifier.testTag("coverage-$k")) { Text(k,fontWeight=FontWeight.SemiBold);Tag(b.label,b.type);Body(b.detail);CoverageEvidence(a.catalog,b) } }
+            Heading(r.title)
             if(editable && r.kind!="PLANNED") {
-                Eyebrow("DEINE HISTORIE")
-                val history=actual.entries.filter { it.rule==r.id && (!r.pregnancy || it.episode==actual.pregnancyId) }.sortedByDescending { it.date }
-                if(history.isEmpty()) Body("Noch kein Termin eingetragen.")
-                history.forEach { e -> Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) { Icon(Icons.Outlined.CheckCircleOutline,null,tint=Forest);Spacer(Modifier.width(9.dp));Text(fmt(e.date),Modifier.weight(1f));IconButton(onClick={deleting=e}) { Icon(Icons.Outlined.DeleteOutline,"Eintrag ${fmt(e.date)} löschen") } } }
-                if(logging) Panel {
+                if(logging) Panel(color=Lime.copy(alpha=.35f)) {
                     OutlinedTextField(dateText,{dateText=it.take(10)},label={Text("Tatsächliches Datum · TT.MM.JJJJ")},singleLine=true,modifier=Modifier.fillMaxWidth())
                     Toggle("Reguläre Vorsorge abgeschlossen / Impfserie vollständig",acknowledged){acknowledged=it}
-                    Body("Bei auffälligen Befunden bitte im Profil den individuellen Nachsorgeplan aktivieren. Eine einzelne Dosis zählt nicht als vollständige Impfserie.")
+                    if(r.id in listOf("colo","fit")) Body("Hier nur reguläre Vorsorge bei unauffälligem Befund eintragen.")
                     if(error.isNotEmpty()) Text(error,color=Amber)
-                    Button(onClick={val date=parseDate(dateText);if(date==null || !Engine.validEntry(r,actual,date,a.currentDay)) error="Bitte ein Datum im passenden Altersfenster bis heute wählen. Doppelte Einträge sind nicht möglich." else if(a.addEntry(actual.id,r,date)) {logging=false;acknowledged=false;error=""}},enabled=acknowledged,modifier=Modifier.fillMaxWidth()) { Text("Untersuchung speichern") }
-                } else OutlinedButton(onClick={logging=true},modifier=Modifier.fillMaxWidth()) { Icon(Icons.Outlined.EditCalendar,null);Spacer(Modifier.width(8.dp));Text("Termin dokumentieren") }
+                    Button(onClick={
+                        val date=parseDate(dateText)
+                        error=when {
+                            date==null || !Engine.validEntry(r,actual,date,a.currentDay) -> "Bitte ein passendes Datum bis heute wählen. Der Termin darf noch nicht eingetragen sein."
+                            a.addEntry(actual.id,r,date) -> { dismiss();"" }
+                            else -> a.notice
+                        }
+                    },enabled=acknowledged,modifier=Modifier.fillMaxWidth()) { Text("Untersuchung speichern") }
+                    TextButton(onClick={logging=false;acknowledged=false;error=""},modifier=Modifier.align(Alignment.End)) { Text("Abbrechen") }
+                } else Button(onClick={logging=true},modifier=Modifier.fillMaxWidth()) {
+                    Icon(Icons.Outlined.Check,null);Spacer(Modifier.width(8.dp));Text("Als erledigt markieren")
+                }
+                Body(Engine.evaluate(r,actual,a.currentDay).note)
+                if(history.isNotEmpty()) Panel {
+                    SectionToggle("Historie (${history.size})",showHistory) { showHistory=!showHistory }
+                    if(showHistory) history.forEach { e ->
+                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
+                            Text(fmt(e.date),Modifier.weight(1f))
+                            IconButton(onClick={deleting=e}) { Icon(Icons.Outlined.DeleteOutline,"Eintrag ${fmt(e.date)} löschen") }
+                        }
+                    }
+                }
             }
-            Eyebrow("QUELLEN & STAND");Sources(a.catalog,r.sources);Footer(a.catalog)
+            Panel {
+                SectionToggle("Kosten & Kasse",showCosts) { showCosts=!showCosts }
+                if(showCosts) {
+                    InsurerPicker(selectedInsurer,includeNone=true) { selectedInsurer=it }
+                    Column(Modifier.testTag("coverage-$selectedInsurer"),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                        Tag(benefit.label,benefit.type)
+                        Body(benefit.detail)
+                        CoverageEvidence(a.catalog,benefit)
+                    }
+                } else Tag(benefit.label,benefit.type)
+            }
+            Panel {
+                SectionToggle("Wer empfiehlt das?",showRecommendation) { showRecommendation=!showRecommendation }
+                if(showRecommendation) {
+                    Text(r.recommendationBy,fontWeight=FontWeight.SemiBold)
+                    Body(r.recommendation)
+                    Sources(a.catalog,r.recommendationSources)
+                }
+            }
+            Panel {
+                SectionToggle("Ablauf, Nutzen & Grenzen",showAbout) { showAbout=!showAbout }
+                if(showAbout) {
+                    Body(r.summary)
+                    if(r.detail!=r.summary) Body(r.detail)
+                    Body(r.harm)
+                    Sources(a.catalog,r.sources)
+                }
+            }
         }
     }
     deleting?.let { e -> AlertDialog(onDismissRequest={deleting=null},title={Text("Eintrag entfernen?")},text={Body("Der Termin vom ${fmt(e.date)} wird aus dieser Historie gelöscht. Die Fälligkeit wird neu berechnet.")},confirmButton={TextButton(onClick={a.savePerson(actual.copy(entries=actual.entries.filterNot { it.id==e.id }));deleting=null}) { Text("Entfernen") }},dismissButton={TextButton(onClick={deleting=null}) { Text("Behalten") }}) }
